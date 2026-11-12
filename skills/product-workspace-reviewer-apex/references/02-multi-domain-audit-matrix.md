@@ -1,4 +1,4 @@
-# 02. Universal 7-Domain Forensic Audit & Modernization Matrix (Ma Trận Kiểm Toán & Nâng Cấp Đa Lĩnh Vực)
+# 02. Universal 7-Domain Forensic Audit & Modernization Matrix
 
 Just like its Greenfield twin, `product-workspace-reviewer-apex` adapts its forensic lenses, leak detectors, workspace hygiene rules, and 30% Kano upgrades across all **7 Core Domain Archetypes** (`DOM-01` through `DOM-07`).
 
@@ -35,7 +35,7 @@ Just like its Greenfield twin, `product-workspace-reviewer-apex` adapts its fore
 
 ### 2. `DOM-02`: Existing Construction, Architecture & Real Estate Workspaces/Sites
 * **Top 4 Silent Leaks to Hunt:**
-  1. **Media & Project Folder Entropy:** Hundreds of unorganized site photos (`IMG_1234.jpg`), mixed project codes (`KT01`, `KT04`), and scattered design versions without a standardized taxonomy.
+  1. **Media & Project Folder Entropy:** Hundreds of unorganized site photos (`IMG_1234.jpg`), mixed project codes, and scattered design versions without a standardized taxonomy.
   2. **Stale Estimation Sheets:** Material and labor prices buried inside complex formulas where changing one cell breaks the sheet.
   3. **Weak Conversion Architecture on Web/Portals:** Portfolio pages showing raw photos without structured project metadata (area, budget tier, timeline, before/after story, instant quote CTA).
   4. **Manual Quote Delay:** Taking hours to assemble a PDF quote instead of 60 seconds.
@@ -59,9 +59,9 @@ Just like its Greenfield twin, `product-workspace-reviewer-apex` adapts its fore
 
 ### 4. `DOM-04`: Existing E-Commerce, Retail & Invoice/Billing Workspaces
 * **Top 4 Silent Leaks to Hunt:**
-  1. **The `v1 / v2 / final` File Duplication Trap:** Manual invoice files (`Hoa_Don_Khach_A_v1.xlsx`, `Hoa_Don_Khach_A_v2.pdf`) scattered in Downloads/folders without a central immutable ledger.
+  1. **The `v1 / v2 / final` File Duplication Trap:** Manual invoice files (`Invoice_ClientA_v1.xlsx`, `Invoice_ClientA_v2.pdf`) scattered across folders without a central immutable ledger.
   2. **Formula & Rounding Fragility:** Manual edits overwriting `SUM` or discount formulas, or PDF exports cutting off columns/signatures.
-  3. **Zero Customer History & Debt Tracking:** Having to open 20 old Excel files to check what price a repeat customer was charged last month.
+  3. **Zero Customer History & Debt Tracking:** Having to open 20 old spreadsheets to check what price a repeat customer was charged last month.
   4. **Margin Blindness:** Issuing discounts without seeing real-time net profit impact.
 * **30% Kano Modernization Upgrades:**
   * **Unified Invoice & Ledger Engine:** 1 master data/config table + 1-click dual export (pixel-perfect **PDF + Excel** simultaneously) with automatic version numbering and immutable historical log.
@@ -74,7 +74,7 @@ Just like its Greenfield twin, `product-workspace-reviewer-apex` adapts its fore
   1. **Tacit Knowledge Lock-in (Bus Factor = 1):** Only the owner knows which file is the latest template or how to run the weekly report.
   2. **Workspace Clutter:** Mixing active projects, archived clients, scratch files, and templates in the same root directory.
 * **30% Kano Modernization Upgrades:**
-  * **Clean 4-Pillar Workspace Architecture:** (`01-Active`, `02-Templates-And-Config`, `03-Archive-Immutable`, `04-Automation-Scripts`) + 1-Page Operator Dashboard.
+  * **Clean 5-Zone Workspace Architecture:** (`00-CONFIG-AND-TEMPLATES`, `01-ACTIVE-OPERATIONS`, `02-CORE-SYSTEM-AND-TOOLS`, `03-IMMUTABLE-ARCHIVE`, `04-EXPORTS-AND-DELIVERABLES`) + 1-Page Operator Dashboard.
 
 ---
 

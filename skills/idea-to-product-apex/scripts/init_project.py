@@ -101,7 +101,7 @@ def get_templates(project_name: str, domain_key: str, today: str) -> dict:
 - **Q3 (Monetization / Value Metric):** [Locked Option]
 
 ## 2. Johari Quadrant 4 — Domain Blind-Spot Radar (Unknown-Unknowns)
-| # | Hidden Industry Trap (Điểm mù ngành `{domain_key}`) | Impact If Ignored | Built-in Countermeasure in {project_name} |
+| # | Hidden Industry Trap (`{domain_key}`) | Impact If Ignored | Built-in Countermeasure in {project_name} |
 | :--- | :--- | :--- | :--- |
 | 1 | Volatility of prices / rules / algorithms | System becomes obsolete in 60 days | Externalized into editable Config Table |
 | 2 | User friction / drop-off in first 60 seconds | Low adoption / abandonment | Instant presets + guided 1-click flow |
@@ -214,8 +214,8 @@ def get_templates(project_name: str, domain_key: str, today: str) -> dict:
 
 ## 4. Quarterly 15-Minute Self-Audit Prompt (Paste into Claude / Antigravity every 90 days)
 ```text
-/apex-audit Hãy đọc thư mục docs/apex-blueprint/ và STATE.json của dự án {project_name}.
-Kiểm tra dữ liệu vận hành 90 ngày qua, đối chiếu với 00-PROJECT-CONSTITUTION.md và đề xuất tinh chỉnh tầng cấu hình (Tier B) mà KHÔNG phá vỡ kiến trúc lõi (Tier A).
+/apex-audit Read docs/apex-blueprint/ and STATE.json for {project_name}.
+Audit the past 90 days of operation against 00-PROJECT-CONSTITUTION.md and propose Tier-B configuration calibrations without altering Tier-A core architecture.
 ```
 """,
     }

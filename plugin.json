@@ -9,8 +9,8 @@
   },
   "license": "MIT",
   "suggestedPrompts": [
-    "/idea-to-product Tôi có ý tưởng mới, hãy khai thác kép và thiết kế sản phẩm vượt kỳ vọng bền vững 12 tháng",
-    "/review-product Hãy quét X-Quang, kiểm toán C-Suite và nâng cấp sản phẩm/workspace hiện tại của tôi",
-    "/audit-workspace Dọn dẹp, chuẩn hóa cấu trúc thư mục và tách bảng cấu hình 2 phút mà không làm hỏng dữ liệu cũ"
+    "/idea-to-product I have a new product idea—run Dual-Mode discovery, inject 30% Kano delighters, and architect a 12-month evergreen system",
+    "/review-product Run a Forensic X-Ray scan, 6-Role C-Suite audit, and non-destructive upgrade on my existing product/workspace",
+    "/audit-workspace Clean up workspace entropy, lock historical Red-Zone data, and extract a 2-minute editable Tier-B config"
   ]
 }

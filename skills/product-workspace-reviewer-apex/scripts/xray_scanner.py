@@ -154,7 +154,7 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 > **Audited On:** {today} | **Domain Archetype:** `{domain_key}` ({domain_label})
 > **Immunity Contract:** 12-Month Evergreen Evolution (Zero Data Loss / Zero Habit Breakage)
 
-## 1. Sacred Workflows & Muscle-Memory Habits (Cấm Phá Vỡ)
+## 1. Sacred Workflows & Muscle-Memory Habits (Must Not Break)
 - **Sacred Habit 1:** Preserve existing core user entry points, familiar layout patterns, and core JTBD workflow.
 - **Sacred Habit 2:** Never alter historical customer records, issued invoices, or completed project files.
 
@@ -163,7 +163,7 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 - **Yellow Zone ({zc['yellow']} files — Test-Protected Refactor):** Scripts, business logic, active templates.
 - **Red Zone ({zc['red']} files — 100% Immutable / Snapshot Quarantine):** Historical invoices/records, databases, credentials.
 
-## 3. Non-Breaking Invariants (Luật Bất Biến Khi Nâng Cấp)
+## 3. Non-Breaking Invariants
 1. **Invariant 1 (Pre-Flight Backup):** Every Yellow/Red Zone modification is preceded by a verified backup snapshot.
 2. **Invariant 2 (3-Tier Volatility Extraction):** Hardcoded prices/rules/prompts are extracted into Tier-B Config without changing historical outputs.
 3. **Invariant 3 (Behavioral Parity):** Existing valid inputs must produce 100% matching deterministic calculations before and after refactoring.
@@ -180,26 +180,26 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 - **Sacred Elements to Keep:** [Confirmed by Operator]
 - **Selected Modernization Path:** Option B (3-Tier Decoupled Evolution + 30% Kano Modernization Delighters)
 
-## 3. Johari Silent Leak Radar (4 Điểm Rò Rỉ Ngầm Đang Gây Thất Thoát)
+## 3. Johari Silent Leak Radar (4 Hidden System Leaks)
 | # | Silent Leak Category | Forensic Evidence in {project_name} | 12-Month Impact If Unfixed | Engineered Remedy |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | **Cognitive & Time Bleed** | Manual file duplication (`v1/v2`) & repetitive edits | Wastes decenas of hours/year & causes human typos | Unified template + 1-click dated snapshot generator |
+| 1 | **Cognitive & Time Bleed** | Manual file duplication (`v1/v2`) & repetitive edits | Wastes dozens of hours/year & causes human typos | Unified template + 1-click dated snapshot generator |
 | 2 | **Unit Economics / Revenue Leak** | Slow turnaround or unguarded margin/pricing updates | Lost leads or eroded profit margins | Instant estimator/validator + margin guardrail |
 | 3 | **Hardcoded Volatility Rot** | Prices, rules, or settings embedded inside files | Requires manual hunting across files when prices shift | Extracted to single Tier-B Config (`config.json`/Sheet) |
 | 4 | **Catastrophic Fragility** | Editing active files risks overwriting historical records | Irreversible audit/history corruption | Strict Red-Zone Archive Vault + 1-Click Backup |
 """,
         "02-KANO-UPGRADE-SPEC.md": f"""# 02. Three-Tier Kano Modernization Specification & SMART-ER Contract — {project_name}
 
-## 1. Tier 1 — Critical Debt & Leak Remediation (Vá Lỗi Ngầm & Dọn Rác — 50% Effort)
+## 1. Tier 1 — Critical Debt & Leak Remediation (50% Effort)
 - [ ] **FIX-01:** Quarantine all Red-Zone historical records into an immutable vault; eliminate `v1/v2` manual duplication.
 - [ ] **FIX-02:** Extract hardcoded volatile parameters (prices, rates, rules, prompts) into a clean Tier-B Config table.
 - [ ] **FIX-03:** Add strict input validation and broken-link/formula guards.
 
-## 2. Tier 2 — 10x Workflow & Hygiene Multipliers (Tăng Tốc Vận Hành — 20% Effort)
+## 2. Tier 2 — 10x Workflow & Hygiene Multipliers (20% Effort)
 - [ ] **MUL-01:** Standardize 5-Zone Workspace Taxonomy and ISO-8601 naming convention.
 - [ ] **MUL-02:** 1-Click batch processing / instant search & filter across historical records.
 
-## 3. Tier 3 — Asymmetric Modernization Delighters (30% Tính Năng Vượt Kỳ Vọng)
+## 3. Tier 3 — Asymmetric Modernization Delighters (30% Beyond-Expectation Features)
 - [ ] **DEL-01 (Proactive Leak & Margin Guard):** Automatically warns operator of anomalies, margin drops, or missing fields.
 - [ ] **DEL-02 (Instant Dual/Multi-Format Output):** Generates client-ready PDF/Excel/Web/Schema deliverables in 1 click.
 - [ ] **DEL-03 (Self-Healing Health & Hygiene Check):** 5-second command verifies workspace cleanliness and config validity.
@@ -279,8 +279,8 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 - **Emergency Rollback (< 60 seconds):** Restore pre-upgrade snapshot manifest from backup archive.
 - **Quarterly 15-Minute Drift Audit Prompt:**
 ```text
-/apex-review Hãy đọc thư mục docs/apex-review/ và REVIEW-STATE.json của dự án {project_name}.
-Kiểm tra độ sạch của Workspace sau 90 ngày vận hành, đối chiếu với 00-PRESERVATION-CONSTITUTION.md và đề xuất tối ưu tầng cấu hình (Tier B) mà không làm xáo trộn thói quen vận hành.
+/apex-review Read docs/apex-review/ and REVIEW-STATE.json for {project_name}.
+Audit workspace hygiene after 90 days of operation against 00-PRESERVATION-CONSTITUTION.md and propose Tier-B configuration optimizations without disrupting Sacred Habits.
 ```
 """,
     }

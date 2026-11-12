@@ -1,4 +1,4 @@
-# 06. Shift-Left Review Stage Gates, Pre-Flight Rollback & Behavioral Parity Verification (Chốt Chặn Kiểm Định Từng Bước, Sao Lưu Trước Phẫu Thuật & Kiểm Thử Tương Đương)
+# 06. Shift-Left Review Stage Gates, Pre-Flight Rollback & Behavioral Parity Verification
 
 ## 1. Zero-Bloat Context Isolation for Large Workspaces
 
@@ -12,7 +12,7 @@ When reviewing an existing codebase or workspace that may contain hundreds of fi
 
 ---
 
-## 2. Shift-Left Stage-Gate Circuit Breakers (Kiểm Tra Chấm Điểm Ngay Từng Bước Gate 1 $\rightarrow$ Gate 6)
+## 2. Shift-Left Stage-Gate Circuit Breakers (Gates 1 $\rightarrow$ 6)
 
 Just like `idea-to-product-apex`, **never wait until Step 6 to discover an audit or refactoring mistake made at Step 2!**
 
@@ -31,17 +31,17 @@ Just like `idea-to-product-apex`, **never wait until Step 6 to discover an audit
 
 Before modifying, moving, or refactoring ANY existing file in Phase 5, execute these 4 mandatory safety steps:
 
-### Step 1: Pre-Flight Snapshot Backup (Chốt Sao Lưu Trước Khi Chạm Vào File)
+### Step 1: Pre-Flight Snapshot Backup
 * Create a manifest or backup copy of any Yellow/Red Zone files being touched (or verify clean Git working tree) so any change can be reversed in 10 seconds.
 
-### Step 2: Behavioral Parity Regression Test (Kiểm Thử Tương Đương Đầu Ra)
+### Step 2: Behavioral Parity Regression Test
 * Capture 3–5 real historical inputs/cases from the existing system and record their exact outputs.
 * Run those same 3–5 inputs through the refactored/upgraded system:
   * Core deterministic numbers/logic MUST match 100% (unless fixing an explicitly confirmed bug documented in `02-KANO-UPGRADE-SPEC.md`).
   * New Kano Delighters must enrich the output without corrupting legacy fields.
 
 ### Step 3: Internal Link & Reference Integrity Check
-* When reorganizing folders or renaming messy files, scan all scripts, HTML/Markdown links, and Excel/config references to ensure zero broken paths (`FileNotFoundError` / `404`).
+* When reorganizing folders or renaming messy files, scan all scripts, HTML/Markdown links, and spreadsheet/config references to ensure zero broken paths (`FileNotFoundError` / `404`).
 
 ### Step 4: Automated Code & Workspace Hygiene Scan
 * Run `python "<skill_dir>/scripts/review_gate_audit.py" --dir "<target_dir>" --gate 5 --scan-target "<target_dir>"` to verify zero unfinished `TODO`/`FIXME` stubs and zero newly created duplicate clutter.

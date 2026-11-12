@@ -1,4 +1,4 @@
-# 02. Universal Multi-Domain Adapter Matrix (Ma Trận Thích Ứng Đa Lĩnh Vực)
+# 02. Universal Multi-Domain Adapter Matrix
 
 Most existing AI skills (`obra/superpowers`, `BMAD-METHOD`, `spec-kit`) are hardcoded for **Software Engineering only**. When a user brings an idea in Construction, Real Estate, SEO/Content Marketing, E-Commerce, Agency Operations, or Finance, software-only skills force awkward tech jargon or fail completely.
 
@@ -40,31 +40,31 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 
 ---
 
-### 2. `DOM-02`: Construction, Architecture & Real Estate (Xây dựng, Kiến trúc & Bất động sản)
+### 2. `DOM-02`: Construction, Architecture & Real Estate
 * **Common User Blind Spots (Quadrant 4):**
-  * **Material & Labor Price Drift:** A construction quote generator or sales tool with hardcoded prices becomes useless in 60 days when steel/cement/finishing prices fluctuate.
-  * **Trust Deficit in High-Ticket Decisions:** Customers buying a house or signing a construction contract don't convert from generic text—they need **Visual Proof (Before/After, 3D/AR, actual site photos, stage-by-stage inspection checklists, legal/Feng Shui calculators, transparent bill-of-quantities)**.
-  * **Speed-to-Lead Decay:** If a lead asks for a quote or property info and waits $>15$ minutes, conversion drops by $80\%$.
+  * **Material & Labor Price Drift:** A construction quote generator or sales tool with hardcoded prices becomes obsolete in 60 days when steel, cement, or finishing material costs fluctuate.
+  * **Trust Deficit in High-Ticket Decisions:** Clients buying property or signing construction contracts do not convert from generic text—they require **Visual Proof (Before/After, 3D/AR previews, actual site photography, stage-by-stage inspection checklists, transparent Bill of Quantities)**.
+  * **Speed-to-Lead Decay:** If a prospect requests a quote and waits $>15$ minutes, conversion drops by $80\%$.
 * **Signature 30% Kano Delighters:**
-  * **Interactive Instant Preliminary Estimator & PDF Proposal Generator:** Customer selects area, floors, style, and package $\rightarrow$ immediately receives a branded, itemized budget breakdown + timeline chart.
-  * **Visual Progress / Legal Milestone Tracker:** Interactive timeline showing exact legal steps or construction inspection gates (Móng $\rightarrow$ Thân $\rightarrow$ Mái $\rightarrow$ Hoàn thiện) with photo evidence slots.
-  * **Smart Comparison & Feng Shui / Cashflow Assistant:** Built-in loan amortization calculator, rental yield estimator, or orientation/Feng Shui quick-check.
+  * **Interactive Instant Preliminary Estimator & PDF Proposal Generator:** Client selects area, floors, style, and package $\rightarrow$ immediately receives a branded, itemized budget breakdown + milestone chart.
+  * **Visual Progress / Legal Milestone Tracker:** Interactive timeline showing exact legal steps or construction inspection gates (Foundation $\rightarrow$ Structure $\rightarrow$ Roofing $\rightarrow$ Finishing) with photo evidence slots.
+  * **Smart Comparison & Cashflow Assistant:** Built-in loan amortization calculator, rental yield estimator, or site orientation quick-check.
 * **12-Month Evergreen Guardrails:**
-  * **Externalized Price & Material Matrix:** All unit prices (đơn giá nhân công, vật tư thô, hoàn thiện, lãi suất ngân hàng) live in an editable Google Sheet / JSON / Admin table so non-technical staff can update prices in 2 minutes.
+  * **Externalized Price & Material Matrix:** All unit rates (labor, raw materials, finishing packages, interest rates) live in an editable Tier-B table (`config.json` / Sheet / Admin UI) so non-technical staff can update prices in 2 minutes.
 
 ---
 
 ### 3. `DOM-03`: Content, SEO, AIO (AI Overviews / GEO) & Digital Media
 * **Common User Blind Spots (Quadrant 4):**
-  * Writing generic AI articles that Google/Search engines penalize as "scaled thin content" within 3 months.
+  * Writing generic AI articles that search engines penalize as "scaled thin content" within 3 months.
   * Optimizing only for legacy keywords while ignoring **AIO / GEO (Generative Engine Optimization)**: structured Schema.org JSON-LD, Entity-Attribute-Value (E-A-V) density, original data tables, and first-hand E-E-A-T proof (real photos, case studies, author credentials).
   * Lack of **Content Decay & Cannibalization Tracking** (multiple articles competing for the same intent).
 * **Signature 30% Kano Delighters:**
-  * **Multi-Channel Atomizer:** 1 core deep-research pillar automatically outputs: (1) SEO/AIO Pillar Article with Schema JSON-LD, (2) Comparison Table & FAQ block, (3) Facebook/LinkedIn/Zalo social posts, and (4) Short-video script.
+  * **Multi-Channel Atomizer:** 1 core deep-research pillar automatically outputs: (1) SEO/AIO Pillar Article with Schema JSON-LD, (2) Comparison Table & FAQ block, (3) Social posts, and (4) Short-video script.
   * **Automated E-E-A-T & AIO Citation Scorer:** A checklist/script that scores every draft for entity completeness, citation readiness, and zero-fluff density before publishing.
 * **12-Month Evergreen Guardrails:**
   * Build around **Evergreen Topical Clusters & Hub-and-Spoke Architecture** rather than ephemeral algorithm hacks.
-  * Isolate year-sensitive data (prices, "top 10 in 2026", statistics) into modular data blocks for 1-click annual refresh.
+  * Isolate year-sensitive data (prices, annual rankings, statistics) into modular data blocks for 1-click annual refresh.
 
 ---
 
@@ -75,7 +75,7 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
   * Zero post-purchase retention loop (losing 100% of customers after the first transaction).
 * **Signature 30% Kano Delighters:**
   * **Smart Bundle & Margin Guardrail Engine:** Automatically suggests cross-sells/bundles while warning the operator if a discount pushes net margin below the safety floor.
-  * **Dual-Format Instant Invoice & Reconciliation System:** Generates pixel-perfect PDF + Excel invoices with automatic version tracking, customer debt/payment ledger, and 1-click Zalo/Email summary.
+  * **Dual-Format Instant Invoice & Reconciliation System:** Generates pixel-perfect PDF + Excel invoices with automatic version tracking, customer debt/payment ledger, and 1-click messaging summary.
   * **Automated Re-Order / VIP Care Trigger:** Flags customers due for replenishment or follow-up based on purchase cycle.
 * **12-Month Evergreen Guardrails:**
   * Immutable transaction logs (never overwrite historical invoices when product catalog prices change in the future!).
@@ -91,7 +91,7 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
   * **Self-Serve Client Intake & Diagnostic Scorecard:** Prospects answer 7 structured questions and immediately receive an automated "Health/Readiness Audit Report" (builds instant authority before the sales call).
   * **SOP Runbook with Embedded Quality Checklists:** Every operational task includes a "Definition of Done" verifier.
 * **12-Month Evergreen Guardrails:**
-  * Modular SOP design where tools can change (e.g., swapping Notion/Sheets/CRM) without changing the underlying data contract and workflow gates.
+  * Modular SOP design where tools can change without changing the underlying data contract and workflow gates.
 
 ---
 
