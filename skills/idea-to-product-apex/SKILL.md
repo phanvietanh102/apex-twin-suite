@@ -44,12 +44,13 @@ To ensure process instructions NEVER starve token capacity or degrade code/deliv
    * Phases 1, 3, and 4 require a **High-Reasoning Frontier Model** (Opus/Sonnet Thinking, Gemini Pro/Argon High). Warn the user if running on a lightweight model.
    * Whenever subagents are available (`invoke_subagent` / Task tool), delegate Phase 3 Red-Team and Phase 5 Code Audit to an **isolated Critic Subagent** so the grader never shares confirmation bias with the author.
    * Every C-Suite role must produce its **Mandatory Quantitative Proof** (CPO Friction Count, CTO FMEA & 3-Tier Mutation Matrix, CFO Unit Economics math, CRO Pre-Mortem) and find **at least 3 flaws** in Pass 1 (Adversarial Deduction Scoring).
-4. **Law of Shift-Left Stage Gates & Executable Code Verification:**
-   Never wait until Step 6 to discover an error made at Step 2! Every single phase (Gate 1 $\rightarrow$ Gate 6) and every vertical code slice MUST pass `fitness_audit.py --gate <1..6>` and `--scan-code` (Zero `TODO`/mock stubs, passing unit & edge-case tests) before advancing.
+4. **Law of Shift-Left Stage Gates, Empirical Tagging & Dual-Environment Verification:**
+   * **Epistemic Honesty Tagging:** Explicitly tag critical claims as `[Verified/Tested]`, `[Industry Benchmark]`, or `[Assumption to Confirm]`.
+   * **Terminal + Chat-Only Verification:** In CLI/IDE hosts (Antigravity, Claude Code), every phase and vertical slice MUST pass `fitness_audit.py --gate <1..6>` and `--scan-code`. In chat-only hosts (Claude Desktop UI) or non-software projects, execute a **Simulation Stress-Test (1 Normal Case + 2 Sabotage/Chaos Cases)** and output a **3-Line Micro-Gate Proof** (`[Step N Status]`, `[Test Proof]`, `[Next Action]`) before advancing.
 5. **Law of Universal Multi-Domain Adaptability (`DOM-01` to `DOM-07`):**
    Adapt ontologies, KPIs, and deliverables across Software/AI, Construction/Real Estate, Content/SEO/AIO, E-Commerce/Retail, B2B Services/SOPs, FinTech/EdTech/Health, and IoT/Hardware.
-6. **Law of the 12-Month Evergreen Horizon (Zero-Rewrite Guarantee):**
-   Enforce **3-Tier Separation** (Tier A Immutable Core / Tier B 2-Minute Editable Config / Tier C UI & Adapters), **Historical Snapshot Isolation**, **Schema Versioning (`schema_version`)**, and **5-Minute Manual Fallback SOPs**.
+6. **Law of the 12-Month Evergreen Horizon, Hot-Swap Pivot & Quantitative Upgrade Triggers:**
+   Enforce **3-Tier Separation** (Tier A Immutable Core / Tier B 2-Minute Editable Config / Tier C UI & Adapters), **Historical Snapshot Isolation**, **Schema Versioning (`schema_version`)**, **5-Minute Manual Fallback SOPs**, **Hot-Swap Pivot Isolation** (when mid-year variables shift, isolate the blast radius to a single atomic module), and explicit **Upgrade Trigger Thresholds** (stating the exact volume/scale ceiling up to which zero architectural upgrades are needed).
 
 ---
 

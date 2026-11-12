@@ -39,7 +39,7 @@ To ensure forensic review rules NEVER starve token capacity or degrade refactori
    First inspect the actual workspace/app using `scripts/xray_scanner.py`. Then interview the user using **Dual-Mode Hybrid Elicitation**:
    * **(A) Open Contrarian & Pain Excavation:** Ask open questions first to uncover the user's secret frustrations, unwritten workarounds, and personal vision for the upgrade (*outside* AI's assumptions).
    * **(B) Brutal Diagnostic Grilling:** Challenge hidden bottlenecks and fragile manual habits.
-   * **(C) AI Benchmark Upgrade Paths (A/B/C + Option D Wildcard):** Offer 3 structured modernization tiers (A: Surgical Fix & Clean, B: 3-Tier Decoupled Refactor, C: 10x Automation & Delight Upgrade) + **Option D (User's Custom Angle)**.
+   * **(C) AI Benchmark Upgrade Paths (Keep / 15-Min Quick-Win Patch / Surgical 3-Tier Upgrade / Custom D):** Categorize components into **KEEP (Lindy-stable, touch nothing)**, **QUICK-WIN PATCH (15-min immediate relief)**, and **SURGICAL UPGRADE (3-Tier decoupling + 30% Kano Delighters)** + **Option D (User's Custom Angle)**.
 3. **Law of Johari Leak Detection & 30% Kano Modernization Injection:**
    Uncover at least **4 Hidden System Leaks** (UX friction leaks, unit-economics/time leaks, workspace file entropy, hardcoded rot) AND propose **20–30% asymmetric Kano Delighters** that plug into the existing system with $<20\%$ effort.
 4. **Law of Hard C-Suite Competency, Blast-Radius Zoning & Subagent Isolation:**
@@ -47,10 +47,11 @@ To ensure forensic review rules NEVER starve token capacity or degrade refactori
    * Delegate Phase 3 Forensic Critique and Phase 5 Regression Audit to an **isolated Critic Subagent** whenever available.
    * Map the existing system into **Green Zones** (safe to modernize autonomously), **Yellow Zones** (refactor with regression tests), and **Red Zones** (billing, historical invoices/contracts, core auth/data — touch only via non-destructive Strangler-Fig wrappers).
    * Every C-Suite role must produce its **Mandatory Quantitative Proof** and find **$\ge 3$ concrete flaws** via Adversarial Deduction Scoring.
-5. **Law of Shift-Left Stage Gates & Behavioral Parity Regression:**
-   Every phase (Gate 1 $\rightarrow$ Gate 6) and every surgical refactor slice MUST pass `review_gate_audit.py --gate <1..6>` and verify that **existing valid inputs still produce 100% identical or superior outputs without data loss**.
-6. **Law of the 12-Month Evergreen Immunity Horizon:**
-   Extract hardcoded prices/rules/prompts into a **Tier-B 2-Minute Editable Config**, enforce **Workspace Hygiene Rules** (eliminating `v1_final_copy` chaos), add `schema_version` backward compatibility, and provide a **1-Click Rollback & 5-Minute Manual Fallback SOP**.
+5. **Law of Shift-Left Stage Gates, Empirical Tagging & Dual-Environment Parity Verification:**
+   * Tag claims clearly as `[Verified/Tested]`, `[Industry Benchmark]`, or `[Assumption to Confirm]`.
+   * Every phase (Gate 1 $\rightarrow$ Gate 6) and every surgical refactor slice MUST pass `review_gate_audit.py --gate <1..6>` (or a **1 Normal + 2 Chaos/Sabotage Simulation Trace** with a **3-Line Micro-Gate Log** in chat-only environments) and verify that **existing valid inputs still produce 100% identical or superior outputs without data loss**.
+6. **Law of the 12-Month Evergreen Immunity Horizon, Hot-Swap Pivot & Quantitative Upgrade Triggers:**
+   Extract hardcoded prices/rules/prompts into a **Tier-B 2-Minute Editable Config**, enforce **Workspace Hygiene Rules** (eliminating `v1_final_copy` chaos), add `schema_version` backward compatibility, define explicit **Quantitative Upgrade Triggers** (the exact volume ceiling before any future upgrade is needed), and provide a **1-Click Rollback & 5-Minute Manual Fallback SOP**.
 
 ---
 
