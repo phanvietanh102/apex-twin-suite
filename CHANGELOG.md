@@ -2,6 +2,12 @@
 
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
+## [3.6.0] — 2026-11-12 (Root-Vision Re-Anchored Reviewer & Superset Edition)
+### Added & Fixed
+- **Turn-1 Anti-Premature-Fix Gate (`product-workspace-reviewer-apex`):** Enforces a strict Turn-1 protocol where the engine records the objective X-Ray inventory (`Step 1A`) and immediately interviews the user from the root of their **Original Idea & Ultimate Product Vision** (`Step 1B`) before proposing any repair or architecture changes.
+- **4-Column Vision-vs-Reality Gap Matrix (Phase 2):** Cross-examines the user's Root Vision against the current workspace across 4 explicit buckets: `1. Met & Healthy (KEEP)`, `2. Built Wrong / Drifted (REALIGN & REFACTOR)`, `3. Unbuilt Core Vision (MISSING A-TO-Z BUILD)`, and `4. 30% Beyond-Expectation (KANO DELIGHTERS + 4 SILENT LEAKS)`—followed by full A-to-Z `idea-to-product` execution.
+- **Epistemic Honesty Tags, Non-Code Chaos Simulation (`1 Normal + 2 Sabotage`), & Quantitative Upgrade Triggers:** Synchronized across both Twin Engines.
+
 ## [3.5.0] — 2026-11-12 (Twin-Synchronized Edition)
 ### Added
 - **Symmetric Twin Engine Architecture (100/100 Parity):**

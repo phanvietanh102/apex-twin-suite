@@ -148,7 +148,11 @@ Download from [**GitHub Releases (`v3.5.0`)**](https://github.com/phanvietanh102
   ```
 
 ### 🔵 Engine 2: Brownfield Product, App & Workspace Review (`product-workspace-reviewer-apex`)
-* **`/review-product [path or description]`** or **`/apex-review`**: Full Forensic X-Ray, C-Suite Before/After Audit, and Strangler-Fig 12M Upgrade.
+* **`/review-product [path or description]`** or **`/apex-review`**:
+  1. **Turn 1A (Silent X-Ray Snapshot):** Scans and records the objective baseline inventory (`xray_scanner.py`) with **zero premature fix proposals**.
+  2. **Turn 1B (Root-Vision A-to-Z Interview):** Re-interviews the user from the root of their **Original Idea & Ultimate Product Vision** from scratch.
+  3. **Turn 2 (4-Column Vision-vs-Reality Gap Matrix):** Cross-examines Root Vision vs. Current Workspace across **Keep & Protect (Green)**, **Realign & Refactor (Yellow)**, **Missing A-to-Z Build (Blue)**, and **+30% Kano Delighters (Rocket)**.
+  4. **Turns 3–6 (Full A-to-Z Evolution):** Runs the complete `idea-to-product-apex` C-Suite Red-Team, 12M Evergreen 3-Tier Architecture, A-to-Z Build + Surgical Refactor, and Parity Verification!
 * **`/audit-workspace`**: Clean up a chaotic folder (`v1`, `v2`, `final_copy`), quarantine Red-Zone historical records, and reorganize into the 5-Zone Taxonomy without breaking links.
 * **CLI Forensic X-Ray Scanner & Review Gate Auditor:**
   ```bash
