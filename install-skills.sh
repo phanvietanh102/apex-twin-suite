@@ -30,9 +30,11 @@ for SKILL in "${SKILLS[@]}"; do
     mkdir -p "$REPO_ROOT/.claude/skills/$SKILL"
     cp -R "$SRC/"* "$REPO_ROOT/.claude/skills/$SKILL/"
 
-    # 2. Global Claude Code / Claude Desktop skills
+    # 2. Global Claude Code / Claude Desktop skills & Codex skills
     mkdir -p "$HOME/.claude/skills/$SKILL"
     cp -R "$SRC/"* "$HOME/.claude/skills/$SKILL/"
+    mkdir -p "$HOME/.codex/skills/$SKILL"
+    cp -R "$SRC/"* "$HOME/.codex/skills/$SKILL/"
 
     # 3. Global Antigravity skills & plugin
     mkdir -p "$HOME/.gemini/config/skills/$SKILL"

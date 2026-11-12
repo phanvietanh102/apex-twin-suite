@@ -44,6 +44,18 @@ foreach ($SkillName in $Skills) {
     New-Item -ItemType Directory -Force -Path $GlobalClaudeSkill | Out-Null
     Copy-Item -Path "$SkillSource\*" -Destination $GlobalClaudeSkill -Recurse -Force
 
+    # 2b. Global Codex / OpenAI VS Code Extension (~/.codex/skills/<SkillName>)
+    $GlobalCodexSkill = Join-Path $HOME ".codex\skills\$SkillName"
+    New-Item -ItemType Directory -Force -Path $GlobalCodexSkill | Out-Null
+    Copy-Item -Path "$SkillSource\*" -Destination $GlobalCodexSkill -Recurse -Force
+
+    # 2c. Global VS Code User Prompts ($env:APPDATA\Code\User\prompts\<SkillName>.prompt.md)
+    if ($env:APPDATA) {
+        $VsCodePromptsDir = Join-Path $env:APPDATA "Code\User\prompts"
+        New-Item -ItemType Directory -Force -Path $VsCodePromptsDir | Out-Null
+        Copy-Item -Path (Join-Path $SkillSource "SKILL.md") -Destination (Join-Path $VsCodePromptsDir "$SkillName.prompt.md") -Force
+    }
+
     # 3. Individual ZIP for Claude Desktop UI Upload
     $ZipPath = Join-Path $DistDir "$SkillName-claude-desktop.zip"
     if (Test-Path $ZipPath) { Remove-Item $ZipPath -Force }
@@ -60,6 +72,33 @@ foreach ($SkillName in $Skills) {
 
     Write-Host "[OK] Installed & Packaged Twin Skill: $SkillName" -ForegroundColor Green
 }
+
+# Create Claude Code Global Slash Commands (~/.claude/commands/*.md) for VS Code & CLI
+$ClaudeCommandsDir = Join-Path $HOME ".claude\commands"
+New-Item -ItemType Directory -Force -Path $ClaudeCommandsDir | Out-Null
+
+$ApexCmd = @'
+---
+description: Launch APEX Engine 1 (idea-to-product-apex) — Greenfield A-to-Z Idea-to-Product with Dual-Mode Discovery, 6-Role C-Suite Red-Team & 12-Month Evergreen Architecture
+---
+Read and strictly follow the complete protocol in `~/.claude/skills/idea-to-product-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below:
+
+$ARGUMENTS
+'@
+[System.IO.File]::WriteAllText((Join-Path $ClaudeCommandsDir "idea-to-product.md"), $ApexCmd, $Utf8NoBom)
+[System.IO.File]::WriteAllText((Join-Path $ClaudeCommandsDir "apex.md"), $ApexCmd, $Utf8NoBom)
+
+$ReviewCmd = @'
+---
+description: Launch APEX Engine 2 (product-workspace-reviewer-apex) — Forensic X-Ray Audit, 6-Role C-Suite Diagnostic & Zero-Downtime Upgrade for Existing Products/Workspaces
+---
+Read and strictly follow the complete protocol in `~/.claude/skills/product-workspace-reviewer-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below:
+
+$ARGUMENTS
+'@
+[System.IO.File]::WriteAllText((Join-Path $ClaudeCommandsDir "review-product.md"), $ReviewCmd, $Utf8NoBom)
+[System.IO.File]::WriteAllText((Join-Path $ClaudeCommandsDir "apex-review.md"), $ReviewCmd, $Utf8NoBom)
+Write-Host "[OK] Registered Claude Code & VS Code Slash Commands (/apex, /idea-to-product, /apex-review, /review-product)" -ForegroundColor Green
 
 # Create combined Twin Suite ZIP
 $BundleZip = Join-Path $DistDir "apex-twin-suite-v3.5-bundle.zip"
