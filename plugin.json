@@ -1,0 +1,16 @@
+{
+  "name": "idea-to-product-apex",
+  "displayName": "APEX Twin Suite (v3.5): Idea-to-Product & Product/Workspace Reviewer",
+  "version": "3.5.0",
+  "description": "Symmetric Twin Engine Suite for Claude & Antigravity: (1) idea-to-product-apex for A-to-Z Greenfield development and (2) product-workspace-reviewer-apex for Brownfield Product/App/Workspace forensic auditing, refactoring & 12-Month Evergreen immunity across 7 industries.",
+  "logo": "assets/logo.svg",
+  "author": {
+    "name": "APEX Systems Engineering Council"
+  },
+  "license": "MIT",
+  "suggestedPrompts": [
+    "/idea-to-product Tôi có ý tưởng mới, hãy khai thác kép và thiết kế sản phẩm vượt kỳ vọng bền vững 12 tháng",
+    "/review-product Hãy quét X-Quang, kiểm toán C-Suite và nâng cấp sản phẩm/workspace hiện tại của tôi",
+    "/audit-workspace Dọn dẹp, chuẩn hóa cấu trúc thư mục và tách bảng cấu hình 2 phút mà không làm hỏng dữ liệu cũ"
+  ]
+}
