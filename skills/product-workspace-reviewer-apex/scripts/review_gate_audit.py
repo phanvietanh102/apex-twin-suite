@@ -23,9 +23,9 @@ REVIEW_CHECKS = [
     (
         2,
         "01-FORENSIC-XRAY-AND-LEAKS.md",
-        ["X-Ray", "Silent Leak", "Cognitive", "Volatility"],
+        ["X-Ray", "Root Vision", "MISSING A-TO-Z BUILD", "Silent Leak", "Volatility"],
         15,
-        "Gate 2: Automated X-Ray Telemetry & 4 Silent Leaks",
+        "Gate 2: Root-Vision vs. X-Ray Gap Matrix & 4 Silent Leaks",
     ),
     (
         2,

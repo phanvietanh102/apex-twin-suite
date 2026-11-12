@@ -64,10 +64,15 @@ To maintain **100% architectural symmetry** with `idea-to-product-apex` (`docs/a
 
 ---
 
-## 3. `01-FORENSIC-XRAY-AND-LEAKS.md` (Forensic X-Ray & 4 Silent Leaks Report)
-* **1. Automated X-Ray Inventory Summary:** File counts, directory depth, duplicate/versioned files (`v1`, `v2`, `copy`), hardcoded constants.
-* **2. Dual-Mode Operator Elicitation Summary:** User's custom frustrations, secret upgrade ideas, and selected modernization path (A/B/C/D).
-* **3. The 4 Silent Leaks Discovered (Johari Quadrant-4 Equivalent):**
+## 3. `01-FORENSIC-XRAY-AND-LEAKS.md` (Forensic X-Ray, Root-Vision Interview & 4-Column Gap Matrix)
+* **1. Automated X-Ray Inventory Summary (Turn 1A):** File counts, directory depth, duplicate/versioned files (`v1`, `v2`, `copy`), hardcoded constants (recorded with zero premature fix proposals).
+* **2. Root-Vision A-to-Z Elicitation Summary (Turn 1B):** The operator's original root vision, unbuilt ambitions, pain points, and sacred assets.
+* **3. The 4-Column Vision-vs-Reality Gap Matrix (Turn 2):**
+  * 🟢 **Met & Healthy (`KEEP & PROTECT`):** Existing modules that fulfill the Root Vision.
+  * 🟡 **Built Wrong / Drifted (`REALIGN & REFACTOR`):** Existing components that drifted from intent (15-Min Quick-Win Patch + Surgical Refactor).
+  * 🔵 **Unbuilt Core Vision (`MISSING A-TO-Z BUILD`):** Original user desires completely missing from the workspace—built from A-to-Z.
+  * 🚀 **30% Beyond-Expectation (`KANO DELIGHTERS + 4 SILENT LEAKS`):** High-ROI domain features & Johari leak remedies.
+* **4. The 4 Silent Leaks Discovered (Johari Quadrant-4 Equivalent):**
   * Leak 1: Cognitive & Time Bleed (Hours wasted/month)
   * Leak 2: Revenue & Unit Economics Bleed
   * Leak 3: Hardcoded Volatility Rot

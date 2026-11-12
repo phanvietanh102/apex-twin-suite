@@ -176,9 +176,17 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 - **Manual Version / Entropy Files Detected (`{xray['entropy_count']}` files):**
 {entropy_list}
 
-## 2. Dual-Mode Operator Elicitation Decisions
+## 2. Root-Vision Elicitation & 4-Column Vision-vs-Reality Gap Matrix
+- **Original Root Vision (From Scratch Interview):** [Captured in Step 1B]
 - **Sacred Elements to Keep:** [Confirmed by Operator]
-- **Selected Modernization Path:** Option B (3-Tier Decoupled Evolution + 30% Kano Modernization Delighters)
+- **Selected A-to-Z Evolution Path:** Option B (Full Root-Vision A-to-Z Completion + 30% Kano Delighters)
+
+| Gap Bucket | Root Vision vs. Current Workspace Reality | Action in A-to-Z Pipeline |
+| :--- | :--- | :--- |
+| **1. Met & Healthy (`KEEP & PROTECT`)** | Existing working assets & historical data | Preserve 100% & wrap cleanly |
+| **2. Built Wrong / Drifted (`REALIGN & REFACTOR`)** | Hardcoded or half-baked implementations | 15-Min Quick-Win Patch + Surgical 3-Tier Refactor |
+| **3. Unbuilt Core Vision (`MISSING A-TO-Z BUILD`)** | Original user desires missing from current workspace | Full Greenfield A-to-Z Engineering |
+| **4. 30% Beyond-Expectation (`KANO DELIGHTERS`)** | Domain benchmark upgrades & 4 Silent Leak remedies | Inject high-ROI delight features |
 
 ## 3. Johari Silent Leak Radar (4 Hidden System Leaks)
 | # | Silent Leak Category | Forensic Evidence in {project_name} | 12-Month Impact If Unfixed | Engineered Remedy |
@@ -335,6 +343,12 @@ def main():
             print(f"[SKIPPED] {filepath} (already exists)")
 
     print(f"\n[SUCCESS] Forensic Review Ledger initialized at: {review_dir}")
+    print("=" * 76)
+    print("[STOP GATE 1A — DO NOT PROPOSE FIXES OR ARCHITECTURE YET!]")
+    print("  1. Report ONLY the objective X-Ray baseline inventory above to the user.")
+    print("  2. Interview the user from the root of their ORIGINAL IDEA & ULTIMATE VISION (Step 1B).")
+    print("  3. STOP and WAIT for the user's reply before building the Vision-vs-Reality Gap Matrix!")
+    print("=" * 76)
 
 
 if __name__ == "__main__":

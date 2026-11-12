@@ -90,9 +90,15 @@ $ARGUMENTS
 
 $ReviewCmd = @'
 ---
-description: Launch APEX Engine 2 (product-workspace-reviewer-apex) — Forensic X-Ray Audit, 6-Role C-Suite Diagnostic & Zero-Downtime Upgrade for Existing Products/Workspaces
+description: Launch APEX Engine 2 (product-workspace-reviewer-apex) — Record X-Ray State, Re-Interview Root Vision from Scratch, Build Vision-vs-Reality Gap Matrix & Run Full A-to-Z Upgrade
 ---
-Read and strictly follow the complete protocol in `~/.claude/skills/product-workspace-reviewer-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below:
+Read and strictly follow the complete protocol in `~/.claude/skills/product-workspace-reviewer-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below.
+
+⛔ IRON RULE OF TURN 1 (NO PREMATURE FIXES!):
+On this first turn, you MUST ONLY:
+1. Run `xray_scanner.py` (or inspect the workspace) and report the OBJECTIVE BASELINE INVENTORY (what files, modules, workflows, and data currently exist). Explicitly state that you are holding off on proposing any fixes yet.
+2. Immediately interview the user from the root of their ORIGINAL IDEA & ULTIMATE PRODUCT VISION from A-to-Z (Step 1B: Original Root Vision, Open-Canvas Unbuilt Ambitions, Operating Pain Points, and Sacred Assets to Keep).
+3. STOP and WAIT for the user's reply! Do NOT propose repair options, refactoring plans, or code changes until the user answers the Root-Vision interview and you construct the 4-Column Vision-vs-Reality Gap Matrix (Keep / Realign / Missing A-to-Z Build / 30% Kano Delighters).
 
 $ARGUMENTS
 '@
