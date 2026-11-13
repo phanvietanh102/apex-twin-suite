@@ -1,6 +1,6 @@
-# DEEPSEARCH ARCHITECTURE WHITEPAPER: THE `APEX TWIN ENGINE SUITE (v3.5)`
-> **Systems Engineering & AI Harness Monograph (2026 Edition)**
-> **Subject:** Overcoming LLM Sycophancy, Anchoring Bias, Context Dilution, and Month-2 Architectural Rot across Greenfield (`0 -> 1`) and Brownfield (`1 -> 10x`) Multi-Domain Systems.
+# DEEPSEARCH ARCHITECTURE WHITEPAPER: THE `APEX TWIN ENGINE SUITE (v3.7)`
+> **Systems Engineering, Cognitive Psychology & AI Harness Monograph (2026 Edition)**
+> **Subject:** Overcoming LLM Sycophancy, Anchoring Bias, Choice Paralysis, Premature Patching, Context Dilution, and Month-2 Architectural Rot across Greenfield (`0 -> 1`) and Brownfield (`1 -> 10x`) Multi-Domain Systems.
 
 ---
 
@@ -31,12 +31,19 @@ Even frontier foundation models (`Claude Opus/Sonnet`, `Gemini Pro/Argon`) exhib
 
 ## 3. Architectural Innovations of `APEX v3.5`
 
-### 3.1. Dual-Mode Hybrid Elicitation (Solving the Anchoring vs. Ambiguity Paradox)
-* Pure open-ended interviewing paralyzes beginners; pure 3-option multiple choice anchors founders to the LLM's statistical average.
-* **APEX v3.5** enforces a 3-layer prompt structure:
-  1. **Layer 1 (Open Contrarian Excavation):** Extracts the founder's proprietary insight or sacred operational habits first.
-  2. **Layer 2 (Adversarial Socratic Stress-Test):** Probes failure points and edge cases relentlessly.
-  3. **Layer 3 (AI Benchmark Matrix A/B/C + Option D Wildcard):** Supplies industry-best reference paths only as a springboard, preserving full freedom for custom synthesis.
+### 3.1. Behavioral & Cognitive Engineering: Solving Anchoring Bias, Choice Paralysis & Premature Patching
+Human-AI co-creation fails when the interaction protocol violates human decision psychology:
+* **Breaking Choice Paralysis via the 2-Section Discovery Protocol:**
+  When an AI presents 3 bare options (`Option A / B / C`) without asking for the human's personal vision first and without showing trade-offs, it triggers **Anchoring Bias** (suppressing founder secrets) and **Ambiguity Aversion / Choice Paralysis** (the user cannot tell which option aligns with their true utility function).
+  **APEX v3.7** enforces a strict **2-Section Discovery Architecture**:
+  1. **Section 1 (Dedicated Personal Open Excavation):** Queries the founder's proprietary insight, personal preferences, and Socratic operational reality *before* and *separately from* any AI suggestions.
+  2. **Section 2 (The Pros/Cons/Best-Fit Decision Matrix):** Every AI recommendation (`Option A / B / C` + `Option D Hybrid`) must explicitly tabulate `Core Mechanism`, `✅ Pros`, `⚠️ Cons / Trade-offs`, and `🎯 Best Fit If You Want...`—enabling informed, high-agency human decisions.
+* **Defeating the "Premature Patching" Bias in Brownfield Reviews (`product-workspace-reviewer-apex`):**
+  When shown an existing workspace, default LLMs suffer from **Local Surface Fixation**—proposing immediate file patches on Turn 1 without knowing whether the workspace ever implemented the creator's original vision.
+  **APEX v3.7** enforces a **Turn-1 Hard Stop Gate**:
+  1. **Turn 1A:** Runs `xray_scanner.py` to record objective baseline facts with zero repair proposals.
+  2. **Turn 1B:** Re-interviews the creator's **Original Root Vision** from scratch.
+  3. **Turn 2:** Cross-examines Root Vision against Workspace Reality in a **4-Column Gap Matrix** (`1. Keep & Protect` | `2. Realign & Refactor` | `3. Missing A-to-Z Build` | `4. +30% Kano Delighters`), then executes the full A-to-Z build and refactor pipeline.
 
 ### 3.2. Hard C-Suite Competency Contracts & Subagent Critic Isolation
 To eliminate theatrical role-play and self-grading bias:

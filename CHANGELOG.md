@@ -2,6 +2,12 @@
 
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
+## [3.7.0] — 2026-11-13 (Behavioral Decision Matrix & Direct GitHub Auto-Sync Edition)
+### Added & Upgraded
+- **2-Section Personal-First & Pros/Cons/Best-Fit Decision Matrix:** Eliminates Choice Paralysis and Anchoring Bias by strictly separating **Section 1 (Dedicated Personal Open Excavation)** from **Section 2 (3-Option Decision Matrix with explicit `✅ Pros`, `⚠️ Cons`, and `🎯 Best Fit If You Want...` + `Option D Hybrid`)** across both Twin Engines.
+- **Direct GitHub Link Auto-Sync Manifests:** Added `.claude-plugin/marketplace.json`, `.claude-plugin/plugin.json`, `.antigravity-plugin/plugin.json`, `.codex-plugin/plugin.json`, and `.cursor-plugin/plugin.json` for 10-second installation and automatic updates directly via GitHub URL.
+- **Psychological Conversion Documentation Overhaul:** Re-architected `README.md`, `EXECUTIVE-PITCH-DECK.md`, and `DEEPSEARCH-ARCHITECTURE-WHITEPAPER.md` around Prospect Theory (Loss Aversion), Cognitive Contrast, Show-Don't-Tell Previews, and BJ Fogg Frictionless Activation.
+
 ## [3.6.0] — 2026-11-12 (Root-Vision Re-Anchored Reviewer & Superset Edition)
 ### Added & Fixed
 - **Turn-1 Anti-Premature-Fix Gate (`product-workspace-reviewer-apex`):** Enforces a strict Turn-1 protocol where the engine records the objective X-Ray inventory (`Step 1A`) and immediately interviews the user from the root of their **Original Idea & Ultimate Product Vision** (`Step 1B`) before proposing any repair or architecture changes.
