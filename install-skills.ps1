@@ -79,9 +79,19 @@ New-Item -ItemType Directory -Force -Path $ClaudeCommandsDir | Out-Null
 
 $ApexCmd = @'
 ---
-description: Launch APEX Engine 1 (idea-to-product-apex) — Greenfield A-to-Z Idea-to-Product with Dual-Mode Discovery, 6-Role C-Suite Red-Team & 12-Month Evergreen Architecture
+description: Launch APEX Engine 1 (idea-to-product-apex) — Greenfield A-to-Z Idea-to-Product with Personal Open Excavation + 3-Option Pros/Cons/Best-Fit Matrix, 6-Role C-Suite Red-Team & 12-Month Evergreen Architecture
 ---
-Read and strictly follow the complete protocol in `~/.claude/skills/idea-to-product-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below:
+Read and strictly follow the complete protocol in `~/.claude/skills/idea-to-product-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below.
+
+⛔ MANDATORY 2-SECTION DISCOVERY RULE (NEVER OUTPUT BARE A/B/C OPTIONS!):
+In every Discovery turn (Phase 1 & Phase 2), you MUST explicitly divide your visible response into TWO sections:
+1. **PHẦN 1 — Câu Hỏi Riêng Khai Thác Mong Muốn & Ý Tưởng Cá Nhân Của Bạn (Dedicated Personal Open Questions — NO A/B/C attached!):** Ask 2–3 open, personal questions to uncover the user's own secret vision, personal preferences, contrarian ideas outside AI's suggestions, and daily operational habits.
+2. **PHẦN 2 — Bảng Phân Tích 3 Gợi Ý Chiến Lược Kèm Ưu Điểm / Nhược Điểm / Độ Phù Hợp (Pros/Cons/Best-Fit Decision Matrix + Option D Hybrid):** For every AI suggestion (`Option A`, `Option B`, `Option C`), you MUST present a Markdown table showing:
+   - `Cơ chế cốt lõi (Core Mechanism)`
+   - `✅ Ưu điểm (Pros)`
+   - `⚠️ Nhược điểm / Đánh đổi (Cons / Trade-offs)`
+   - `🎯 Hợp nhất với mong muốn của bạn nếu... (Best Fit For Your Desire If...)`
+   - Plus `Option D (Lai ghép / Tự thiết kế theo ý riêng ở Phần 1)` so the user can combine the best parts of A/B/C with their personal desires!
 
 $ARGUMENTS
 '@
@@ -90,7 +100,7 @@ $ARGUMENTS
 
 $ReviewCmd = @'
 ---
-description: Launch APEX Engine 2 (product-workspace-reviewer-apex) — Record X-Ray State, Re-Interview Root Vision from Scratch, Build Vision-vs-Reality Gap Matrix & Run Full A-to-Z Upgrade
+description: Launch APEX Engine 2 (product-workspace-reviewer-apex) — Record X-Ray State, Re-Interview Root Vision from Scratch, Build Vision-vs-Reality Gap Matrix (with Pros/Cons/Best-Fit) & Run Full A-to-Z Upgrade
 ---
 Read and strictly follow the complete protocol in `~/.claude/skills/product-workspace-reviewer-apex/SKILL.md` (and its `references/` and `scripts/` modules) for the user's request below.
 
@@ -98,7 +108,8 @@ Read and strictly follow the complete protocol in `~/.claude/skills/product-work
 On this first turn, you MUST ONLY:
 1. Run `xray_scanner.py` (or inspect the workspace) and report the OBJECTIVE BASELINE INVENTORY (what files, modules, workflows, and data currently exist). Explicitly state that you are holding off on proposing any fixes yet.
 2. Immediately interview the user from the root of their ORIGINAL IDEA & ULTIMATE PRODUCT VISION from A-to-Z (Step 1B: Original Root Vision, Open-Canvas Unbuilt Ambitions, Operating Pain Points, and Sacred Assets to Keep).
-3. STOP and WAIT for the user's reply! Do NOT propose repair options, refactoring plans, or code changes until the user answers the Root-Vision interview and you construct the 4-Column Vision-vs-Reality Gap Matrix (Keep / Realign / Missing A-to-Z Build / 30% Kano Delighters).
+3. STOP and WAIT for the user's reply!
+4. On Turn 2 (after the user replies), construct the **4-Column Vision-vs-Reality Gap Matrix** (`Keep / Realign / Missing A-to-Z Build / 30% Kano Delighters`), ask **Dedicated Personal Customization Questions**, and present the **3 Strategic A-to-Z Evolution Options (`A / B / C` + `Hybrid Option D`) in a full Markdown Table with explicit `✅ Pros (Ưu điểm)`, `⚠️ Cons (Nhược điểm)`, and `🎯 Best Fit (Hợp nhất với bạn nếu...)`**!
 
 $ARGUMENTS
 '@

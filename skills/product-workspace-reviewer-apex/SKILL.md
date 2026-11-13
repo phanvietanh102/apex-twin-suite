@@ -57,7 +57,9 @@ On **Turn 1**, you MUST execute **ONLY Step 1A + Step 1B**, and then **STOP and 
    * 🟡 **Bucket 2 — Built Wrong or Drifted (`REALIGN & REFACTOR`):** Existing components that attempted a feature but built it poorly, hardcoded it, or missed the user's true intent (includes **15-Min Quick-Win Patches** & **Surgical Upgrades**).
    * 🔵 **Bucket 3 — Unbuilt Core Vision (`MISSING A-TO-Z BUILD`):** Desires from the user's Root Vision that the current workspace completely failed to build—requiring full Greenfield A-to-Z engineering!
    * 🚀 **Bucket 4 — 30% Beyond-Expectation Expansion (`KANO DELIGHTERS & 4 SILENT LEAKS`):** Inject 4 hidden Johari leak fixes + 20–30% asymmetric domain delighters (`DOM-01..07`) that exceed the user's original expectations.
-   *(Present 3 Strategic A-to-Z Evolution Archetypes `A / B / C` + `Wildcard Option D` at the end of Phase 2 so the user locks the exact target scope!)*
+   * **Mandatory 2-Section Decision Format (Personal Open Questions + Pros/Cons/Best-Fit Table):** Whenever presenting the 3 Strategic A-to-Z Evolution Paths (`Option A / B / C` + `Option D Hybrid`), you are **STRICTLY FORBIDDEN** from listing bare 1-line choices! You MUST present:
+     1. **Dedicated Personal Adjustment Questions:** Ask the user directly which specific items in the Gap Matrix they want to prioritize, customize, or add from their own personal perspective.
+     2. **Full Pros / Cons / Best-Fit Comparison Table for Options A, B, C, and D:** Explicitly show `Core Mechanism`, `✅ Pros (Ưu điểm)`, `⚠️ Cons / Trade-offs (Nhược điểm / Đánh đổi)`, and `🎯 Best Fit If You Want (Hợp nhất với bạn nếu...)` for every option so the user can choose or mix-and-match (`A + B + Personal Idea`) with 100% clarity!
 3. **Law of Chesterton's Fence & Red-Zone Historical Protection:**
    Map existing assets into **Green Zones** (safe to modernize), **Yellow Zones** (refactor with parity tests), and **Red Zones** (historical invoices, customer records, live databases — 100% snapshot-protected before any A-to-Z upgrade).
 4. **Law of Hard C-Suite Competency & Isolated Subagent Critique (Phase 3):**

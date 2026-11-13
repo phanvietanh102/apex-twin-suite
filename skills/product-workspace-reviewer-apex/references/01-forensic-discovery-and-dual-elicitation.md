@@ -57,11 +57,19 @@ Once the user shares their **Original Root Vision**, cross-examine **Root Vision
 3. **Leak 3 — Structural & Volatility Rot:** Hardcoded prices, tax rates, rules, or prompts scattered inside logic files instead of a 2-Minute Editable Tier-B Config.
 4. **Leak 4 — Catastrophic Fragility:** Risk of overwriting historical Red-Zone records, zero input validation, or lack of 1-click export/backup.
 
-### Selecting the Strategic A-to-Z Evolution Archetype (End of Phase 2)
-After presenting the **4-Column Vision-vs-Reality Gap Matrix**, offer **3 Strategic A-to-Z Product Evolution Paths + Option D**:
-* **Option A (Surgical Realignment & Hygiene):** Keep Bucket 1, fix Bucket 2 (`REALIGN`), extract Tier-B Config, and lock Red-Zone history.
-* **Option B (Recommended — Full Root-Vision A-to-Z Completion + 30% Kano Delighters):** Keep Bucket 1, refactor Bucket 2, **build 100% of Bucket 3 (`MISSING A-TO-Z BUILD`)**, and **inject Bucket 4 (`30% KANO DELIGHTERS`)** under a 12-Month Evergreen 3-Tier architecture.
-* **Option C (10x Next-Gen Platform Transformation via Strangler-Fig):** Build a complete next-generation A-to-Z system around the existing data asset with zero-downtime cutover.
-* **Option D (Your Custom / Hybrid A-to-Z Vision):** Prioritize the user's custom synthesis.
+### Selecting the Strategic A-to-Z Evolution Archetype (End of Phase 2 — Mandatory 2-Section Format)
+After presenting the **4-Column Vision-vs-Reality Gap Matrix**, you MUST present **Section 1 (Personal Priority & Customization Questions)** and **Section 2 (The 3-Option Pros/Cons/Best-Fit Decision Table + Hybrid Option D)**—never bare 1-line choices!
 
-Once the user confirms the Vision-vs-Reality Gap Matrix, proceed seamlessly through **Phase 3 (6-Role C-Suite Red-Team Council)** $\rightarrow$ **Phase 4 (Unified A-to-Z Evergreen Architecture)** $\rightarrow$ **Phase 5 (Full A-to-Z Build of Missing Features + Surgical Refactoring of Existing Assets)** $\rightarrow$ **Phase 6 (Before/After Vision-Fulfillment Delta & 365-Day Handover)**.
+#### 1. Dedicated Personal Customization Questions ("Phần Hỏi Riêng Bạn"):
+* Ask the user directly: *"Looking at the 4-Column Gap Matrix above, is there any personal requirement, workflow habit, or custom idea of your own that you want to add, remove, or prioritize differently before we lock the upgrade plan?"*
+
+#### 2. Strategic A-to-Z Evolution Decision Matrix (With Explicit Pros ✅, Cons ⚠️ & Best-Fit 🎯):
+
+| Phương án nâng cấp | Cơ chế cốt lõi | ✅ Ưu điểm (Pros) | ⚠️ Nhược điểm / Đánh đổi (Cons) | 🎯 Hợp nhất với mong muốn của bạn nếu... (Best Fit) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Option A (Surgical Realignment & Hygiene)** | Giữ Cột 1 (`KEEP`), sửa Cột 2 (`REALIGN`), tách file Config Tier-B & khóa an toàn Vùng Đỏ | • Nhanh nhất, rủi ro bằng 0<br>• Không làm xáo trộn thói quen cũ | • **Chưa xây mới** các tính năng còn thiếu ở Cột 3 (`MISSING A-TO-Z`) | Bạn chỉ muốn **dọn sạch, sửa lỗi hiện tại và dùng ổn định ngay** mà chưa cần bổ sung tính năng mới. |
+| **Option B (Khuyên dùng — Full Root-Vision A-to-Z + 30% Kano Delighters)** | Giữ Cột 1 + Sửa Cột 2 + **Xây mới A-Z toàn bộ Cột 3 (`MISSING A-TO-Z`)** + **Bơm 30% Cột 4 (`KANO`)** | • Đạt 100% mong muốn gốc ban đầu + vượt kỳ vọng 30%<br>• Bền vững 12 tháng không cần viết lại | • Thời gian thi công dài hơn Option A (chia làm 4 chặng kiểm thử) | Bạn muốn **biến workspace hiện tại thành đúng sản phẩm hoàn chỉnh từ A–Z như ước muốn ban đầu** của bạn. |
+| **Option C (10x Next-Gen Platform via Strangler-Fig)** | Xây dựng kiến trúc thế hệ mới bao bọc lấy dữ liệu cũ, tự động hóa toàn diện quy mô lớn | • Sức mạnh và khả năng mở rộng gấp 10 lần bản cũ<br>• Chuẩn hóa cấp độ Enterprise | • Thay đổi nhiều cấu trúc bên dưới<br>• Tốn nhiều token và bước kiểm thử nhất | Bạn muốn **lột xác hoàn toàn dự án lên quy mô lớn/tự động hóa tối đa** cho 1–2 năm tới. |
+| **Option D (Lai ghép / Theo ý riêng của bạn)** | Tuỳ biến tự do theo câu trả lời riêng của bạn | • Khớp 100% với ý muốn cá nhân (ví dụ: lấy Option B nhưng chỉ chọn một số tính năng Cột 3 & 4) | • Cần chốt danh sách tính năng cụ thể cùng bạn trước khi chạy | Bạn muốn **tự chọn những mảnh ghép hợp ý nhất từ A, B, C cộng với ý riêng của bạn**. |
+
+Once the user confirms their personal adjustments and chosen path, proceed seamlessly through **Phase 3 (6-Role C-Suite Red-Team Council)** $\rightarrow$ **Phase 4 (Unified A-to-Z Evergreen Architecture)** $\rightarrow$ **Phase 5 (Full A-to-Z Build of Missing Features + Surgical Refactoring of Existing Assets)** $\rightarrow$ **Phase 6 (Before/After Vision-Fulfillment Delta & 365-Day Handover)**.

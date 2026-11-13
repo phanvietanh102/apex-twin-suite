@@ -1,68 +1,59 @@
-# 01. Dual-Mode Elicitation Engineering & Beyond SMART
+# 01. Dual-Mode Elicitation Engineering & The Pros/Cons Decision Matrix
 
-## 1. Why Pure "SMART" OR Pure "3-Option Multiple Choice" Alone Both Fail
+## 1. Why Bare "3-Option Multiple Choice" Fails the User
 
-### A. The Limitation of Using SMART Too Early
-* **Where SMART succeeds:** Stage 4–5 execution tracking (turning known features into testable metrics).
-* **Where SMART fails (Stage 1–2):** Forcing SMART on Day 1 locks the project inside the tiny box of what the user already knows, missing industry blind spots (*Unknown-Unknowns*) and asymmetric delight features.
-
-### B. The Limitation of Pure "3-Option AI Suggestions" (Anchoring Bias)
-* If AI *only* gives 3 pre-baked options (A/B/C), two dangerous failures happen:
-  1. **Suppressing the Founder's Secret:** The user might have a brilliant, contrarian, or insider idea (*outside* AI's prediction box). Seeing A/B/C immediately anchors their thinking to AI's statistical average and kills their unique edge!
-  2. **Shallow Compliance:** The user lazily picks "Option A" without being challenged on the hard operational realities of their business.
+When an AI presents 3 bare options (`Option A`, `Option B`, `Option C`) without asking the user personal open questions and without analyzing the **Pros, Cons, and Best-Fit** of each option, two critical failures occur:
+1. **No Space for Personal Desires ("Không có phần hỏi riêng người dùng"):** When options A/B/C are merged directly into the question, the user's own secret ideas, personal workflow preferences, and unique domain insights (*outside* AI's 3 options) are never excavated.
+2. **Blind Choice Paralysis ("Không có Ưu/Nhược điểm nên không biết chọn gì"):** Listing 3 brief titles or 1-sentence descriptions leaves the user guessing which option actually matches their personal goals, budget, and operating habits.
 
 ---
 
-## 2. The APEX v3.5 Upgrade: The 3-Layer "Dual-Mode Hybrid Elicitation" Protocol
+## 2. The APEX v3.7 Mandate: Strict 2-Section Discovery Format
 
-To get the best of both worlds (the relentless depth of `/grill-me` & `obra/superpowers` **AND** the supportive guidance of AI recommendations when the user is stuck), Phase 1 & Phase 2 MUST combine **Open Contrarian Excavation + Brutal Stress-Testing + AI Benchmark Options**:
+Every discovery turn in Phase 1 & Phase 2 MUST be explicitly divided into **Two Mandatory Sections** in visible chat output (even if the host IDE also has a multiple-choice UI tool):
 
 ```
-[Layer 1: Open Contrarian Excavation] -> Uncover the user's unique insight & proprietary secret
-                 +
-[Layer 2: Brutal Socratic Stress-Test] -> Challenge blind spots, contradictions & edge cases
-                 +
-[Layer 3: AI Benchmark Options (A/B/C + Wildcard D)] -> Industry benchmarks for parts not yet decided
+[SECTION 1: Dedicated Personal Open-Canvas Questions (No A/B/C Attached!)]
+  --> Excavates the user's personal desires, custom ideas, and Socratic edge cases
+                                   +
+[SECTION 2: AI 3-Option Decision Matrix (With Pros ✅ / Cons ⚠️ / Best-Fit 🎯 + Hybrid Option D)]
+  --> Gives clear trade-offs so the user knows exactly which option (or mix) fits their true desire
 ```
 
-### How to Format Every Discovery Turn (3–4 Questions Max per Turn):
+### Canonical 2-Section Discovery Template (Translate Naturally into the User's Language):
 
-For each question in Phase 1, structure it in **Dual-Mode** (translated naturally into the user's language):
-1. **Part 1 — Open & Contrarian Probe:**
-   Explicitly ask for the user's own vision, wild ideas, or secret weapon *before* biasing them, and ask a sharp stress-test question (*"What makes your approach fundamentally different from existing solutions? If a customer abandons this in the first 30 seconds, what is the real reason?"*).
-2. **Part 2 — AI Benchmark Options (Options A/B/C + Wildcard Option D):**
-   Provide 2–3 battle-tested industry options **strictly as a springboard/fallback** if the user hasn't decided yet, plus **Option D (Your Own Custom / Hybrid Vision)**.
-
-#### Canonical Dual-Mode Question Template:
 ```markdown
-### 🔍 Deep Discovery & Industry Benchmark Alignment (Round 1)
+### 💬 PHẦN 1: Câu Hỏi Riêng Khai Thác Mong Muốn & Ý Tưởng Cá Nhân Của Bạn (Personal Open Excavation)
+*(Trước khi chọn các phương án gợi ý bên dưới, hãy chia sẻ góc nhìn riêng của bạn để hệ thống phục vụ đúng ý bạn nhất)*
 
-> **Rule of Thumb:** If you already have your own unique angle or contrarian idea (outside the options below), **prioritize sharing your own vision first** — the best products come from insights outside AI's statistical average! Options A/B/C serve as industry-standard reference paths if you want a recommendation.
+1. **Mong muốn cốt lõi & Dấu ấn riêng của bạn:**
+   Theo đúng gu cá nhân hoặc kinh nghiệm thực tế của bạn, kết quả lý tưởng nhất bạn muốn sản phẩm này làm được là gì? Có ý tưởng hay tính năng "độc" nào bạn đang ấp ủ mà chưa thấy ai làm không?
+2. **Thực tế vận hành & Thói quen cá nhân (Socratic Check):**
+   Khi sản phẩm đi vào hoạt động hàng ngày, ai sẽ là người trực tiếp bấm nút/vận hành nó, bạn muốn tốn tối đa bao nhiêu phút mỗi ngày cho nó, và điều gì dễ làm bạn (hoặc khách hàng) nản nhất nếu gặp phải?
 
-1. **[Open & Contrarian Probe #1 - Core Value & Unfair Advantage]:**
-   Based on your real-world intuition or domain experience, what is the single most expensive pain point or unique capability you want in this product that competitors miss?
-   * *Industry-Standard Reference Paths:*
-     - **Option A (Recommended for rapid automation & speed-to-value):** [...]
-     - **Option B (High-ticket B2B / Expert depth):** [...]
-     - **Option C (Organic acquisition / Self-serve funnel):** [...]
-     - **Option D (Your custom / contrarian vision outside A/B/C):** Describe freely!
+---
 
-2. **[Brutal Operational Stress-Test #2 - Daily Reality & Failure Points]:**
-   Suppose this system goes live tomorrow: Who operates it daily, and what friction will cause them to make mistakes or abandon it after 2 weeks?
-   * *System Council Reference Designs:*
-     - **Option A (Zero-Touch / 1-Click Automation):** [...]
-     - **Option B (Co-Pilot / Human-in-the-loop review):** [...]
-     - **Option D (Your specific operational workflow):** [...]
+### 🧭 PHẦN 2: Bảng Phân Tích 3 Gợi Ý Chiến Lược Của AI (Kèm Ưu Điểm, Nhược Điểm & Độ Phù Hợp)
+*(Dưới đây là 3 hướng tiếp cận chuẩn ngành. Mỗi phương án đều có mặt mạnh và sự đánh đổi riêng để bạn dễ dàng cân nhắc hoặc lấy ý tưởng)*
+
+| Phương án gợi ý | Cơ chế cốt lõi | ✅ Ưu điểm (Pros) | ⚠️ Nhược điểm / Đánh đổi (Cons) | 🎯 Hợp nhất với mong muốn của bạn nếu... (Best Fit) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Phương án A (Khuyên dùng — Cân bằng & Tự động hóa cao)** | [Mô tả rõ cơ chế A] | • [Ưu điểm 1]<br>• [Ưu điểm 2] | • [Nhược điểm / Đánh đổi 1]<br>• [Giới hạn cần lưu ý] | Bạn muốn **ra sản phẩm nhanh, tự động hóa 80% thao tác lặp lại và bền vững 12 tháng** mà không phức tạp hóa hệ thống. |
+| **Phương án B (Tối giản / Tinh gọn tốc độ cao)** | [Mô tả rõ cơ chế B] | • [Ưu điểm 1]<br>• [Ưu điểm 2] | • [Nhược điểm / Đánh đổi 1]<br>• [Tính năng bị lược bỏ] | Bạn muốn **ưu tiên sự đơn giản tuyệt đối, dùng được ngay trong ngày** và chấp nhận làm thủ công một vài bước phụ. |
+| **Phương án C (Cao cấp / Quy mô lớn / Toàn diện 10x)** | [Mô tả rõ cơ chế C] | • [Ưu điểm 1]<br>• [Ưu điểm 2] | • [Nhược điểm / Đánh đổi 1]<br>• [Chi phí/thời gian cao hơn] | Bạn muốn **xây dựng hệ thống quy mô lớn, đa tác vụ chuyên sâu ngay từ đầu** và sẵn sàng đầu tư thêm thời gian cấu hình. |
+| **Phương án D (Lai ghép / Theo ý riêng của bạn ở Phần 1)** | Kết hợp tự do | • Giữ trọn vẹn ý tưởng riêng của bạn ở Phần 1 + nhặt phần hay nhất của A/B/C | • Cần 1 vòng phản biện Socratic để chốt biên giới kỹ thuật | Bạn muốn **lấy ý tưởng riêng ở Phần 1 làm gốc, cộng thêm [ưu điểm của A] và [ưu điểm của C]**. |
+
+👉 **Cách bạn phản hồi nhanh nhất:** Bạn hãy trả lời tự do **Phần 1 (Mong muốn riêng của bạn)** kèm theo lựa chọn ở **Phần 2** (ví dụ: *"Chọn A nhưng thêm ý riêng X của tôi"*, hoặc *"Lai giữa A và C"*).
 ```
 
 ---
 
-## 3. The 2-Pass Discovery Loop (Pass 1: Divergent Excavation $\rightarrow$ Pass 2: Convergent Grill-Me)
+## 3. The 2-Pass Discovery Loop (Pass 1: Personal + Trade-Off Matrix $\rightarrow$ Pass 2: Convergent Grill-Me)
 
-Never lock requirements after a single superficial exchange if ambiguities remain:
-* **Pass 1 (Divergent Discovery):** Uncover the user's unique vision, core JTBD, target domain (`DOM-01`..`DOM-07`), and resource constraints using the Dual-Mode template above.
-* **Pass 2 (Convergent "Grill-Me" Stress-Test):** Once the user replies (especially if they share a custom/novel idea outside A/B/C!), switch to **High-Intensity Socratic Grilling**:
-  * Probe every edge case of the user's unique idea: *"Your custom idea [X] has strong potential, but we must stress-test 3 survival questions so it doesn't break in production: (1) Where does input data come from when offline or malformed? (2) What is the marginal cost/time per run? (3) How do we handle exception [Y]?"*
+* **Pass 1 (Divergent Personal Excavation + Trade-Off Matrix):** Present **Section 1 (Personal Open Questions)** and **Section 2 (Pros/Cons/Best-Fit Table for Options A/B/C/D)** using the template above.
+* **Pass 2 (Convergent "Grill-Me" Stress-Test):** Once the user replies with their personal answers and chosen/hybrid direction:
+  * Explicitly acknowledge how their **personal desires from Section 1** modify or override the standard options in Section 2.
+  * Stress-test any remaining operational edge cases (*"To make sure your custom combination of [Option A + Personal Idea X] runs for 12 months without breaking, let's lock down 2 final edge cases..."*) — and again provide Pros/Cons for each resolution!
 
 ---
 
@@ -71,9 +62,9 @@ Never lock requirements after a single superficial exchange if ambiguities remai
 Map project knowledge into 4 quadrants and **dedicate 50% of advisory energy to Quadrant 4**:
 1. **Quadrant 1 (Known Knowns):** What the user stated.
 2. **Quadrant 2 (Known Unknowns):** What the user asked AI to solve.
-3. **Quadrant 3 (Hidden Context — User knows, AI doesn't know yet):** The user's private business secrets, local market habits, or novel ideas outside AI's training average. *(Extracted via Layer 1 Open Contrarian Questions!)*
+3. **Quadrant 3 (Hidden Personal Context — User knows, AI doesn't know yet):** The user's private business secrets, personal preferences, local market habits, or novel ideas outside AI's training average. *(Extracted via **Section 1: Dedicated Personal Open Questions**!)*
 4. **Quadrant 4 (Unknown Unknowns — User doesn't know, AI Council injects):**
-   * Industry landmines, legal/compliance traps, unit-economics killers, schema corruption risks, and **30% Kano Asymmetric Delighters**.
+   * Industry landmines, legal/compliance traps, unit-economics killers, schema corruption risks, and **30% Kano Asymmetric Delighters** (each presented with clear **Pros, Cons, and ROI**!).
 
 ---
 

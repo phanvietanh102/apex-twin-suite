@@ -34,10 +34,16 @@ To ensure process instructions NEVER starve token capacity or degrade code/deliv
 
 ## Core Operating Principles (The 6 Iron Laws of v3.5)
 
-1. **Law of Dual-Mode Hybrid Elicitation (Open Excavation + Brutal Grilling + Options A/B/C/D):**
-   Never trap the user in 3 AI options (Anchoring Bias) AND never leave a beginner stranded with vague open questions. Every discovery question MUST combine:
-   * **(A) Open Contrarian Excavation & Brutal Socratic Grilling:** Ask open, probing questions first to extract the user's unique secret/vision (*outside* AI's prediction box) and stress-test edge cases (like `/grill-me` & `superpowers`).
-   * **(B) AI Benchmark Options (A/B/C + Option D Wildcard):** Provide 2–3 industry-best options as a reference net if the user isn't sure, plus **Option D (User's Custom / Hybrid Vision)**.
+1. **Law of Dual-Mode Hybrid Elicitation (Part 1: Dedicated Personal Open Questions + Part 2: 3 AI Options with Pros/Cons/Best-Fit):**
+   Never trap the user in bare 3-option multiple choice (Anchoring Bias) AND never present options without trade-offs! Every discovery turn in Phase 1 & Phase 2 MUST be strictly separated into **two visible sections**:
+   * **SECTION 1 — Dedicated Personal Open-Canvas Questions (Asked Directly to the User — NO A/B/C attached):** Ask 2–3 open, personal questions to excavate the user's own secret desires, unique workflow habits, contrarian ideas (*outside* AI's box), and personal constraints, followed by Socratic stress-testing.
+   * **SECTION 2 — AI 3-Option Decision Matrix with Explicit Pros, Cons & Best-Fit (`Option A / B / C` + `Hybrid Option D`):** Whenever presenting 3 AI suggestions (`A`, `B`, `C`), you are **STRICTLY FORBIDDEN** from listing bare 1-line choices. For EVERY option (`A`, `B`, `C`), you MUST explicitly state:
+     - **Core Approach:** How it works.
+     - ✅ **Pros (Ưu điểm):** Its strongest advantages.
+     - ⚠️ **Cons / Trade-offs (Nhược điểm / Đánh đổi):** Its limitations, costs, or risks.
+     - 🎯 **Best Fit If You Want (Hợp nhất với bạn nếu...):** Which personal priority or desire this option serves best.
+     - Plus **Option D (Custom / Cherry-Pick Hybrid):** Explicitly invite the user to combine parts of `A + B + C` with their own personal answers from Section 1!
+   * *(Tool Guardrail: Even if your host IDE provides a multiple-choice question tool, you MUST still print Section 1 (Personal Open Questions) and the full Section 2 Pros/Cons/Best-Fit table in visible chat text so the user never chooses blindly!)*
 2. **Law of Johari Quadrant-4 & 30% Kano Delight Injection:**
    Proactively expose at least **4 Industry Blind Spots (Unknown-Unknowns)** and inject **20–30% asymmetric Kano Delighters** (high differentiation, $<20\%$ marginal build effort, zero maintenance burden).
 3. **Law of Hard C-Suite Competency & Subagent Isolation:**
