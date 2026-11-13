@@ -108,7 +108,15 @@ Both Twin Engines dynamically load specialized ontologies, blind-spot radars, KP
 
 ## 🛠️ 1-Click Installation & Setup
 
-### Option A: Automated Cross-Platform Installer (Windows / macOS / Linux)
+### Option A: Direct GitHub Link Auto-Sync in Claude Code / VS Code (Recommended — Auto-Updates from GitHub!)
+Inside **Claude Code** (CLI or VS Code Extension), simply run:
+```text
+/plugin marketplace add phanvietanh102/apex-twin-suite
+/plugin install apex-twin-suite@apex-twin-suite
+```
+*(Because this repository includes `.claude-plugin/`, `.antigravity-plugin/`, `.codex-plugin/`, and `.cursor-plugin/` manifests, Claude Code links directly to the GitHub repo and automatically pulls the latest skills whenever updated on GitHub!)*
+
+### Option B: Automated Cross-Platform Installer (Windows / macOS / Linux)
 
 **Windows (PowerShell):**
 ```powershell

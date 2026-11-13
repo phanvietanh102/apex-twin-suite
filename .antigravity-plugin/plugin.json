@@ -1,0 +1,29 @@
+{
+  "name": "apex-twin-suite",
+  "displayName": "APEX Twin Engine Suite (v3.6)",
+  "version": "3.6.0",
+  "description": "Symmetric Twin Engine Suite: (1) idea-to-product-apex for Greenfield A-to-Z Idea-to-Product development and (2) product-workspace-reviewer-apex for Root-Vision Re-Anchored Brownfield Workspace/App auditing & 12-Month Evergreen evolution.",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "/idea-to-product I have a new product idea—run Dual-Mode discovery, inject 30% Kano delighters, and architect a 12-month evergreen system",
+    "/review-product Record X-Ray state, interview my Root Vision from scratch, build the 4-Column Gap Matrix, and upgrade my workspace A-to-Z",
+    "/audit-workspace Clean up workspace entropy, lock historical Red-Zone data, and extract a 2-minute editable Tier-B config"
+  ],
+  "category": "Developer Tools",
+  "keywords": [
+    "skills",
+    "idea-to-product",
+    "product-management",
+    "code-review",
+    "workspace-audit",
+    "system-architecture",
+    "spec-driven-development"
+  ],
+  "author": {
+    "name": "Phan Viet Anh",
+    "email": "phanvietanh102@gmail.com"
+  },
+  "homepage": "https://github.com/phanvietanh102/apex-twin-suite",
+  "repository": "https://github.com/phanvietanh102/apex-twin-suite",
+  "license": "MIT"
+}
