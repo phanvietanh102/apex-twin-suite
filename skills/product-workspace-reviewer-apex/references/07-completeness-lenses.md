@@ -15,6 +15,47 @@ These lenses are **not steps**. Think and work however you judge best. Then, bef
 
 ---
 
+## Step 0: tailor before you sweep (context profile)
+
+Not every rule fits every context. Forcing all of them on everyone is just another rigid frame: it costs time, lengthens replies, and drags in irrelevant work. Applicability depends on **features of the context, not the industry label**:
+- a personal finance plan *does* have counterparties (bank fees, early-repayment penalties);
+- a large factory's internal training calendar does *not* need a counterparty audit.
+
+Answer these questions in a few seconds, internally. Record them in `_apex/TRACE.md`'s header or in STATE `context_profile`:
+
+| # | Profile question | Yes / partly / no |
+| :--- | :--- | :--- |
+| a | Does money change hands with other parties (customers, suppliers, banks, platforms, members)? | |
+| b | Is there personal or sensitive data about anyone other than the user? | |
+| c | Is the activity regulated, or does it involve employees, licences, public claims or safety? | |
+| d | Do people other than the user operate it or depend on it? | |
+| e | Does someone control money or data on behalf of others (members, clients, employees)? | |
+| f | Does it replace or correct a process or records that already exist? | |
+| g | Is it meant to run for months or more, as opposed to a one-off (an event, a single document)? | |
+| h | Is there an established profession or trade with standard practices for this work? | |
+| i | Stakes: what is the worst realistic outcome if something is missed? (low / medium / high) | |
+
+**Activation table:** a rule applies when its condition holds. Otherwise mark it `N/A` with a one-line reason. A rule must never be silently skipped, and never be forced.
+
+| Rule | Applies when | Typical N/A |
+| :--- | :--- | :--- |
+| Lens 3, counterparty audit + own protection | (a) | A study plan with no fees or contracts |
+| Lens 4, rules & obligations | Always a quick check; in depth when (c) | Rarely fully N/A |
+| Lens 5, data minimisation & retention | (b) | The user's own private notes |
+| Lens 6, plausibility checks | Existing data (f), or numeric assumptions in a plan | Nothing numeric yet. Apply it to the assumptions instead |
+| Lens 7, governance & conflicts of interest | (e) | A solo personal project |
+| Lens 8, people & operations | (d) | Solo and self-operated |
+| Second-order: past periods | (f) and a fix corrects something already done | Greenfield |
+| Second-order: cost & price | The fix changes cost, and the user sells or budgets | Non-commercial, no budget |
+| Second-order: people to inform | (d) | Solo |
+| Second-order: the system's own failure; switchover plan | (d) or (g), and an automation or a replaced process (f) | A one-off document |
+| Standard instruments of the field (09) | (h) | Genuinely novel activity |
+| Change scenarios (08 §4) | Count by (g) and (i); see 08 | A one-off past its date |
+
+**Depth follows stakes (i).** At high stakes, an applicable lens gets real work and proof. At low stakes, one sentence is enough. The profile also tells you what to *leave out* of the reply: a shorter answer that covers what matters beats a longer one that covers everything.
+
+---
+
 ## The 12 lenses
 
 | # | Lens | Ask yourself | Examples across fields |
@@ -36,7 +77,7 @@ These lenses are **not steps**. Think and work however you judge best. Then, bef
 
 ## Second-order sweep (after you have decided the fixes)
 
-Eval runs 3–4 showed the plain model sometimes winning on *consequences of fixes* that the skill had made but not followed through. For each significant change, ask:
+Eval runs 3–4 showed the plain model sometimes winning on *consequences of fixes* that the skill had made but not followed through. For each significant change, ask the questions that the context profile activates:
 
 - **Past periods:** if this corrects an error, which past records, payments or customers were affected, and what is the remedy? Example: refund last months' over-deducted contributions, not just fix next month.
 - **Cost and price:** who bears the new cost of doing it right, and does a price, quote or budget need to change? Example: compliance raises labour cost by X/month, so the next client quote must include it.

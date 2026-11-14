@@ -107,8 +107,15 @@ def check_slices(state: dict, max_gate: int) -> list[str]:
             c for c in (state.get("change_scenarios") or [])
             if str(c.get("status", "")).lower() == "pass" and str(c.get("proof") or "").strip()
         ]
-        if len(passed) < 3:
-            errors.append(f"Gate 6 needs >= 3 change_scenarios with status 'pass' and a proof; found {len(passed)}.")
+        # The context profile may lower the count (one-off or low-stakes work), but only with a stated reason.
+        try:
+            required = int(state.get("change_scenarios_required", 3))
+        except (TypeError, ValueError):
+            required = 3
+        if required < 3 and not str(state.get("change_scenarios_waiver") or "").strip():
+            errors.append(f"change_scenarios_required={required} (< 3) needs a one-line change_scenarios_waiver reason.")
+        if len(passed) < required:
+            errors.append(f"Gate 6 needs >= {required} change_scenarios with status 'pass' and a proof; found {len(passed)}.")
     return errors
 
 

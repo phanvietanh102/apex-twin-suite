@@ -3,6 +3,12 @@
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
 ## [Unreleased]
+### Changed (v4.3: context applicability, so rules are tailored rather than forced)
+- **07 Step 0, context profile:** 9 quick questions (money with other parties, personal data, regulated, others operate it, controls on behalf of others, replaces something existing, long-lived, established trade, stakes). Applicability is decided by **context features, not the industry label**.
+- **Activation table:** every lens and v4.2 rule has an activation condition. Rules that do not apply are `N/A` with a one-line reason, never forced and never silently skipped. Depth follows stakes.
+- **Change scenarios scale with the profile:** ≥3 when long-lived and medium/high stakes; 1–2 when LEAN or low stakes; 0 for one-offs. Below 3 needs `change_scenarios_waiver`, which Gate 6 enforces. STATE now carries `context_profile`, `change_scenarios_required` and `change_scenarios_waiver`.
+- The fixed "at least 3 traps / 3 flaws" minimums now scale with stakes. The reviewer's "apply all of them" became "apply what the profile activates".
+
 ### Changed (v4.2: reverse-analysis of where the plain model beat the skill; not yet re-evaluated)
 See `evals/GAP-ANALYSIS.md`. All changes are generic, not tied to any eval scenario.
 - **Lens 3, audit counterparties:** check penalties, fees and deductions against the contract and legal caps; check the user's own protection (terms, liability caps, insurance).

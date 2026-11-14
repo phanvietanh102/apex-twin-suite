@@ -26,4 +26,13 @@ Người dùng repo này biết dùng AI, nên cài Python hay package là một
 
 Bảy thiếu sót trên **không phải thiếu kiến thức**: bản không skill dùng cùng model mà vẫn làm được. Đó là **điểm mù do chính khung quy trình gây ra** (thiên lệch giữ dữ liệu, cảnh báo được coi là xong, chỉ soát người dùng mà không soát đối tác), hoặc **những góc mà khung chưa phủ** (công cụ chuẩn của nghề, hệ quả bậc hai, tính hợp lý của dữ liệu, độ bền của chính hệ thống). v4.2 vá cả hai loại bằng quy tắc tổng quát.
 
+## Bổ sung v4.3: không phải nghề nào cũng áp dụng toàn bộ
+
+Bảy quy tắc trên là tổng quát nhưng **không phổ quát**. Việc một quy tắc có áp dụng hay không được quyết định bằng **hồ sơ bối cảnh** (07, Bước 0), tức 9 câu hỏi về đặc điểm của tình huống, chứ không dựa vào tên ngành. Ví dụ:
+- Kế hoạch tài chính cá nhân vẫn cần soát đối tác (phí ngân hàng, phạt trả nợ trước hạn), nhưng không cần lăng kính quản trị hay báo trước cho người khác.
+- Một kế hoạch đám cưới (làm một lần) không cần 3 kịch bản thay đổi 12 tháng.
+- Một dự án hoàn toàn mới thì không có "kỳ trước" để khắc phục.
+
+Quy tắc nào không được kích hoạt thì ghi `N/A` kèm một dòng lý do: không bị ép áp dụng, cũng không bị bỏ qua lặng lẽ. Độ sâu của mỗi quy tắc tỉ lệ với mức độ rủi ro.
+
 **Chưa được kiểm chứng:** các sửa đổi v4.2 chưa qua eval. Lần eval sau nên bốc tình huống mới và đặt tiêu chí trước: "thiếu sót loại 1–7 không còn xuất hiện ở bản có skill".

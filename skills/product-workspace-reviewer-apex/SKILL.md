@@ -56,8 +56,8 @@ All of these must be true before handover.
 - **Proven:**
   - every slice has real tests or a real run;
   - parity holds: existing valid inputs give the same results unless intentionally corrected, and you state it when they do;
-  - at least 3 change scenarios pass (08).
-- **Swept:** a full completeness sweep (07). All `TRACE.md` rows are final.
+  - the number of change scenarios the context profile requires pass (08 §4; usually 3).
+- **Tailored, then swept:** answer the context profile (07 Step 0), then sweep with the rules it activates (07); the others are `N/A` with a reason. All `TRACE.md` rows are final.
 - **Measured:** a baseline and a before/after on 2–4 metrics the owner cares about. When the system already works, run the continuous-improvement loop (10) and leave `IMPROVEMENT-LOG.md` plus a re-review prompt.
 - **Handed over:**
   - what changed, before and after;
@@ -79,7 +79,7 @@ Eval run 3 showed why this matters: an Excel-only accountant received a Python e
 
 ## Beyond the obvious fixes
 
-Eval runs 3–4 found that the plain model sometimes beat the skill on these. Each is generic, so apply all of them (07):
+Eval runs 3–4 found that the plain model sometimes beat the skill on these. They are generic but **not universal**: apply the ones the context profile activates (07 Step 0), mark the rest `N/A` with a one-line reason, and scale depth to the stakes:
 - **Audit the counterparties, not only the owner:** check penalties, fees and deductions claimed against the contract and legal caps, and send a ready dispute message.
 - **Minimise data:** no ID, bank or health data copied into shared files; set retention and deletion.
 - **Sanity-check the data:** against itself and field norms (impossible dates, yields above the norm, stock contradictions, claims the owner's own data disproves).
@@ -117,7 +117,7 @@ In chat-only hosts, keep `TRACE.md` and the change scenarios as tables in the re
   - Documents contain `[[FILL: hint]]` markers; a gate is vetoed while any remain.
   - Gate 3 needs `TOTAL UPGRADED SCORE` ≥ 85.
   - Gate 5 needs `--scan-target`, a proven slice in `REVIEW-STATE.json` (slice-1 = backup), and a valid `TRACE.md`.
-  - Gate 6 needs all slices proven, no `OPEN` rows, and at least 3 passed `change_scenarios`.
+  - Gate 6 needs all slices proven, no `OPEN` rows, and `change_scenarios_required` passed scenarios (default 3; fewer needs a `change_scenarios_waiver` reason).
   - Never pre-select an option or write a score, proof or status you did not obtain.
 * When building, load only [`06`](./references/06-stage-gates-rollback-and-regression.md), `TRACE.md` and the locked plan.
 

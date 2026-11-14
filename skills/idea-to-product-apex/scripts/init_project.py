@@ -66,6 +66,13 @@ def build_state_json(project_name: str, domain_key: str, today: str) -> dict:
         "known_risks_mitigated": [],
         # 12-month change scenarios (see references/08): {"id", "event", "expected", "status": "pass"|"fail", "proof"}
         "change_scenarios": [],
+        # Lower only for one-off or low-stakes work, with a reason (references/08 §4).
+        "change_scenarios_required": 3,
+        "change_scenarios_waiver": "",
+        # Context profile (references/07 Step 0): rules not activated here are N/A with a reason.
+        "context_profile": {"a_money_with_parties": None, "b_personal_data": None, "c_regulated": None,
+                            "d_others_operate": None, "e_controls_for_others": None, "f_replaces_existing": None,
+                            "g_long_lived": None, "h_established_trade": None, "i_stakes": None},
     }
 
 

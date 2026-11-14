@@ -71,7 +71,7 @@ Two further rules:
 
 ## 3. Definition of Done by deliverable type
 
-Pick every type that applies; most real projects mix two or three.
+Pick every type that applies; most real projects mix two or three. Within a type, an item that the context profile (07 Step 0) does not activate is `N/A` with a reason, not a forced deliverable. For example, a solo user needs no "ownership by a role".
 
 | Deliverable type | Done means |
 | :--- | :--- |
@@ -90,7 +90,15 @@ Pick every type that applies; most real projects mix two or three.
 
 **Why:** "lasts 12 months" is only a claim until something changes and the result still holds.
 
-1. Derive 3–5 scenarios from lens 9 and the domain brief (09), chosen for *this* user. Examples:
+1. **How many scenarios depends on the context profile** (07 Step 0):
+
+   | Profile | Required |
+   | :--- | :--- |
+   | Long-lived (g) and medium or high stakes, or STANDARD/DEEP mode | ≥ 3 |
+   | Long-lived but low stakes, or LEAN | 1–2 |
+   | One-off (an event, a single document) or past its date | 0 |
+
+   Whenever fewer than 3, set `change_scenarios_required` and a one-line `change_scenarios_waiver` reason in STATE. Choose the scenarios from lens 9 and the domain brief (09), for *this* user. Examples:
    - a key price rises 15%;
    - a new channel or customer type is added;
    - a tax or regulatory rate changes;
@@ -105,5 +113,5 @@ Pick every type that applies; most real projects mix two or three.
    {"id": "CS-1", "event": "steel price +15%", "expected": "old quotes unchanged, new quotes +X",
     "status": "pass", "proof": "test_price_change: old 823,237,800 unchanged; new +8,448,000"}
    ```
-   Gate 6 requires at least 3 scenarios with status `pass` and a proof.
+   Gate 6 requires `change_scenarios_required` (default 3) scenarios with status `pass` and a proof. Any count below 3 needs a waiver reason.
 4. Tell the user in plain words what they can change safely and how, e.g. "đổi giá thép trong 1 file, báo giá cũ giữ nguyên".

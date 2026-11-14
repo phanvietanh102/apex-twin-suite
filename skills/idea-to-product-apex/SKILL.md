@@ -51,8 +51,8 @@ The goal: the user ends up thinking *"I would never have thought of that, and it
 Order and merge these freely. All of them must be true before handover.
 
 - **Understood:** goal, stakeholders, constraints (money, time, skills, devices), every flow ranked by weight, what the user tried before. A domain brief exists for their exact context (09).
-- **Beyond the brief:** at least 3 field-specific traps addressed, plus a few cheap, low-maintenance additions the user did not ask for, each with why it matters to *them*.
-- **Attacked:** you critiqued your own plan from product, technical, money, risk, field-expert and skeptical-daily-user angles, and fixed at least 3 concrete flaws. In `DEEP` mode an isolated critic subagent does this once. See [`03`](./references/03-c-suite-red-team-protocol.md).
+- **Beyond the brief:** the field-specific traps the domain brief surfaced are addressed (typically 3+ at medium or high stakes; fewer is fine for a small, low-stakes task), plus a few cheap, low-maintenance additions the user did not ask for, each with why it matters to *them*.
+- **Attacked:** you critiqued your own plan from product, technical, money, risk, field-expert and skeptical-daily-user angles, and fixed the concrete flaws you found (expect at least 3 on anything with medium or high stakes; a low-stakes task needs a lighter pass). In `DEEP` mode an isolated critic subagent does this once. See [`03`](./references/03-c-suite-red-team-protocol.md).
 - **Built to last 12 months:**
   - volatile values (prices, rates, rules, prompts) live in one editable place;
   - history is protected from later edits;
@@ -61,8 +61,8 @@ Order and merge these freely. All of them must be true before handover.
 
   See [`04`](./references/04-12month-evergreen-architecture.md).
 - **Built and proven in slices,** heaviest flow first. Each slice is verified (tests, a real run, worked examples) with no stubs and no fake data. See [`06`](./references/06-stage-gates-and-code-verification.md).
-- **Swept:** a full completeness sweep (07). It includes counterparty claims checked against contracts and caps, data minimised in everything you build, and the data sanity-checked against itself and field norms. Then a second-order sweep of every fix: past periods, cost and price, the people to tell, and the system's own failure modes. Every finding is tracked in `TRACE.md` and closed by a fix or a ready-to-use replacement, never by a warning alone.
-- **Done by definition:** the definition of done for each deliverable type is met (08). Every `TRACE.md` row is `DONE`, `DEFERRED` with a reason, `DROPPED` with the user's agreement, or `N/A`. At least 3 change scenarios have passed.
+- **Tailored, then swept:** first answer the context profile (07 Step 0), so only the rules the context activates apply; the rest are `N/A` with a one-line reason, never forced and never silently skipped, and depth follows stakes. Then a completeness sweep (07). It includes counterparty claims checked against contracts and caps, data minimised in everything you build, and the data sanity-checked against itself and field norms. Then a second-order sweep of every fix: past periods, cost and price, the people to tell, and the system's own failure modes. Every finding is tracked in `TRACE.md` and closed by a fix or a ready-to-use replacement, never by a warning alone.
+- **Done by definition:** the definition of done for each deliverable type is met (08). Every `TRACE.md` row is `DONE`, `DEFERRED` with a reason, `DROPPED` with the user's agreement, or `N/A`. The number of change scenarios the profile requires (08 §4; usually 3) have passed.
 - **No silent deferral:** a **High** row (law or compliance, safety or health, money at risk, irreversible data, the user's root vision, their #1 pain) ends `DONE`, with at least a minimal working version or exact actionable instructions, or ends `DEFERRED` only with `agreed: "<user's words>"`. A line saying "check later" is not coverage.
 - **Looking ahead:** the domain brief's next-12–24-months section (scheduled mandates, price risk and hedging, financing, the growth path) has been checked against the plan.
 - **Handed over:**
@@ -95,7 +95,7 @@ In chat-only hosts (no files or terminal), keep `TRACE.md` and the change scenar
   - Documents contain `[[FILL: hint]]` markers; a gate is vetoed while any remain.
   - Gate 3 needs `TOTAL C-SUITE AUDIT SCORE` ≥ 85.
   - Gate 5 needs `--scan-code`, at least one proven slice in `STATE.json`, and a valid `TRACE.md` (no `DONE` without evidence).
-  - Gate 6 needs all slices proven, no `OPEN` rows in `TRACE.md`, and at least 3 passed `change_scenarios`.
+  - Gate 6 needs all slices proven, no `OPEN` rows in `TRACE.md`, and `change_scenarios_required` passed scenarios (default 3; fewer needs a `change_scenarios_waiver` reason).
   - Never write a score, proof or status you did not actually obtain. Report results as plain outcomes, not gate numbers.
 
 ## Shortcuts the user may type
