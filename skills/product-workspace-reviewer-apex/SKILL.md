@@ -69,18 +69,27 @@ All of these must be true before handover.
 - **No silent deferral:** a **High** row (law or compliance, safety or health, money at risk, irreversible or historical data, the owner's root vision, their #1 pain) ends `DONE`, with at least a minimal working version or exact actionable instructions, or ends `DEFERRED` only with `agreed: "<owner's words>"`. A line saying "check later" is not coverage.
 - **Looking ahead:** the domain brief's next-12–24-months section (scheduled mandates, price risk and hedging, financing, the growth path toward the owner's long-term goal) has been checked against the plan.
 
-## Native-first: improve the owner's world, not yours
+## The daily operators decide the medium
 
-Improve inside the tools the owner and their people already use. Walk the delivery ladder in [`08` §2](./references/08-definition-of-done-and-traceability.md):
-1. configure what they have;
-2. native artifacts in their tool (formulas, validation, protected ranges, templates);
-3. light automation inside that tool;
-4. code only if they already run it and can maintain it.
+Installing Python or packages for your own analysis, generation and testing is one command and costs nothing; use code freely. But what the owner's people operate every day must run where they already live: their phone, Excel, Outlook, Zalo or existing platform. See [`08` §2](./references/08-definition-of-done-and-traceability.md).
 
-Eval run 3 showed why this matters: an Excel-only accountant received a Python engine whose summary sheet showed `#NAME?` in real Excel.
+Eval run 3 showed why this matters: an Excel-only accountant received a Python engine whose summary sheet showed `#NAME?` in real Excel. Code that *builds and verifies* a native workbook gives both: the operators keep their tool and the owner gets reproducibility.
 - Shared workflows must not depend on one machine.
 - Verify in the target app: recalculate spreadsheets in a real engine with zero error values, and use only functions their version supports. If you could not, say so and give a 1-minute check.
-- Tests prove the deliverable; they never justify changing its medium.
+
+## Beyond the obvious fixes
+
+Eval runs 3–4 found that the plain model sometimes beat the skill on these. Each is generic, so apply all of them (07):
+- **Audit the counterparties, not only the owner:** check penalties, fees and deductions claimed against the contract and legal caps, and send a ready dispute message.
+- **Minimise data:** no ID, bank or health data copied into shared files; set retention and deletion.
+- **Sanity-check the data:** against itself and field norms (impossible dates, yields above the norm, stock contradictions, claims the owner's own data disproves).
+- **Standard instruments of the field first** (09).
+- **Second-order effects of every fix:**
+  - remedy past periods;
+  - reprice when compliance raises cost;
+  - tell affected people first, with ready messages;
+  - plan for the system's own failure (owner account, silent-stop alarm, permissions, a parallel run or drill before cut-over).
+- **Close findings with a fix or a ready replacement,** not a warning.
 
 ## Respect the owner's time
 

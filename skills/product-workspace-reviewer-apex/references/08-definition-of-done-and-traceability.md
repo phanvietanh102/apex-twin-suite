@@ -38,21 +38,26 @@ These three mechanisms turn "I think it's complete" into evidence. They constrai
 
 ---
 
-## 2. Native-first delivery: build in the user's world
+## 2. Delivery: the daily operators' world decides the medium
 
-**Why:** in eval run 3, "proof = tests" pushed the model toward writing Python, because code is easy to test. The result:
-- an accountant who only uses Excel received a Python engine plus a `.bat` file;
-- the summary sheet showed `#NAME?` when opened in real Excel;
-- a bakery's shared order book depended on one laptop running a 970-line script.
+This skill's users are comfortable with AI tools. Installing Python or a package for the agent's own work is one command and is **not a cost**: use code, scripts and tests freely to analyse, generate, transform and verify.
 
-The tests passed and the user still could not use it. **Proof serves the deliverable; it is never a reason to change the medium.**
+What decides the *deliverable's* medium is the people who will **operate it every day**. Sometimes that is the user. Often it is an accountant, a receptionist, a packer or a team lead. They live in their phone, Excel, Outlook or an existing platform.
 
-Choose the medium by walking down this ladder and stopping at the first rung that does the job:
+Eval run 3 showed what goes wrong otherwise:
+- an Excel-only accountant received a Python engine whose summary sheet showed `#NAME?` in real Excel;
+- a bakery's shared order book depended on one laptop running a nightly script.
 
-1. **Configure what the user already has:** their existing platform's settings, built-in features or templates.
-2. **Native artifacts in their tool:** spreadsheet formulas, data validation, conditional formatting, protected ranges, document templates, forms. These are maintainable by the people who are actually there.
-3. **Light automation inside their tool:** Apps Script for Google Sheets, a recorded macro, a no-code automation the platform offers. It needs no install and runs where the data lives.
-4. **Code or new software,** only if the user or their team already runs it and can maintain it. A one-click launcher and a fallback are mandatory.
+The tests passed and the operators still could not use it.
+
+Pick the medium in this order of preference, choosing the first that does the job **for the daily operators**:
+
+1. **Configure what they already have:** the existing platform's settings, built-in features or templates.
+2. **Native artifacts in their tool:** spreadsheet formulas, data validation, conditional formatting, protected ranges, document templates, forms.
+3. **Automation inside their tool:** Apps Script, Power Automate, macros, platform automations.
+4. **A new app, script or service:** fine when it clearly earns its keep and someone (the user or the agent on request) can run and maintain it. Give it a one-command setup and a fallback for the operators.
+
+Code that *generates or checks* a native artifact (a script that builds and verifies an Excel workbook, say) is often the best of both: the operators get their tool, and the user gets reproducibility.
 
 Two further rules:
 - **Shared workflows** (several people, several sites) must not depend on one person's machine being on.
@@ -76,6 +81,7 @@ Pick every type that applies; most real projects mix two or three.
 | **Content / media / marketing system** | Calendar, templates, quality rubric, distribution channels, measurement, and compliance (disclosure, rights, platform rules). |
 | **Physical project / event / operations / service process** | Timeline with buffers, checklists per role, vendor and contact list, a contingency for each critical risk, budget with a contingency %, and the permits, safety or legal steps. |
 | **Personal goal** (career, study, health routine, finances) | Baseline, target, weekly routine that fits the stated time, review cadence, and a plan for when it slips. |
+| **Anything replacing a live process** | A switchover plan: a parallel or shadow run, or a drill (e.g. "the key person is off sick this week"), before cut-over. Ownership by a role or shared account, not one person's login. An alarm if the automation silently stops. |
 | **Review / upgrade of an existing system** | Everything above for the parts changed, plus a verified backup before changes, parity (old valid inputs still give the same results unless intentionally corrected and stated), and protected history. |
 
 ---

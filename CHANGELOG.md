@@ -3,6 +3,18 @@
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
 ## [Unreleased]
+### Changed (v4.2: reverse-analysis of where the plain model beat the skill; not yet re-evaluated)
+See `evals/GAP-ANALYSIS.md`. All changes are generic, not tied to any eval scenario.
+- **Lens 3, audit counterparties:** check penalties, fees and deductions against the contract and legal caps; check the user's own protection (terms, liability caps, insurance).
+- **Lens 5, minimise data:** artifacts you build carry only the personal data they need; ID, bank and health data stay masked or restricted, with retention and deletion rules. Preserving history is not a reason to spread it.
+- **Lens 6, plausibility:** sanity-check data against itself and field norms (impossible dates, contradictory statuses, beyond-norm volumes, impossible stock).
+- **Lens 7, governance:** conflicts of interest of whoever controls money or data.
+- **Second-order sweep:** for every fix, consider past periods (retroactive remedy), cost and price (reprice), people (tell them first, with ready messages), and the system's own failure (owner account, silent-stop alarm, permissions, parallel run or drill).
+- **Closing rule:** a finding is closed by a fix or a ready-to-use replacement, not by a warning.
+- **Domain brief:** use the field's standard instruments first, before inventing custom ones.
+- **Definition of done:** new "replacing a live process" type (switchover plan, role ownership, silent-stop alarm).
+- **Delivery rule reframed for AI-literate users:** installs for the agent's own work are not a cost. The *daily operators'* environment decides the deliverable's medium. Code that builds and verifies a native artifact is encouraged.
+
 ### Fixed (v4.1, driven by eval run 3)
 - **No silent deferral:** High-weight `TRACE.md` rows (law, safety, money at risk, irreversible data, root vision, #1 pain) must be `DONE` in a minimal form, or `DEFERRED` with `agreed: "<user's words>"`. Gate 5 enforces this.
 - **Native-first delivery ladder** (`08` §2): configure what the user has → native artifacts in their tool → light automation in that tool → code only if they already run it. Shared workflows must not depend on one machine. Spreadsheets must recalculate in the target app with zero error values, using only functions the user's version supports.

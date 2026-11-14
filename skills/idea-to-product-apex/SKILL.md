@@ -37,13 +37,9 @@ The goal: the user ends up thinking *"I would never have thought of that, and it
 4. **When the user delegates** ("cứ chọn phương án bạn thấy hợp nhất và làm tiếp", "you decide", "làm luôn", "just build it"), decide in one line, list your assumptions, and build in the same reply. No new options round.
 5. **Heaviest flow first.** Rank flows by volume, money and risk (lens 2). The heaviest one must be complete before minor ones get polish.
 6. **Respect the user's time.** Start every substantial reply with a summary of 10 lines or fewer: what I found, what I built, what you do next. Put details in files.
-7. **Native-first: build in the user's world, not yours.** Use the delivery ladder in [`08` §2](./references/08-definition-of-done-and-traceability.md):
-   - first configure what they have;
-   - then native artifacts in their tool (spreadsheet formulas, templates, forms);
-   - then light automation inside that tool;
-   - code or new software only if they already run it and can maintain it.
-
-   Shared workflows must not depend on one machine. Verify in the target app: recalculate spreadsheets in a real engine with zero `#NAME?`/`#REF!`, and use only functions their version supports. Tests prove the deliverable; they are never a reason to change its medium.
+7. **The daily operators decide the medium.** Installing Python or packages for your own work is one command and costs nothing; use code freely to build, generate and verify. But the deliverable must run where the people who use it every day already live: their phone, Excel, Outlook or existing platform. See [`08` §2](./references/08-definition-of-done-and-traceability.md).
+   - Shared workflows must not depend on one machine.
+   - Verify in the target app: recalculate spreadsheets in a real engine with zero `#NAME?`/`#REF!`, and use only functions their version supports.
 8. **Leave no clutter.** Process files (trace, spec, notes) go in one `_apex/` folder, never loose in the user's working folder. User-facing files are few, plain, and in the user's language.
 9. **Keep the machinery backstage.** Lenses, gates, scores, tiers and phase names are internal tools; do not show them unless asked. Show the user plain outcomes and, at handover, the short traceability table ("Bạn cần → Nằm ở đâu → Đã kiểm thế nào").
 10. **Be honest about certainty.** For rules, rates and fees, give the identifier and date you rely on, and mark anything unverified with who can confirm it. Never invent a law number.
@@ -65,7 +61,7 @@ Order and merge these freely. All of them must be true before handover.
 
   See [`04`](./references/04-12month-evergreen-architecture.md).
 - **Built and proven in slices,** heaviest flow first. Each slice is verified (tests, a real run, worked examples) with no stubs and no fake data. See [`06`](./references/06-stage-gates-and-code-verification.md).
-- **Swept:** a full completeness sweep (07). Every finding is tracked in `TRACE.md`.
+- **Swept:** a full completeness sweep (07). It includes counterparty claims checked against contracts and caps, data minimised in everything you build, and the data sanity-checked against itself and field norms. Then a second-order sweep of every fix: past periods, cost and price, the people to tell, and the system's own failure modes. Every finding is tracked in `TRACE.md` and closed by a fix or a ready-to-use replacement, never by a warning alone.
 - **Done by definition:** the definition of done for each deliverable type is met (08). Every `TRACE.md` row is `DONE`, `DEFERRED` with a reason, `DROPPED` with the user's agreement, or `N/A`. At least 3 change scenarios have passed.
 - **No silent deferral:** a **High** row (law or compliance, safety or health, money at risk, irreversible data, the user's root vision, their #1 pain) ends `DONE`, with at least a minimal working version or exact actionable instructions, or ends `DEFERRED` only with `agreed: "<user's words>"`. A line saying "check later" is not coverage.
 - **Looking ahead:** the domain brief's next-12–24-months section (scheduled mandates, price risk and hedging, financing, the growth path) has been checked against the plan.
