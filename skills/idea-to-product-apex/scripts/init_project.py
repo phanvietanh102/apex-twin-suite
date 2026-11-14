@@ -28,7 +28,7 @@ def build_state_json(project_name: str, domain_key: str, today: str) -> dict:
         "schema_version": "2.0.0-apex",
         "project_name": project_name,
         "domain_primary": domain_key,
-        "domain_label": DOMAIN_MAP.get(domain_key, DOMAIN_MAP["DOM-01"]),
+        "domain_label": DOMAIN_MAP.get(domain_key, domain_key),
         "created_at": today,
         "last_updated": today,
         "current_phase": "Phase 1: Discovery & Elicitation",
@@ -64,27 +64,40 @@ def build_state_json(project_name: str, domain_key: str, today: str) -> dict:
         ],
         "volatile_configs_isolated": [],
         "known_risks_mitigated": [],
+        # 12-month change scenarios (see references/08): {"id", "event", "expected", "status": "pass"|"fail", "proof"}
+        "change_scenarios": [],
     }
 
 
 def get_templates(project_name: str, domain_key: str, today: str) -> dict:
-    domain_label = DOMAIN_MAP.get(domain_key, DOMAIN_MAP["DOM-01"])
+    domain_label = DOMAIN_MAP.get(domain_key, domain_key)
     return {
+        "TRACE.md": f"""# TRACE — {project_name}
+> Every need the user stated, every need discovered (completeness lenses, domain brief), and every question whose answer creates work gets a row. Rows never disappear; update them.
+> Status: OPEN while working; final = DONE (evidence) / DEFERRED (reason + when) / DROPPED (user agreed — quote) / N/A (why). Order rows by weight. A High row (law, safety, money at risk, irreversible data, root vision, #1 pain) may be DEFERRED only with evidence `agreed: "<user's words>"`. See references/08.
+
+| ID | Need | Source | Weight | Status | Evidence / Reason |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| R-01 | [[FILL: the heaviest flow the user needs (most volume/money/risk)]] | user | High | OPEN | |
+""",
         "00-PROJECT-CONSTITUTION.md": f"""# 00. Project Constitution — {project_name}
 > **Generated:** {today} | **Domain Archetype:** `{domain_key}` ({domain_label})
 > **Longevity Contract:** 12-Month Evergreen / Zero-Rewrite Guarantee
 
+> Every `[[FILL: ...]]` marker is a decision taken from the user's own answers. `fitness_audit.py` vetoes a gate while any marker remains.
+
 ## 1. Core Identity & North Star JTBD (Job-to-be-Done)
-- **Target Persona / Operator:** [Specify primary user & operator]
-- **Core JTBD Statement:** *"When [situation/trigger], the user wants to [core progress/action], so they can [desired outcome/value] without [current friction/pain]."*
+- **Target Persona / Operator:** [[FILL: primary user & operator, in the user's words]]
+- **Core JTBD Statement:** [[FILL: "When <situation>, the user wants to <progress>, so they can <outcome> without <current pain>."]]
+- **User's Own Unique Vision (Section 1 answers):** [[FILL: the personal/contrarian ideas the user gave that no option A/B/C contained]]
 
 ## 2. Hard Constraints & Operational Reality
-- **Budget & Cost Ceiling:** [e.g., < $10/month recurring; zero uncapped variable API bills]
-- **Operational Bus Factor:** [e.g., Solo operator, max 15 minutes/day routine maintenance]
-- **Tech / Tooling Stack:** [Choose battle-tested, low-maintenance stack]
+- **Budget & Cost Ceiling:** [[FILL: e.g. < $10/month recurring; zero uncapped variable API bills]]
+- **Operational Bus Factor:** [[FILL: e.g. solo operator, max 15 minutes/day routine maintenance]]
+- **Tech / Tooling Stack:** [[FILL: chosen stack + one-line reason]]
 
 ## 3. Explicit Non-Goals (Scope Guardrails)
-1. **Non-Goal 1:** Do NOT build [feature X] in v1 if it adds maintenance burden without moving core JTBD.
+1. **Non-Goal 1:** [[FILL: one concrete feature deliberately NOT built in v1, and why]]
 2. **Non-Goal 2:** Do NOT hardcode volatile prices, rates, API keys, or seasonal rules inside core logic.
 3. **Non-Goal 3:** Do NOT rely on single-point-of-failure external services without an offline/manual fallback.
 
@@ -96,49 +109,53 @@ def get_templates(project_name: str, domain_key: str, today: str) -> dict:
         "01-DISCOVERY-AND-PRFAQ.md": f"""# 01. Discovery, Blind-Spot Radar & Working Backwards PR/FAQ — {project_name}
 
 ## 1. Socratic Elicitation Decisions
-- **Q1 (Target Workflow & Scope):** [Locked Option]
-- **Q2 (Operation & Automation Level):** [Locked Option]
-- **Q3 (Monetization / Value Metric):** [Locked Option]
+- **Q1 (Target Workflow & Scope):** [[FILL: locked option + the user's reason]]
+- **Q2 (Operation & Automation Level):** [[FILL: locked option + the user's reason]]
+- **Q3 (Monetization / Value Metric):** [[FILL: locked option + the user's reason]]
 
 ## 2. Johari Quadrant 4 — Domain Blind-Spot Radar (Unknown-Unknowns)
+> Each trap must be specific to `{domain_key}` and to this project — something the user did not mention. Generic rows such as "prices change" do not count.
+
 | # | Hidden Industry Trap (`{domain_key}`) | Impact If Ignored | Built-in Countermeasure in {project_name} |
 | :--- | :--- | :--- | :--- |
-| 1 | Volatility of prices / rules / algorithms | System becomes obsolete in 60 days | Externalized into editable Config Table |
-| 2 | User friction / drop-off in first 60 seconds | Low adoption / abandonment | Instant presets + guided 1-click flow |
-| 3 | Silent data loss or historical overwrite | Financial / operational audit failure | Immutable snapshots + 1-click JSON/Excel export |
-| 4 | Edge-case unit economics / cost spike | Negative ROI at scale | Hard cost/margin guardrails & deterministic core |
+| 1 | [[FILL: domain-specific trap]] | [[FILL: concrete impact]] | [[FILL: countermeasure]] |
+| 2 | [[FILL: domain-specific trap]] | [[FILL: concrete impact]] | [[FILL: countermeasure]] |
+| 3 | [[FILL: domain-specific trap]] | [[FILL: concrete impact]] | [[FILL: countermeasure]] |
+| 4 | [[FILL: domain-specific trap]] | [[FILL: concrete impact]] | [[FILL: countermeasure]] |
 
 ## 3. Working Backwards — Future Press Release (PR)
-- **Headline:** {project_name} transforms how [Target Audience] achieves [Core Outcome] in under [X minutes].
-- **Problem:** Previously, teams/users struggled with [Pain Point 1] and [Pain Point 2].
-- **Solution & Asymmetric Edge:** {project_name} combines a rock-solid deterministic core with [Top Kano Delighters].
+- **Headline:** [[FILL: "{project_name} lets <audience> achieve <outcome> in <measurable time>"]]
+- **Problem:** [[FILL: the two pains the user actually described]]
+- **Solution & Asymmetric Edge:** [[FILL: core + the top Kano delighters chosen in 02]]
 
 ## 4. Hardest FAQs (Customer & Operational)
-- **Customer FAQ 1:** *What if my requirements/prices change next month?* -> Update the config table in 2 minutes; zero code changes needed.
-- **Operational FAQ 2:** *What if an external API or internet connection drops?* -> System degrades gracefully to deterministic/local fallback mode.
+- **Customer FAQ 1:** [[FILL: hardest question a real customer would ask, and the honest answer]]
+- **Operational FAQ 2:** [[FILL: what happens when the riskiest dependency fails]]
 """,
         "02-KANO-SPEC-AND-DELIGHT.md": f"""# 02. Kano Feature Specification & SMART-ER Criteria — {project_name}
 
 ## 1. Tier 1 — Must-Be Baseline (Core MVP — 50% Effort)
-- [ ] **MB-01:** Core input capture with strict validation and clear error messages.
-- [ ] **MB-02:** Deterministic calculation / processing engine with 100% accuracy.
-- [ ] **MB-03:** Clean, exportable output (Web / PDF / Excel / JSON) and local data persistence.
+- [ ] **MB-01:** [[FILL: must-have capability tied to the JTBD]]
+- [ ] **MB-02:** [[FILL: must-have capability]]
+- [ ] **MB-03:** [[FILL: must-have capability]]
 
 ## 2. Tier 2 — Performance Multipliers (10x Efficiency — 20% Effort)
-- [ ] **PM-01:** Pre-configured templates / presets for 1-click execution.
-- [ ] **PM-02:** Instant search, filter, and historical snapshot comparison.
+- [ ] **PM-01:** [[FILL: multiplier that removes a repeated manual step]]
+- [ ] **PM-02:** [[FILL: multiplier]]
 
 ## 3. Tier 3 — Asymmetric Delighters (30% Beyond-Expectation Features)
-- [ ] **DL-01 (Proactive Intelligence):** Automatically flags anomalies, margin risks, or optimization opportunities.
-- [ ] **DL-02 (Instant Shareable Artifact):** Generates a client-ready or executive-ready summary in 1 click.
-- [ ] **DL-03 (Zero-Code Live Configurator):** Allows non-technical operators to adjust rates/rules/prompts live.
+> A delighter is something the user did not ask for and would not have known to ask for, cheap to build and to maintain. State why it surprises *this* user.
+
+- [ ] **DL-01:** [[FILL: delighter + why it is beyond this user's expectation]]
+- [ ] **DL-02:** [[FILL: delighter + why it is beyond this user's expectation]]
+- [ ] **DL-03:** [[FILL: delighter + why it is beyond this user's expectation]]
 
 ## 4. SMART-ER Acceptance Criteria Contract
 | ID | Requirement | Specific & Measurable (S/M) | 12-Month Resilience (R) | Verification Proof (E) |
 | :--- | :--- | :--- | :--- | :--- |
-| `MB-01` | Input & Validation | Rejects invalid types in <50ms with human-readable hint | Schema-driven rules | Automated validation test |
-| `MB-02` | Core Processing | 100% deterministic math/rule accuracy | Pure functions, zero external drift | Unit test suite pass |
-| `DL-01` | Delighter Engine | Surfaces actionable insight on every run | Rule thresholds stored in config | End-to-end smoke test |
+| `MB-01` | [[FILL: requirement]] | [[FILL: measurable target]] | [[FILL: how it survives 12 months]] | [[FILL: test or check that proves it]] |
+| `MB-02` | [[FILL: requirement]] | [[FILL: measurable target]] | [[FILL: how it survives 12 months]] | [[FILL: test or check that proves it]] |
+| `DL-01` | [[FILL: requirement]] | [[FILL: measurable target]] | [[FILL: how it survives 12 months]] | [[FILL: test or check that proves it]] |
 """,
         "03-ARCHITECTURE-AND-SOPS.md": f"""# 03. Evolutionary Architecture & Standard Operating Procedures — {project_name}
 
@@ -159,58 +176,64 @@ def get_templates(project_name: str, domain_key: str, today: str) -> dict:
 +-------------------------------------------------------------------+
 ```
 
+- **Tier A for this project:** [[FILL: the actual modules/files that form the core]]
+- **Tier B for this project:** [[FILL: the actual volatile values extracted to config, and where they live]]
+
 ## 2. Architecture Decision Records (ADRs for 12-Month Longevity)
-- **ADR-01 (Boring, Self-Contained Stack):** Chosen to eliminate dependency rot over 365 days.
+- **ADR-01 (Stack):** [[FILL: chosen stack, the rejected alternative, and why]]
 - **ADR-02 (Externalized Volatility):** All unit prices, rates, templates, and provider settings are isolated in Tier B.
 - **ADR-03 (Immutable History):** Every committed record stores its own snapshot of parameters active at creation time.
+- **ADR-04 (Upgrade Trigger):** [[FILL: the volume/scale ceiling up to which no architectural upgrade is needed]]
 
 ## 3. Daily / Weekly Operator SOP (< 15 Minutes)
-1. **Routine Use (2–5 mins):** Select preset -> Enter/Import data -> Review proactive delight alerts -> Export/Commit.
-2. **Updating Rates/Rules (2 mins/month):** Open Tier-B Config -> Update values -> Run verification check.
-3. **Backup Routine (1 min/week):** Trigger 1-Click Export/Backup to local/cloud archive.
+1. **Routine Use:** [[FILL: the real daily steps for this product, with times]]
+2. **Updating Rates/Rules:** [[FILL: which file/sheet to edit and how to verify]]
+3. **Backup Routine:** [[FILL: exact backup command or action and where it goes]]
 """,
         "04-12M-EVERGREEN-ROADMAP.md": f"""# 04. Vertical-Slice Execution Plan & 365-Day Evergreen Roadmap — {project_name}
 
 ## 1. Vertical-Slice Build Sequence
-- **Slice 1 (Foundation & Config Isolation):** Set up Tier-B config schema, Tier-A core logic, and validation guards.
-- **Slice 2 (End-to-End Core Workflow):** Connect UI/CLI intake to core engine and output generator.
-- **Slice 3 (30% Kano Delighters):** Implement proactive insights, presets, and 1-click export formats.
-- **Slice 4 (Hardening & Verification):** Add automated smoke tests, backup utility, and operator runbook.
+- **Slice 1 (Foundation & Config Isolation):** [[FILL: concrete scope + how it will be verified]]
+- **Slice 2 (End-to-End Core Workflow):** [[FILL: concrete scope + how it will be verified]]
+- **Slice 3 (30% Kano Delighters):** [[FILL: which DL-xx items + how they will be verified]]
+- **Slice 4 (Hardening & Verification):** [[FILL: tests, backup and runbook deliverables]]
 
 ## 2. The 365-Day Zero-Rewrite Horizon Playbook
 | Milestone | Expected Real-World State | Built-In System Capability Used | Operator Action (Time) |
 | :--- | :--- | :--- | :--- |
-| **Day 1–7** | Launch & initial real-world runs | Presets + guided validation | Run first 5 real cases (15m) |
-| **Day 30** | Market prices / operational tweaks needed | Tier-B Externalized Config | Edit config file/table (5m) |
-| **Day 90** | Q1 data accumulation ($5\\times$ volume) | Built-in filter, search & archive export | Export Q1 backup archive (5m) |
-| **Day 180** | Mid-year competitive or workflow expansion | Toggleable Phase-2 modules & adapter hooks | Run Quarterly AI Audit prompt (15m) |
-| **Day 365** | Full-year review & Year-2 rollover | Immutable historical ledger + annual summary | Export annual report; continue seamlessly |
+| **Day 1–7** | [[FILL: expected state]] | [[FILL: capability used]] | [[FILL: action + time]] |
+| **Day 30** | [[FILL: expected state]] | [[FILL: capability used]] | [[FILL: action + time]] |
+| **Day 90** | [[FILL: expected state]] | [[FILL: capability used]] | [[FILL: action + time]] |
+| **Day 180** | [[FILL: expected state]] | [[FILL: capability used]] | [[FILL: action + time]] |
+| **Day 365** | [[FILL: expected state]] | [[FILL: capability used]] | [[FILL: action + time]] |
 """,
         "05-FITNESS-FUNCTIONS-AND-RUNBOOK.md": f"""# 05. C-Suite Red-Team Log, Fitness Functions & Emergency Runbook — {project_name}
 
 ## 1. C-Suite Executive Council Red-Team Critique
+> Fill this from a real critique pass (ideally an isolated subagent). Each row names a flaw found in *this* plan, not a generic risk. Status is FIXED or OPEN, never assumed.
+
 | Executive Role | Initial Vulnerability Identified | Engineered Countermeasure Applied | Status |
 | :--- | :--- | :--- | :--- |
-| **CPO (Product)** | Risk of generic output / user friction | Added 30% Kano Delighters + 1-click presets | PASS |
-| **CTO (Systems)** | Hardcoded parameters rotting in Month 2 | Strict Tier-A / Tier-B config decoupling | PASS |
-| **VP Domain (`{domain_key}`)** | Missing domain-specific edge cases | Domain Blind-Spot Radar rules embedded | PASS |
-| **CFO (FinOps)** | Hidden recurring costs / margin erosion | Zero-cost local core + margin guardrail alerts | PASS |
-| **CRO/COO (Risk/Ops)** | Data loss or external dependency outage | Immutable snapshots + 5-min manual fallback | PASS |
-| **Devil's Advocate User** | Confusing inputs or silent errors | Instant inline validation + sensible defaults | PASS |
+| **CPO (Product)** | [[FILL: flaw found]] | [[FILL: fix applied]] | [[FILL: FIXED/OPEN]] |
+| **CTO (Systems)** | [[FILL: flaw found]] | [[FILL: fix applied]] | [[FILL: FIXED/OPEN]] |
+| **VP Domain (`{domain_key}`)** | [[FILL: flaw found]] | [[FILL: fix applied]] | [[FILL: FIXED/OPEN]] |
+| **CFO (FinOps)** | [[FILL: flaw found + unit-economics math]] | [[FILL: fix applied]] | [[FILL: FIXED/OPEN]] |
+| **CRO/COO (Risk/Ops)** | [[FILL: flaw found + pre-mortem]] | [[FILL: fix applied]] | [[FILL: FIXED/OPEN]] |
+| **Devil's Advocate User** | [[FILL: flaw found]] | [[FILL: fix applied]] | [[FILL: FIXED/OPEN]] |
 
 ## 2. Executive Council Scorecard
-- **JTBD Clarity & Immediate Value:** 18 / 20
-- **Kano Delight & Differentiation:** 14 / 15
-- **Multi-Domain Fit & Authenticity:** 14 / 15
-- **12-Month Architectural Evergreenness:** 19 / 20
-- **Unit Economics & Resource Viability:** 14 / 15
-- **Resilience, Verification & Rollback:** 14 / 15
-- **TOTAL C-SUITE AUDIT SCORE:** **93 / 100** (APPROVED FOR EXECUTION)
+- **JTBD Clarity & Immediate Value:** [[FILL: score]] / 20
+- **Kano Delight & Differentiation:** [[FILL: score]] / 15
+- **Multi-Domain Fit & Authenticity:** [[FILL: score]] / 15
+- **12-Month Architectural Evergreenness:** [[FILL: score]] / 20
+- **Unit Economics & Resource Viability:** [[FILL: score]] / 15
+- **Resilience, Verification & Rollback:** [[FILL: score]] / 15
+- **TOTAL C-SUITE AUDIT SCORE:** [[FILL: sum]] / 100 (Gate 3 requires >= 85)
 
 ## 3. Automated Fitness Functions (Health Guardrails)
-1. **FF-01 (Config Schema Guard):** Fails fast with clear message if any config parameter is missing or out of bounds.
-2. **FF-02 (Deterministic Accuracy Check):** Automated smoke test verifies core calculation/workflow output matches gold standard.
-3. **FF-03 (Cost & Margin Breaker):** Warns operator immediately if unit economics or resource thresholds are breached.
+1. **FF-01 (Config Schema Guard):** [[FILL: what is checked and the command that runs it]]
+2. **FF-02 (Deterministic Accuracy Check):** [[FILL: gold-standard case and the command that runs it]]
+3. **FF-03 (Cost & Margin Breaker):** [[FILL: threshold and what happens when it is breached]]
 
 ## 4. Quarterly 15-Minute Self-Audit Prompt (Paste into Claude / Antigravity every 90 days)
 ```text
@@ -228,11 +251,15 @@ def main():
     parser.add_argument(
         "--domain",
         default="DOM-01",
-        choices=list(DOMAIN_MAP.keys()),
-        help="Primary domain archetype ID (DOM-01 to DOM-07)",
+        help="Archetype ID (DOM-01..DOM-07) or any free-text field/context, e.g. 'dental clinic, Da Nang'",
     )
     parser.add_argument("--force", action="store_true", help="Overwrite existing blueprint files")
     args = parser.parse_args()
+    for stream in (sys.stdout, sys.stderr):  # cp1252 consoles crash on paths like 'Từ idea'
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
 
     target_root = os.path.abspath(args.dir)
     blueprint_dir = os.path.join(target_root, "docs", "apex-blueprint")

@@ -1,5 +1,7 @@
 # 02. Universal Multi-Domain Adapter Matrix
 
+> **These archetypes are worked examples, not a boundary.** For any field, country or context not listed (agriculture, clinics, education, events, logistics, nonprofits, legal practice, hospitality, public services, personal goals, hybrids), build a domain brief with `09-domain-discovery-protocol.md`. Use the playbooks below as models of the depth expected.
+
 Most existing AI skills (`obra/superpowers`, `BMAD-METHOD`, `spec-kit`) are hardcoded for **Software Engineering only**. When a user brings an idea in Construction, Real Estate, SEO/Content Marketing, E-Commerce, Agency Operations, or Finance, software-only skills force awkward tech jargon or fail completely.
 
 The **APEX Engine** dynamically adapts its vocabulary, blind-spot radar, Kano delighters, deliverables, and 12-month durability guardrails across **7 Core Domain Archetypes** (plus hybrid combinations).

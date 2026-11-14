@@ -28,7 +28,15 @@ DOMAIN_MAP = {
 }
 
 IGNORE_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", ".agents", ".claude", "apex-review", "apex-blueprint"}
-ENTROPY_REGEX = re.compile(r"(?:[-_\s]v\d+|[-_\s]final|copy|sao\s*chep|\(\d+\)|\.bak$|\.old$|~$)", re.IGNORECASE)
+# Version/duplicate markers must stand as their own token: `report_v2.xlsx`, `x - Copy.docx`,
+# `Copy of x`, `hoadon (1).xlsx` match; `copywriting.md` or `dev2.py` do not.
+ENTROPY_REGEX = re.compile(
+    r"(?:[-_\s]v\d+(?=[-_\s.(]|$)"
+    r"|[-_\s]final(?=[-_\s.(]|$)"
+    r"|(?:^|[-_\s(])(?:copy|sao\s*ch[eé]p)(?=[-_\s.\d)]|$)"
+    r"|\(\d+\)|\.bak$|\.old$|~$)",
+    re.IGNORECASE,
+)
 
 RED_EXTS = {".db", ".sqlite", ".sqlite3", ".sql", ".xlsx", ".xls", ".csv", ".pdf", ".env", ".pem", ".key"}
 YELLOW_EXTS = {".py", ".js", ".ts", ".tsx", ".jsx", ".ps1", ".sh", ".json", ".yaml", ".yml", ".html", ".php"}
@@ -100,12 +108,16 @@ def build_review_state(project_name: str, domain_key: str, today: str, xray: dic
         "schema_version": "3.5.0-apex-review",
         "target_name": project_name,
         "domain_primary": domain_key,
-        "domain_label": DOMAIN_MAP.get(domain_key, DOMAIN_MAP["DOM-01"]),
+        "domain_label": DOMAIN_MAP.get(domain_key, domain_key),
+        # 12-month change scenarios (see references/08): {"id", "event", "expected", "status": "pass"|"fail", "proof"}
+        "change_scenarios": [],
         "created_at": today,
         "last_updated": today,
         "current_phase": "Phase 1: Forensic X-Ray & Pain Excavation",
+        # Heuristic from file entropy only — confirm in Phase 3. The upgraded score is set
+        # by the Phase 3 critique, never by the scaffolder.
         "baseline_health_score": xray["estimated_baseline_score"],
-        "upgraded_health_score": 94,
+        "upgraded_health_score": None,
         "evergreen_horizon_months": 12,
         "xray_summary": {
             "total_files": xray["total_files"],
@@ -144,19 +156,31 @@ def build_review_state(project_name: str, domain_key: str, today: str, xray: dic
 
 
 def build_review_templates(project_name: str, domain_key: str, today: str, xray: dict) -> dict:
-    domain_label = DOMAIN_MAP.get(domain_key, DOMAIN_MAP["DOM-01"])
+    domain_label = DOMAIN_MAP.get(domain_key, domain_key)
     zc = xray["zones"]["counts"]
     ext_str = ", ".join(f"`{k}` ({v})" for k, v in xray["top_extensions"].items()) or "None"
     entropy_list = "\n".join(f"  - `{p}`" for p in xray["entropy_files"][:8]) or "  - None detected in top-level scan"
 
     return {
+        "TRACE.md": f"""# TRACE — {project_name}
+> Every Turn-1 finding, every gap-matrix item, every wish the owner stated and every need discovered (completeness lenses, domain brief) gets a row. Rows never disappear; update them.
+> Status: OPEN while working; final = DONE (evidence) / DEFERRED (reason + when) / DROPPED (owner agreed — quote) / N/A (why). Order rows by weight. A High row (law, safety, money at risk, irreversible data, root vision, #1 pain) may be DEFERRED only with evidence `agreed: "<user's words>"`. See references/08.
+
+| ID | Need / Finding | Source | Weight | Status | Evidence / Reason |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| R-01 | Verified backup of current state + history locked read-only | discovered (safety) | High | OPEN | |
+| R-02 | [[FILL: the owner's biggest pain or heaviest flow]] | owner | High | OPEN | |
+""",
         "00-PRESERVATION-CONSTITUTION.md": f"""# 00. Preservation Constitution & Blast-Radius Contract — {project_name}
 > **Audited On:** {today} | **Domain Archetype:** `{domain_key}` ({domain_label})
 > **Immunity Contract:** 12-Month Evergreen Evolution (Zero Data Loss / Zero Habit Breakage)
 
+> Every `[[FILL: ...]]` marker is filled from the user's Step 1B answers. `review_gate_audit.py` vetoes a gate while any marker remains.
+
 ## 1. Sacred Workflows & Muscle-Memory Habits (Must Not Break)
-- **Sacred Habit 1:** Preserve existing core user entry points, familiar layout patterns, and core JTBD workflow.
-- **Sacred Habit 2:** Never alter historical customer records, issued invoices, or completed project files.
+- **Sacred Habit 1:** [[FILL: habit/asset the user named in Step 1B Q4]]
+- **Sacred Habit 2:** [[FILL: habit/asset the user named in Step 1B Q4]]
+- **Always Sacred:** Never alter historical customer records, issued invoices, or completed project files.
 
 ## 2. Blast-Radius Zoning Map (Green / Yellow / Red Zones)
 - **Green Zone ({zc['green']} files — Safe to Modernize):** Docs, UI polish, new export templates, static assets.
@@ -177,47 +201,50 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 {entropy_list}
 
 ## 2. Root-Vision Elicitation & 4-Column Vision-vs-Reality Gap Matrix
-- **Original Root Vision (From Scratch Interview):** [Captured in Step 1B]
-- **Sacred Elements to Keep:** [Confirmed by Operator]
-- **Selected A-to-Z Evolution Path:** Option B (Full Root-Vision A-to-Z Completion + 30% Kano Delighters)
+- **Original Root Vision (From Scratch Interview):** [[FILL: the user's Step 1B answer, in their words]]
+- **Unbuilt Ideas & Wild Ambitions:** [[FILL: Step 1B Q2 answer]]
+- **Sacred Elements to Keep:** [[FILL: Step 1B Q4 answer]]
+- **Selected A-to-Z Evolution Path:** [[FILL: option A/B/C/D the USER chose after seeing Pros/Cons/Best-Fit]]
 
 | Gap Bucket | Root Vision vs. Current Workspace Reality | Action in A-to-Z Pipeline |
 | :--- | :--- | :--- |
-| **1. Met & Healthy (`KEEP & PROTECT`)** | Existing working assets & historical data | Preserve 100% & wrap cleanly |
-| **2. Built Wrong / Drifted (`REALIGN & REFACTOR`)** | Hardcoded or half-baked implementations | 15-Min Quick-Win Patch + Surgical 3-Tier Refactor |
-| **3. Unbuilt Core Vision (`MISSING A-TO-Z BUILD`)** | Original user desires missing from current workspace | Full Greenfield A-to-Z Engineering |
-| **4. 30% Beyond-Expectation (`KANO DELIGHTERS`)** | Domain benchmark upgrades & 4 Silent Leak remedies | Inject high-ROI delight features |
+| **1. Met & Healthy (`KEEP & PROTECT`)** | [[FILL: specific files/modules that already serve the vision]] | Preserve 100% & wrap cleanly |
+| **2. Built Wrong / Drifted (`REALIGN & REFACTOR`)** | [[FILL: specific parts built wrong, with file evidence]] | 15-Min Quick-Win Patch + Surgical 3-Tier Refactor |
+| **3. Unbuilt Core Vision (`MISSING A-TO-Z BUILD`)** | [[FILL: specific vision items with no implementation]] | Full Greenfield A-to-Z Engineering |
+| **4. 30% Beyond-Expectation (`KANO DELIGHTERS`)** | [[FILL: delighters the user did not ask for, and why they will surprise]] | Inject high-ROI delight features |
 
 ## 3. Johari Silent Leak Radar (4 Hidden System Leaks)
+> Evidence must point at real files or behaviour found in the X-Ray. Leave a leak out rather than invent evidence.
+
 | # | Silent Leak Category | Forensic Evidence in {project_name} | 12-Month Impact If Unfixed | Engineered Remedy |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | **Cognitive & Time Bleed** | Manual file duplication (`v1/v2`) & repetitive edits | Wastes dozens of hours/year & causes human typos | Unified template + 1-click dated snapshot generator |
-| 2 | **Unit Economics / Revenue Leak** | Slow turnaround or unguarded margin/pricing updates | Lost leads or eroded profit margins | Instant estimator/validator + margin guardrail |
-| 3 | **Hardcoded Volatility Rot** | Prices, rules, or settings embedded inside files | Requires manual hunting across files when prices shift | Extracted to single Tier-B Config (`config.json`/Sheet) |
-| 4 | **Catastrophic Fragility** | Editing active files risks overwriting historical records | Irreversible audit/history corruption | Strict Red-Zone Archive Vault + 1-Click Backup |
+| 1 | **Cognitive & Time Bleed** | [[FILL: file/behaviour evidence]] | [[FILL: impact]] | [[FILL: remedy]] |
+| 2 | **Unit Economics / Revenue Leak** | [[FILL: file/behaviour evidence]] | [[FILL: impact]] | [[FILL: remedy]] |
+| 3 | **Hardcoded Volatility Rot** | [[FILL: file/behaviour evidence]] | [[FILL: impact]] | [[FILL: remedy]] |
+| 4 | **Catastrophic Fragility** | [[FILL: file/behaviour evidence]] | [[FILL: impact]] | [[FILL: remedy]] |
 """,
         "02-KANO-UPGRADE-SPEC.md": f"""# 02. Three-Tier Kano Modernization Specification & SMART-ER Contract — {project_name}
 
 ## 1. Tier 1 — Critical Debt & Leak Remediation (50% Effort)
-- [ ] **FIX-01:** Quarantine all Red-Zone historical records into an immutable vault; eliminate `v1/v2` manual duplication.
-- [ ] **FIX-02:** Extract hardcoded volatile parameters (prices, rates, rules, prompts) into a clean Tier-B Config table.
-- [ ] **FIX-03:** Add strict input validation and broken-link/formula guards.
+- [ ] **FIX-01:** [[FILL: fix for a Bucket-2 gap, naming the files]]
+- [ ] **FIX-02:** [[FILL: fix for a Bucket-2 gap, naming the files]]
+- [ ] **FIX-03:** [[FILL: fix for a Bucket-2 gap, naming the files]]
 
 ## 2. Tier 2 — 10x Workflow & Hygiene Multipliers (20% Effort)
-- [ ] **MUL-01:** Standardize 5-Zone Workspace Taxonomy and ISO-8601 naming convention.
-- [ ] **MUL-02:** 1-Click batch processing / instant search & filter across historical records.
+- [ ] **MUL-01:** [[FILL: multiplier or Bucket-3 build item]]
+- [ ] **MUL-02:** [[FILL: multiplier or Bucket-3 build item]]
 
 ## 3. Tier 3 — Asymmetric Modernization Delighters (30% Beyond-Expectation Features)
-- [ ] **DEL-01 (Proactive Leak & Margin Guard):** Automatically warns operator of anomalies, margin drops, or missing fields.
-- [ ] **DEL-02 (Instant Dual/Multi-Format Output):** Generates client-ready PDF/Excel/Web/Schema deliverables in 1 click.
-- [ ] **DEL-03 (Self-Healing Health & Hygiene Check):** 5-second command verifies workspace cleanliness and config validity.
+- [ ] **DEL-01:** [[FILL: Bucket-4 delighter + why it is beyond this user's expectation]]
+- [ ] **DEL-02:** [[FILL: Bucket-4 delighter + why it is beyond this user's expectation]]
+- [ ] **DEL-03:** [[FILL: Bucket-4 delighter + why it is beyond this user's expectation]]
 
 ## 4. SMART-ER Upgrade & Behavioral Parity Contract
 | ID | Target Component | Specific & Measurable Target (S/M) | 12-Month Immunity (R) | Behavioral Parity Proof (E) |
 | :--- | :--- | :--- | :--- | :--- |
-| `FIX-01` | Red-Zone Data | 0 historical files overwritten during updates | Immutable snapshot folder | Hash/diff verification check |
-| `FIX-02` | Tier-B Config | Update any price/rule in <2 mins with 0 code edits | Decoupled config schema | Config mutation test pass |
-| `DEL-01` | Kano Delighters | Cuts manual workflow steps by >=50% | Zero fragile dependencies | End-to-end regression suite |
+| `FIX-01` | [[FILL: component]] | [[FILL: measurable target]] | [[FILL: how it stays healthy]] | [[FILL: parity test/check]] |
+| `FIX-02` | [[FILL: component]] | [[FILL: measurable target]] | [[FILL: how it stays healthy]] | [[FILL: parity test/check]] |
+| `DEL-01` | [[FILL: component]] | [[FILL: measurable target]] | [[FILL: how it stays healthy]] | [[FILL: parity test/check]] |
 """,
         "03-STRANGLER-ARCHITECTURE-AND-HYGIENE.md": f"""# 03. Strangler-Fig Evolution Architecture & Workspace Hygiene — {project_name}
 
@@ -244,17 +271,17 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 - **ADR-03 (5-Zone Workspace Taxonomy):** Separate Config (`00`), Active (`01`), Tools (`02`), Archive (`03`), and Exports (`04`).
 
 ## 3. Upgraded Daily Operator SOP (< 10 Minutes/Day)
-1. **Daily Execution (2 mins):** Run from clean template/tool -> Auto-validate -> Export dated snapshot to `03-IMMUTABLE-ARCHIVE`.
-2. **Price/Rule Change (2 mins):** Edit Tier-B Config once -> Applies to all future runs automatically.
-3. **Weekly Hygiene (1 min):** Run `review_gate_audit.py` to confirm zero stray clutter.
+1. **Daily Execution:** [[FILL: the real daily steps after the upgrade, with times]]
+2. **Price/Rule Change:** [[FILL: which Tier-B file/sheet to edit and how to verify]]
+3. **Weekly Hygiene:** [[FILL: the exact check/command and what "clean" means here]]
 """,
         "04-ZERO-DOWNTIME-MIGRATION-ROADMAP.md": f"""# 04. Surgical 4-Slice Migration Plan & 365-Day Immunity Roadmap — {project_name}
 
 ## 1. Surgical Non-Destructive Execution Slices
-- **Slice 1 (Pre-Flight Backup & Red-Zone Quarantine):** Snapshot current state and lock historical records.
-- **Slice 2 (Tier-B Config Extraction & Taxonomy Cleanup):** Extract hardcoded parameters and organize folders/modules.
-- **Slice 3 (30% Kano Modernization Delighters):** Attach automated validation, margin/quality guards, and 1-click exports.
-- **Slice 4 (Behavioral Parity Verification & Handover):** Run Before/After parity tests and verify rollback runbook.
+- **Slice 1 (Pre-Flight Backup & Red-Zone Quarantine):** [[FILL: exact backup target + which Red-Zone files are locked]]
+- **Slice 2 (Tier-B Config Extraction & Taxonomy Cleanup):** [[FILL: concrete scope + verification]]
+- **Slice 3 (30% Kano Modernization Delighters):** [[FILL: which DEL-xx items + verification]]
+- **Slice 4 (Behavioral Parity Verification & Handover):** [[FILL: parity cases + rollback test]]
 
 ## 2. The 365-Day Post-Upgrade Immunity Horizon
 | Milestone | System State | Built-In Immunity Mechanism | Operator Effort |
@@ -268,15 +295,20 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
         "05-DIAGNOSTIC-SCORECARD-AND-ROLLBACK.md": f"""# 05. C-Suite Before/After Scorecard, Regression Suite & Rollback Runbook — {project_name}
 
 ## 1. 6-Role C-Suite Comparative Delta Scorecard (Before vs. After)
+> Fill from a real critique pass (ideally an isolated subagent). The X-Ray heuristic baseline below is `[Assumption to Confirm]`; it only counts file entropy.
+
 | C-Suite Auditor Role | Baseline Score (Before) | Forensic Flaw Found | Upgraded Score (After) | Engineered Fix |
 | :--- | :---: | :--- | :---: | :--- |
-| **CPO (UX & Friction)** | {max(6, xray['estimated_baseline_score'] // 5)}/20 | Manual steps & version confusion | **19/20** | 1-click flow + 30% Kano Delighters |
-| **CTO (Debt & Coupling)** | {max(5, xray['estimated_baseline_score'] // 5)}/20 | Hardcoded volatility & mixed zones | **19/20** | Strict Tier-A/Tier-B/Red-Zone separation |
-| **VP Domain (`{domain_key}`)** | 9/15 | Missing top-1% industry automation | **14/15** | Domain benchmark templates embedded |
-| **CFO (Time & Unit Econ)** | 8/15 | Hours leaked on manual repetition | **14/15** | 80% time saved + margin guardrails |
-| **CRO/COO (Risk & Entropy)** | 7/15 | `{xray['entropy_count']}` entropy files & overwrite risk | **14/15** | Immutable archive + 1-click rollback |
-| **Daily Operator User** | 8/15 | Fear of breaking formulas/links | **14/15** | Inline validation + Sacred Habit lock |
-| **TOTAL HEALTH SCORE** | **{xray['estimated_baseline_score']}/100** | **Net Improvement: +{94 - xray['estimated_baseline_score']} pts** | **94/100** | **APPROVED (12M IMMUNITY READY)** |
+| **CPO (UX & Friction)** | [[FILL: /20]] | [[FILL: flaw with evidence]] | [[FILL: /20]] | [[FILL: fix]] |
+| **CTO (Debt & Coupling)** | [[FILL: /20]] | [[FILL: flaw with evidence]] | [[FILL: /20]] | [[FILL: fix]] |
+| **VP Domain (`{domain_key}`)** | [[FILL: /15]] | [[FILL: flaw with evidence]] | [[FILL: /15]] | [[FILL: fix]] |
+| **CFO (Time & Unit Econ)** | [[FILL: /15]] | [[FILL: flaw with evidence]] | [[FILL: /15]] | [[FILL: fix]] |
+| **CRO/COO (Risk & Entropy)** | [[FILL: /15]] | [[FILL: flaw; X-Ray found {xray['entropy_count']} entropy files]] | [[FILL: /15]] | [[FILL: fix]] |
+| **Daily Operator User** | [[FILL: /15]] | [[FILL: flaw with evidence]] | [[FILL: /15]] | [[FILL: fix]] |
+
+- **X-Ray Heuristic Baseline:** {xray['estimated_baseline_score']}/100 `[Assumption to Confirm]`
+- **TOTAL BASELINE SCORE:** [[FILL: sum]] / 100
+- **TOTAL UPGRADED SCORE:** [[FILL: sum]] / 100 (Gate 3 requires >= 85)
 
 ## 2. Automated Fitness & Behavioral Parity Checks
 1. **FF-01 (Parity Regression Check):** Historical inputs produce 100% accurate outputs on upgraded engine.
@@ -298,9 +330,23 @@ def main():
     parser = argparse.ArgumentParser(description="Run Forensic X-Ray Scan & Scaffold APEX Review Ledger")
     parser.add_argument("--dir", default=".", help="Target product or workspace directory to scan")
     parser.add_argument("--name", required=True, help="Target product/workspace name")
-    parser.add_argument("--domain", default="DOM-01", choices=list(DOMAIN_MAP.keys()), help="Primary domain ID (DOM-01..07)")
+    parser.add_argument(
+        "--domain",
+        default="DOM-01",
+        help="Archetype ID (DOM-01..DOM-07) or any free-text field/context, e.g. 'family dental clinic, Da Nang'",
+    )
     parser.add_argument("--force", action="store_true", help="Overwrite existing review ledger files")
+    parser.add_argument(
+        "--scan-only",
+        action="store_true",
+        help="Turn 1: print the X-Ray inventory and write nothing into the user's workspace",
+    )
     args = parser.parse_args()
+    for stream in (sys.stdout, sys.stderr):  # cp1252 consoles crash on paths like 'Từ idea'
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
 
     target_root = os.path.abspath(args.dir)
     if not os.path.isdir(target_root):
@@ -317,7 +363,16 @@ def main():
         f"  - Blast-Radius Zones  : Green={xray['zones']['counts']['green']} | "
         f"Yellow={xray['zones']['counts']['yellow']} | Red={xray['zones']['counts']['red']}"
     )
-    print(f"  - Est. Baseline Score : {xray['estimated_baseline_score']} / 100\n")
+    print(f"  - Est. Baseline Score : {xray['estimated_baseline_score']} / 100 (heuristic, entropy only)\n")
+    for label, key in (("Red-Zone files", "red_immutable"), ("Yellow-Zone files", "yellow_tested")):
+        if xray["zones"][key]:
+            print(f"  {label}: " + ", ".join(xray["zones"][key]))
+    if xray["entropy_files"]:
+        print("  Duplicate/version files: " + ", ".join(xray["entropy_files"]))
+
+    if args.scan_only:
+        print("\n[SCAN-ONLY] Nothing was written. Read the files themselves for findings; scaffold the ledger after the owner replies.")
+        return
 
     review_dir = os.path.join(target_root, "docs", "apex-review")
     os.makedirs(review_dir, exist_ok=True)
@@ -344,10 +399,8 @@ def main():
 
     print(f"\n[SUCCESS] Forensic Review Ledger initialized at: {review_dir}")
     print("=" * 76)
-    print("[STOP GATE 1A — DO NOT PROPOSE FIXES OR ARCHITECTURE YET!]")
-    print("  1. Report ONLY the objective X-Ray baseline inventory above to the user.")
-    print("  2. Interview the user from the root of their ORIGINAL IDEA & ULTIMATE VISION (Step 1B).")
-    print("  3. STOP and WAIT for the user's reply before building the Vision-vs-Reality Gap Matrix!")
+    print("[LEDGER SCAFFOLDED] Fill every [[FILL: ...]] marker from the owner's answers and file evidence.")
+    print("  Use --scan-only on Turn 1; scaffold only after the owner has shared their root vision.")
     print("=" * 76)
 
 

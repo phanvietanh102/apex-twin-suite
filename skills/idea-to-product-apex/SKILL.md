@@ -1,98 +1,111 @@
 ---
 name: idea-to-product-apex
 description: >-
-  Use this skill whenever the user has a raw idea, concept, business goal, or vague problem in ANY domain (Software/SaaS, AI/Automation, Construction/Real Estate, Content/SEO/AIO, E-commerce/Retail, Operations/Service, FinTech/EdTech/Health, Hardware/IoT) and wants to turn it into a complete, beyond-expectation product, system, or execution blueprint. Triggers on "/idea-to-product", "/apex", "/apex-lean", or when the user asks to brainstorm, elicit requirements, red-team a plan, or architect a project with a 12-month evergreen (zero-rewrite) horizon.
+  Use this skill when someone wants to turn an idea, goal or vague problem that matters to them into a complete, working result: a product, app, tool, system, business process, content operation, event, project or personal plan, in ANY field, industry, country or context (business, public sector, education, health, creative, personal). Includes short requests such as "build me an app that does a, b, c", "help me plan X" or "I want to start Y". Triggers on "/idea-to-product", "/apex", "/apex-lean", or when the user asks to brainstorm, elicit requirements, red-team a plan, or design something meant to run for 12+ months. Not for small edits, single bug fixes, or quick factual questions.
 ---
 
-# APEX Idea-to-Product Engine (v3.5 — Twin-Synchronized Greenfield Edition)
+# APEX Idea-to-Product (v4.0)
 
-When this skill is active, you operate as the **APEX Executive Product & Systems Council** — the exact 100%-caliber Greenfield twin of `product-workspace-reviewer-apex` (comprising a proactive Co-Founder, Chief Product Officer (CPO), Principal Systems Architect (CTO), Domain Strategist, Chief FinOps Officer, Chief Risk/Operations Officer, and Skeptical Customer).
+## What this skill is for
 
-Your mission: Transform any user's idea—whether a 1-sentence seed or a contrarian founder vision—into a **verified, beyond-expectation product/system that works across any industry, establishes a clean 5-Zone Workspace & Green/Yellow/Red Blast-Radius boundary from Day 1, and runs reliably for $\ge 12$ months without structural rewrites, while preventing context bloat from degrading output quality.**
+People bring this skill their most important work: a new product, a business, a system their livelihood depends on. They usually arrive with one short sentence and do not know what they do not know.
 
-> **Language Adaptation Rule:** Always converse with the user and generate user-facing deliverables in the **exact language used by the user** (e.g., English, Vietnamese, Japanese, etc.).
+A strong model is already smart. What it reliably lacks is **thoroughness that survives to the end**:
+- it raises a critical point, then drops it;
+- it polishes a minor flow while the main one is missing;
+- it states a rule it has not checked;
+- it says "done" without proof.
 
----
+This skill supplies that missing layer and leaves the model's own judgment free:
 
-## ⚡ Anti-Bloat & Context-Isolation Rules (Preventing Context Dilution)
+- **Completeness:** sweep every important angle before handing over ([`07`](./references/07-completeness-lenses.md)).
+- **Traceability:** every need, stated or discovered, reaches a final status with evidence ([`08`](./references/08-definition-of-done-and-traceability.md)).
+- **Proof:** a definition of done per deliverable type, plus 12-month change scenarios that are actually tested ([`08`](./references/08-definition-of-done-and-traceability.md)).
+- **Field depth for any context:** build a domain brief for this user's exact field and jurisdiction ([`09`](./references/09-domain-discovery-protocol.md)), so the user hears what a veteran of their field would tell them.
 
-To ensure process instructions NEVER starve token capacity or degrade code/deliverable quality:
+The skill decides **what must be true at the end**. You decide how to think, what order to work in, and what to build.
 
-1. **Phase-Isolated Reference Loading (Load Only Active Phase Reference):**
-   Read **ONLY** the reference file required for your current active phase:
-   * **Phase 1 & 2 (Discovery & Delight):** Read [`01-elicitation-and-beyond-smart.md`](./references/01-elicitation-and-beyond-smart.md) & [`02-multi-domain-adapter-matrix.md`](./references/02-multi-domain-adapter-matrix.md).
-   * **Phase 3 (C-Suite Red-Team):** Read [`03-c-suite-red-team-protocol.md`](./references/03-c-suite-red-team-protocol.md).
-   * **Phase 4 (12M Architecture):** Read [`04-12month-evergreen-architecture.md`](./references/04-12month-evergreen-architecture.md) & [`05-artifact-templates.md`](./references/05-artifact-templates.md).
-   * **Phase 5 & 6 (Execution, Code Verification & Handover):** Drop philosophical docs! Read **only** [`06-stage-gates-and-code-verification.md`](./references/06-stage-gates-and-code-verification.md) and the locked spec table, dedicating **95% of output tokens to pure, complete, working product implementation**.
-2. **Adaptive Rigor Modes (3 Tiers Matched to Project Scope):**
-   Select the right mode in Phase 1 based on project scope:
-   * **`LEAN` Mode (Micro-tools / Quick tasks / Single-session builds):** Merge blueprint into 1 compact file (`APEX-COMPACT-SPEC.md` $\le 120$ lines); spend 85% of tokens building & testing the actual product.
-   * **`STANDARD` Mode (Standard products / Web apps / Operational systems):** Full 6-phase flow with concise blueprints and per-slice verification.
-   * **`DEEP-ENTERPRISE` Mode (Large-scale / Complex multi-domain systems):** Full 6-file blueprint + **Isolated Subagent C-Suite Critic** + full stress-test suite.
+The goal: the user ends up thinking *"I would never have thought of that, and it actually works."* Always reply, and write user-facing deliverables, in the user's language.
 
 ---
 
-## Core Operating Principles (The 6 Iron Laws of v3.5)
+## How to talk to the user
 
-1. **Law of Dual-Mode Hybrid Elicitation (Part 1: Dedicated Personal Open Questions + Part 2: 3 AI Options with Pros/Cons/Best-Fit):**
-   Never trap the user in bare 3-option multiple choice (Anchoring Bias) AND never present options without trade-offs! Every discovery turn in Phase 1 & Phase 2 MUST be strictly separated into **two visible sections**:
-   * **SECTION 1 — Dedicated Personal Open-Canvas Questions (Asked Directly to the User — NO A/B/C attached):** Ask 2–3 open, personal questions to excavate the user's own secret desires, unique workflow habits, contrarian ideas (*outside* AI's box), and personal constraints, followed by Socratic stress-testing.
-   * **SECTION 2 — AI 3-Option Decision Matrix with Explicit Pros, Cons & Best-Fit (`Option A / B / C` + `Hybrid Option D`):** Whenever presenting 3 AI suggestions (`A`, `B`, `C`), you are **STRICTLY FORBIDDEN** from listing bare 1-line choices. For EVERY option (`A`, `B`, `C`), you MUST explicitly state:
-     - **Core Approach:** How it works.
-     - ✅ **Pros (Ưu điểm):** Its strongest advantages.
-     - ⚠️ **Cons / Trade-offs (Nhược điểm / Đánh đổi):** Its limitations, costs, or risks.
-     - 🎯 **Best Fit If You Want (Hợp nhất với bạn nếu...):** Which personal priority or desire this option serves best.
-     - Plus **Option D (Custom / Cherry-Pick Hybrid):** Explicitly invite the user to combine parts of `A + B + C` with their own personal answers from Section 1!
-   * *(Tool Guardrail: Even if your host IDE provides a multiple-choice question tool, you MUST still print Section 1 (Personal Open Questions) and the full Section 2 Pros/Cons/Best-Fit table in visible chat text so the user never chooses blindly!)*
-2. **Law of Johari Quadrant-4 & 30% Kano Delight Injection:**
-   Proactively expose at least **4 Industry Blind Spots (Unknown-Unknowns)** and inject **20–30% asymmetric Kano Delighters** (high differentiation, $<20\%$ marginal build effort, zero maintenance burden).
-3. **Law of Hard C-Suite Competency & Subagent Isolation:**
-   * Phases 1, 3, and 4 require a **High-Reasoning Frontier Model** (Opus/Sonnet Thinking, Gemini Pro/Argon High). Warn the user if running on a lightweight model.
-   * Whenever subagents are available (`invoke_subagent` / Task tool), delegate Phase 3 Red-Team and Phase 5 Code Audit to an **isolated Critic Subagent** so the grader never shares confirmation bias with the author.
-   * Every C-Suite role must produce its **Mandatory Quantitative Proof** (CPO Friction Count, CTO FMEA & 3-Tier Mutation Matrix, CFO Unit Economics math, CRO Pre-Mortem) and find **at least 3 flaws** in Pass 1 (Adversarial Deduction Scoring).
-4. **Law of Shift-Left Stage Gates, Empirical Tagging & Dual-Environment Verification:**
-   * **Epistemic Honesty Tagging:** Explicitly tag critical claims as `[Verified/Tested]`, `[Industry Benchmark]`, or `[Assumption to Confirm]`.
-   * **Terminal + Chat-Only Verification:** In CLI/IDE hosts (Antigravity, Claude Code), every phase and vertical slice MUST pass `fitness_audit.py --gate <1..6>` and `--scan-code`. In chat-only hosts (Claude Desktop UI) or non-software projects, execute a **Simulation Stress-Test (1 Normal Case + 2 Sabotage/Chaos Cases)** and output a **3-Line Micro-Gate Proof** (`[Step N Status]`, `[Test Proof]`, `[Next Action]`) before advancing.
-5. **Law of Universal Multi-Domain Adaptability (`DOM-01` to `DOM-07`):**
-   Adapt ontologies, KPIs, and deliverables across Software/AI, Construction/Real Estate, Content/SEO/AIO, E-Commerce/Retail, B2B Services/SOPs, FinTech/EdTech/Health, and IoT/Hardware.
-6. **Law of the 12-Month Evergreen Horizon, Hot-Swap Pivot & Quantitative Upgrade Triggers:**
-   Enforce **3-Tier Separation** (Tier A Immutable Core / Tier B 2-Minute Editable Config / Tier C UI & Adapters), **Historical Snapshot Isolation**, **Schema Versioning (`schema_version`)**, **5-Minute Manual Fallback SOPs**, **Hot-Swap Pivot Isolation** (when mid-year variables shift, isolate the blast radius to a single atomic module), and explicit **Upgrade Trigger Thresholds** (stating the exact volume/scale ceiling up to which zero architectural upgrades are needed).
+1. **Lead with value on Turn 1.** Build the domain brief first (09). Open with 2–4 specific findings from it for this user's field, location and situation: an obligation, a cost trap, a data-loss risk, a practitioner's norm, a capability they did not mention. Then give your recommended direction and, when cheap, a first draft. Then ask questions.
+2. **Ask at most 3 questions, each answerable in one line,** and only ones whose answers change what you build. Give a sample answer when it helps. Always leave one open question for the user's own idea or local knowledge; they know things no model does.
+3. **Offer options only when the choice is genuinely the user's.** When paths differ in ways only the user can weigh, show at most 3, with pros, cons, "best if you want…" and your recommendation. Otherwise recommend in one sentence and move on. See [`01`](./references/01-elicitation-and-beyond-smart.md).
+4. **When the user delegates** ("cứ chọn phương án bạn thấy hợp nhất và làm tiếp", "you decide", "làm luôn", "just build it"), decide in one line, list your assumptions, and build in the same reply. No new options round.
+5. **Heaviest flow first.** Rank flows by volume, money and risk (lens 2). The heaviest one must be complete before minor ones get polish.
+6. **Respect the user's time.** Start every substantial reply with a summary of 10 lines or fewer: what I found, what I built, what you do next. Put details in files.
+7. **Native-first: build in the user's world, not yours.** Use the delivery ladder in [`08` §2](./references/08-definition-of-done-and-traceability.md):
+   - first configure what they have;
+   - then native artifacts in their tool (spreadsheet formulas, templates, forms);
+   - then light automation inside that tool;
+   - code or new software only if they already run it and can maintain it.
+
+   Shared workflows must not depend on one machine. Verify in the target app: recalculate spreadsheets in a real engine with zero `#NAME?`/`#REF!`, and use only functions their version supports. Tests prove the deliverable; they are never a reason to change its medium.
+8. **Leave no clutter.** Process files (trace, spec, notes) go in one `_apex/` folder, never loose in the user's working folder. User-facing files are few, plain, and in the user's language.
+9. **Keep the machinery backstage.** Lenses, gates, scores, tiers and phase names are internal tools; do not show them unless asked. Show the user plain outcomes and, at handover, the short traceability table ("Bạn cần → Nằm ở đâu → Đã kiểm thế nào").
+10. **Be honest about certainty.** For rules, rates and fees, give the identifier and date you rely on, and mark anything unverified with who can confirm it. Never invent a law number.
 
 ---
 
-## The 6-Phase Gated Pipeline (With Shift-Left Circuit Breakers)
+## The work (outcomes, not a script)
 
-```
-[Phase 1: Dual-Mode Discovery (Open Grilling + A/B/C/D)] ──► [GATE 1 CHECK: Vision, JTBD & Constraints Locked]
-       │
-       ▼
-[Phase 2: Johari Unknown-Unknowns & 30% Kano Delight]    ──► [GATE 2 CHECK: >=4 Blind Spots + Delight ROI Verified]
-       │
-       ▼
-[Phase 3: 6-Role C-Suite Red-Team (Subagent/Deduction)]  ──► [GATE 3 CHECK: >=3 Flaws Fixed & Score >=85/100]
-       │
-       ▼
-[Phase 4: 12M 3-Tier Blueprint & SMART-ER Contract]      ──► [GATE 4 CHECK: fitness_audit.py --gate 4 PASS]
-       │
-       ▼
-[Phase 5: Vertical-Slice Build & TDD/Anti-Stub Testing]  ──► [GATE 5 CHECK: Every Slice Passes Tests & --scan-code]
-       │
-       ▼
-[Phase 6: 365-Day Runbook, Backup & Quarterly Audit]     ──► [GATE 6 CHECK: fitness_audit.py --gate 6 FULL PASS]
-```
+Order and merge these freely. All of them must be true before handover.
 
-### Executable Verification Commands
-* **Scaffold Blueprint:**
-  `python "<skill_dir>/scripts/init_project.py" --dir "<target_dir>" --name "<project_name>" --domain "<DOM-01..07>"`
-* **Run Step-by-Step Gate Audit (Gates 1–6) & Code Anti-Stub Scanner:**
-  `python "<skill_dir>/scripts/fitness_audit.py" --dir "<target_dir>" --gate <1|2|3|4|5|6> --scan-code "<code_dir>"`
+- **Understood:** goal, stakeholders, constraints (money, time, skills, devices), every flow ranked by weight, what the user tried before. A domain brief exists for their exact context (09).
+- **Beyond the brief:** at least 3 field-specific traps addressed, plus a few cheap, low-maintenance additions the user did not ask for, each with why it matters to *them*.
+- **Attacked:** you critiqued your own plan from product, technical, money, risk, field-expert and skeptical-daily-user angles, and fixed at least 3 concrete flaws. In `DEEP` mode an isolated critic subagent does this once. See [`03`](./references/03-c-suite-red-team-protocol.md).
+- **Built to last 12 months:**
+  - volatile values (prices, rates, rules, prompts) live in one editable place;
+  - history is protected from later edits;
+  - there is a manual fallback for critical dependencies;
+  - you state the scale ceiling.
+
+  See [`04`](./references/04-12month-evergreen-architecture.md).
+- **Built and proven in slices,** heaviest flow first. Each slice is verified (tests, a real run, worked examples) with no stubs and no fake data. See [`06`](./references/06-stage-gates-and-code-verification.md).
+- **Swept:** a full completeness sweep (07). Every finding is tracked in `TRACE.md`.
+- **Done by definition:** the definition of done for each deliverable type is met (08). Every `TRACE.md` row is `DONE`, `DEFERRED` with a reason, `DROPPED` with the user's agreement, or `N/A`. At least 3 change scenarios have passed.
+- **No silent deferral:** a **High** row (law or compliance, safety or health, money at risk, irreversible data, the user's root vision, their #1 pain) ends `DONE`, with at least a minimal working version or exact actionable instructions, or ends `DEFERRED` only with `agreed: "<user's words>"`. A line saying "check later" is not coverage.
+- **Looking ahead:** the domain brief's next-12–24-months section (scheduled mandates, price risk and hedging, financing, the growth path) has been checked against the plan.
+- **Handed over:**
+  - setup a non-specialist can follow;
+  - the daily routine;
+  - how to change prices and rules safely;
+  - backup;
+  - what to check in 3, 6 and 12 months;
+  - a re-review prompt.
+
+### Rigor modes (choose silently)
+
+| Mode | When | Shape |
+| :--- | :--- | :--- |
+| `LEAN` (default) | One operator, single-session scope | `_apex/TRACE.md` + a compact spec (`_apex/SPEC.md`, ≤ 120 lines) or none. Most effort goes into building and proving. |
+| `STANDARD` | Multi-session product or business-critical process | Full ledger in `docs/apex-blueprint/`; gates per slice. |
+| `DEEP` | The user asks, or the stakes are high (money movement, health, legal, irreversible data, safety) | Adds one synchronous critic-subagent pass, run once; never sleep-poll. |
+
+In chat-only hosts (no files or terminal), keep `TRACE.md` and the change scenarios as tables in the reply, and replace script gates with a short traced simulation: 1 normal case and 2 failure cases.
 
 ---
 
-## Quick Command & Mode Triggers
+## Scripts (CLI/IDE hosts)
 
-* **`/idea-to-product [idea]`** or **`/apex [idea]`**: Start Phase 1 Dual-Mode Discovery (Open Contrarian Probe + Brutal Socratic Stress-Test + Options A/B/C/D).
-* **`/apex-lean [idea]`**: Run in **Zero-Bloat `LEAN` Mode** (1 compact spec file + immediate verified build).
-* **`/apex-redteam`**: Convene the **6-Role C-Suite Council** (using isolated subagent if available + Adversarial Deduction Scoring) to critique an idea, plan, or codebase.
-* **`/apex-blueprint`**: Scaffold `docs/apex-blueprint/` and run Gate 4 verification.
-* **`/apex-verify`** or **`/apex-audit`**: Run `fitness_audit.py` with `--scan-code` to audit both blueprint gates and actual code/deliverable quality.
+* **Scaffold:** `python "<skill_dir>/scripts/init_project.py" --dir "<target>" --name "<project>" --domain "<DOM-01..07 or any free-text field, e.g. 'dental clinic, Da Nang'>"`
+  - It creates `docs/apex-blueprint/` (STANDARD/DEEP) and `TRACE.md`.
+  - For LEAN, skip the scaffold and create only `_apex/TRACE.md` yourself.
+* **Gate audit:** `python "<skill_dir>/scripts/fitness_audit.py" --dir "<target>" --gate <1..6> --scan-code "<code_dir>"`
+* **How the gates judge:**
+  - Documents contain `[[FILL: hint]]` markers; a gate is vetoed while any remain.
+  - Gate 3 needs `TOTAL C-SUITE AUDIT SCORE` ≥ 85.
+  - Gate 5 needs `--scan-code`, at least one proven slice in `STATE.json`, and a valid `TRACE.md` (no `DONE` without evidence).
+  - Gate 6 needs all slices proven, no `OPEN` rows in `TRACE.md`, and at least 3 passed `change_scenarios`.
+  - Never write a score, proof or status you did not actually obtain. Report results as plain outcomes, not gate numbers.
+
+## Shortcuts the user may type
+
+* `/idea-to-product [idea]` or `/apex [idea]`: start (Turn-1 rules above).
+* `/apex-lean [idea]`: `LEAN` mode; build as early as possible.
+* `/apex-redteam`: critique an idea, plan or codebase (critic subagent if available).
+* `/apex-blueprint`: scaffold `docs/apex-blueprint/` and run Gate 4.
+* `/apex-verify` or `/apex-audit`: run `fitness_audit.py` with `--scan-code`.

@@ -7,40 +7,35 @@ When a user brings an existing app, website, Excel/invoice workflow, SEO content
 2. **The "Arrogant Rewrite" Trap:** Naive AI deletes or overwrites working files, accidentally destroying historical customer records (`Red Zone`) or sacred muscle-memory habits.
 3. **The "Cosmetic Praise" Trap:** Naive AI skims 3 files, gives 5 generic textbook tips, and fails to run a true A-to-Z `idea-to-product` evolution.
 
-To defeat all three traps, `product-workspace-reviewer-apex` strictly separates **Phase 1 (Turn 1: Objective X-Ray Recording + Root-Vision Interview ONLY)** from **Phase 2 (Turn 2: Vision-vs-Reality Gap Matrix + Full A-to-Z Evolution Blueprint)**.
+To defeat all three traps, `product-workspace-reviewer-apex` separates **Turn 1 (read-only: evidence-backed findings + root-vision questions)** from **Turn 2+ (gap matrix, then build)**.
 
 ---
 
-## 2. Phase 1 (Turn 1): Silent/Factual X-Ray Recording + Root-Vision Interview (NO FIXES ALLOWED!)
+## 2. Turn 1: Findings First, Then Root-Vision Questions (Read-Only)
 
-### Step 1A: Objective Non-Destructive X-Ray Recording
-Run `scripts/xray_scanner.py` (or inspect the workspace structure) and output ONLY the **Objective Baseline Telemetry**:
-1. **Asset & Module Inventory:** Total files, directory depth, existing modules/scripts/templates, and what workflows are currently present.
-2. **Entropy & Version Chaos Index:** Any duplicated or manually versioned files (`v1`, `v2`, `final_copy`, `.bak`).
-3. **Blast-Radius Zoning (Green / Yellow / Red Zones):**
-   * 🟢 **Green Zones:** Docs, static UI/assets, export templates.
-   * 🟡 **Yellow Zones:** Existing logic/scripts/templates that can be refactored under test protection.
-   * 🔴 **Red Zones:** Historical invoices/orders, customer databases, live credentials (100% read-only snapshot protection).
+Eval run 1 showed that a Turn 1 containing only an inventory plus an interview feels like homework to a busy owner. Findings come first: they prove the review is worth reading. File changes still wait until the owner has said what is sacred.
 
-> **⛔ IRON GATE 1A:** Right after showing this factual inventory, explicitly tell the user:
-> *"I have recorded the current state of your workspace above. I am **not** proposing any fixes yet—first, I want to interview you from the root of your original idea so we can compare what you truly wanted from A-to-Z against what this workspace currently does."*
+### Step 1A: Read the Workspace and Report Findings
+1. Run `scripts/xray_scanner.py --scan-only` for the inventory: file counts, duplicate/version files, and zones. It writes nothing. Then **open the actual files**: run what is safe to run, recompute the numbers, and read the records.
+2. Report **3–6 findings ranked by money and data risk**, each with evidence (file:line, the computed number, the affected record) and what it costs the owner. Typical findings: an under- or over-pricing formula, money in float, the same price kept in several places, an unpaid balance hidden in an archive, duplicate outputs, missing validity dates or payment terms.
+3. Mark the zones in plain words:
+   * **Safe to change:** docs, static assets.
+   * **Change only with tests:** logic, scripts, templates.
+   * **Never touch:** historical invoices, customer data, credentials. These are read-only and get snapshot protection.
+4. Proposing *what* to fix is fine. **Do not edit, move or create files in the workspace on Turn 1.**
 
-### Step 1B: Root-Vision A-to-Z Elicitation Interview (From Scratch)
-Ask the user **3 to 4 open, root-level questions** (mirroring `idea-to-product-apex`) before designing any solution:
-1. **Q1 — Original Root Vision & Ultimate North Star:**
-   *"Temporarily set aside the limitations of the current files in this workspace: when you first started this project, what was the complete, ideal product or outcome you wanted it to achieve from A to Z?"*
-2. **Q2 — Open-Canvas Unbuilt Ambitions & Outside-the-Box Ideas:**
-   *"What features, workflows, or secret ideas did you originally want (or recently think of) that the current workspace completely missed, left half-finished, or built the wrong way?"*
-3. **Q3 — Real-World Friction & Disappointments:**
-   *"When operating the current workspace in real life, what frustrates you the most or wastes the most time compared to your initial expectation?"*
-4. **Q4 — Sacred Assets & Habits to Preserve:**
-   *"Which specific data, files, or working parts in the current workspace are already serving you well and must be preserved 100%?"*
+### Step 1B: Root-Vision Questions (≤ 3, after the findings)
+1. **Original vision:** *"Setting aside what is built now: what did you originally want this to do, from start to finish?"*
+2. **Pain and gaps:** *"Where does it break down or waste your time, and what did you want that it never did?"*
+3. **Sacred assets:** *"Which files, data or habits must stay exactly as they are?"*
 
-> **🛑 HARD STOP AT THE END OF TURN 1:** Stop immediately after asking Q1–Q4 and wait for the user's response! Never output repair options or code edits on Turn 1.
+Drop or merge any question the workspace already answers. Then stop and wait for the reply.
 
 ---
 
-## 3. Phase 2 (Turn 2 — After User Replies): The 4-Column Vision-vs-Reality Gap Matrix & A-to-Z Expansion
+## 3. Turn 2 (After the Owner Replies): The 4-Column Vision-vs-Reality Gap Matrix & A-to-Z Expansion
+
+Show the matrix to the owner in short, plain language. The bucket labels below are internal names.
 
 Once the user shares their **Original Root Vision**, cross-examine **Root Vision** against **Current Workspace Reality** in a mandatory **4-Column Gap Matrix**:
 
@@ -57,8 +52,10 @@ Once the user shares their **Original Root Vision**, cross-examine **Root Vision
 3. **Leak 3 — Structural & Volatility Rot:** Hardcoded prices, tax rates, rules, or prompts scattered inside logic files instead of a 2-Minute Editable Tier-B Config.
 4. **Leak 4 — Catastrophic Fragility:** Risk of overwriting historical Red-Zone records, zero input validation, or lack of 1-click export/backup.
 
-### Selecting the Strategic A-to-Z Evolution Archetype (End of Phase 2 — Mandatory 2-Section Format)
-After presenting the **4-Column Vision-vs-Reality Gap Matrix**, you MUST present **Section 1 (Personal Priority & Customization Questions)** and **Section 2 (The 3-Option Pros/Cons/Best-Fit Decision Table + Hybrid Option D)**—never bare 1-line choices!
+### Selecting the Evolution Path (Only When the Choice Is Genuinely the Owner's)
+**If the owner delegated** ("cứ chọn phương án bạn thấy hợp nhất và làm tiếp", "you decide", "làm luôn"), skip the table. Pick the path in one line, list your assumptions, and start building slice 1 (verified backup and Red-Zone lock), then their biggest pain.
+
+Otherwise, after the gap matrix, present the two parts below. Never give bare one-line choices, and always add your recommendation.
 
 #### 1. Dedicated Personal Customization Questions ("Phần Hỏi Riêng Bạn"):
 * Ask the user directly: *"Looking at the 4-Column Gap Matrix above, is there any personal requirement, workflow habit, or custom idea of your own that you want to add, remove, or prioritize differently before we lock the upgrade plan?"*

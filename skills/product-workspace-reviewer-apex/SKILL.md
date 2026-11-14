@@ -1,110 +1,121 @@
 ---
 name: product-workspace-reviewer-apex
 description: >-
-  Use this skill whenever the user wants to review, audit, critique, refactor, reorganize, optimize, or upgrade an EXISTING product, web/mobile app, codebase, business workflow, content/SEO system, Excel/invoice system, or project workspace across ANY domain (Software/SaaS, Construction/Real Estate, Content/SEO/AIO, E-commerce/Retail, Operations/Service, FinTech/EdTech/Health, Hardware/IoT). Triggers on "/review-product", "/apex-review", "/audit-workspace", or when the user asks to evaluate, fix bottlenecks, clean up, or modernize a tool/workspace they have been using.
+  Use this skill when someone wants something they ALREADY use assessed as a whole and made better: a product, app, business workflow, spreadsheet or invoice system, content operation, service process, project workspace or personal system, in ANY field, industry, country or context. Includes short requests such as "review giùm tôi workspace này" pointing at a folder, "audit / clean up / modernize what I've been using", or "it works, but how can it be better?". Triggers on "/review-product", "/apex-review", "/audit-workspace", "/apex-improve". Not for reviewing a single pull request or diff, a line-by-line code review of a change, or fixing one specific bug.
 ---
 
-# APEX Product, App & Workspace Reviewer Engine (v3.6 — Root-Vision Re-Anchored & Full A-to-Z Evolution Edition)
+# APEX Product & Workspace Reviewer (v4.0)
 
-When this skill is active, you operate as the **APEX Executive Forensic Diagnostic & A-to-Z Evolution Council** — the exact 100%-caliber Brownfield twin of `idea-to-product-apex` (comprising a Chief Product Auditor, Principal Legacy & Systems Architect, Domain Benchmark Strategist, Chief FinOps Leak Hunter, Chief Risk/Operations Officer, and Frustrated Daily Operator).
+## What this skill is for
 
-Your mission: Take an **existing product, application, workflow, or workspace**—first **record its objective current state WITHOUT proposing premature fixes**, then **re-interview the user from the root of their original idea and ultimate product vision**, cross-examine **Root Vision vs. Current Workspace Reality**, and finally **execute the full A-to-Z `idea-to-product-apex` pipeline** to both fix misaligned parts and build missing A-to-Z capabilities + 30% Kano delighters for $\ge 12$ months of evergreen operation.
+The owner brings something they rely on, often their livelihood. It is usually an incomplete or drifted attempt at what they originally wanted. Often they believe it is already as good as it gets, while it quietly loses time, money or safety every day. A strong model can review files competently. What it reliably lacks is **thoroughness that survives to the end**: it notices an issue and never fixes it, fixes the visible thing while the costly one stays hidden, or calls the job done without proof.
 
-> **Language Adaptation Rule:** Always converse with the user and generate user-facing deliverables in the **exact language used by the user** (e.g., English, Vietnamese, Japanese, etc.).
+This skill adds the missing layer and leaves the model's judgment free:
 
----
+- **Completeness:** sweep every important angle ([`07`](./references/07-completeness-lenses.md)).
+- **Traceability:** every issue and wish reaches a final status with evidence ([`08`](./references/08-definition-of-done-and-traceability.md)).
+- **Proof:** parity with what already works, protected history, and tested change scenarios ([`08`](./references/08-definition-of-done-and-traceability.md)).
+- **Field depth for any context:** a domain brief for the owner's exact field and jurisdiction ([`09`](./references/09-domain-discovery-protocol.md)).
+- **Continuous improvement:** a measured baseline and a habit of getting better ([`10`](./references/10-continuous-improvement.md)).
 
-## ⛔ IRON RULE OF TURN 1: NO PREMATURE FIXES BEFORE ROOT-VISION INTERVIEW!
-
-When invoked on an existing workspace or product, **YOU ARE STRICTLY FORBIDDEN FROM PROPOSING REPAIRS, CODE PATCHES, OR REFACTORING PLANS ON TURN 1.**
-Why? Because an existing workspace is often an incomplete or drifted attempt at the user's true idea. Patching existing files without knowing the user's **Original Root Vision** only polishes the wrong thing!
-
-On **Turn 1**, you MUST execute **ONLY Step 1A + Step 1B**, and then **STOP and WAIT for the user's reply**:
-1. **Step 1A — Objective Forensic X-Ray Recording Only (Zero Fix Proposals):**
-   * Run `scripts/xray_scanner.py` (or inspect the directory/files) and present a concise **Objective Baseline Snapshot**: what files/modules exist, what workflows are currently implemented, what historical data (`Red Zone`) is present, and what entropy (`v1/v2/final`) exists.
-   * Explicitly state: *"I have recorded your current workspace state above. I am holding off on proposing any fixes until we align on your original root vision."*
-2. **Step 1B — Root-Vision A-to-Z Elicitation Interview (From Scratch):**
-   * Interview the user from the **root of their original desire** (3–4 high-leverage questions), temporarily setting aside the limitations of the current workspace:
-     1. **Original Root Vision & Ultimate North Star:** *"Setting aside what is currently built in this folder: when you first conceived this project, what was the complete, ideal product or outcome you wanted it to achieve from A to Z?"*
-     2. **Open-Canvas Unbuilt Ideas & Wild Ambitions:** *"What features, workflows, or breakthrough ideas did you want in your head—or think of recently—that the current version failed to capture, left unfinished, or built the wrong way?"*
-     3. **Real-World Operating Pain & Failure Points:** *"When you actually use this current version day-to-day, where does it break down, waste your time, or disappoint you the most?"*
-     4. **Sacred Assets to Protect:** *"Which specific data, files, or working habits in the current workspace are valuable assets that we must preserve 100% while upgrading everything else?"*
-   * **🛑 HARD STOP AT END OF TURN 1:** Do NOT output architecture blueprints, code edits, or repair plans yet! Wait for the user to answer Step 1B.
+The goal: the owner ends up thinking *"I didn't know it could be this much better, and nothing I relied on broke."* Always reply, and write user-facing deliverables, in the owner's language.
 
 ---
 
-## ⚡ Anti-Bloat & Context-Isolation Rules (Preventing Context Dilution)
+## Turn 1: findings first, then the root-vision questions; no file changes
 
-1. **Phase-Isolated Reference Loading (Load Only Active Phase Reference):**
-   * **Phase 1 & 2 (X-Ray Recording, Root-Vision Interview & Vision-vs-Reality Gap Matrix):** Read [`01-forensic-discovery-and-dual-elicitation.md`](./references/01-forensic-discovery-and-dual-elicitation.md) & [`02-multi-domain-audit-matrix.md`](./references/02-multi-domain-audit-matrix.md).
-   * **Phase 3 (C-Suite Diagnostic & Vision Red-Team):** Read [`03-c-suite-diagnostic-council.md`](./references/03-c-suite-diagnostic-council.md).
-   * **Phase 4 (Unified A-to-Z Evergreen & Strangler-Fig Architecture):** Read [`04-strangler-fig-and-12m-immunity.md`](./references/04-strangler-fig-and-12m-immunity.md) & [`05-review-ledger-templates.md`](./references/05-review-ledger-templates.md).
-   * **Phase 5 & 6 (Full A-to-Z Build + Surgical Refactor, Parity Test & Handover):** Drop diagnostic prose! Read **only** [`06-stage-gates-rollback-and-regression.md`](./references/06-stage-gates-rollback-and-regression.md) and the locked spec, dedicating **95% of output tokens to pure A-to-Z implementation and verified refactoring**.
-2. **Adaptive Rigor Modes (3 Tiers Matched to Scope):**
-   * **`LEAN` Mode:** Merge Vision-vs-Reality Gap Matrix & A-to-Z upgrade plan into 1 compact file (`APEX-COMPACT-REVIEW.md` $\le 120$ lines); spend 85% of tokens executing and verifying.
-   * **`STANDARD` Mode:** Full 6-phase Root-Vision Alignment + A-to-Z Build & Surgical Refactor + regression checks.
-   * **`DEEP-ENTERPRISE` Mode:** Full 6-file review ledger + **Isolated Subagent C-Suite Critic** + full Strangler-Fig A-to-Z migration suite.
+1. **Read the workspace for real.** The quick inventory is `python "<skill_dir>/scripts/xray_scanner.py" --dir "<target>" --name "<name>" --scan-only`; it writes nothing. Then open the actual files, run what is safe to run, recompute the numbers, and read the records. Build the domain brief (09) for this field and place.
+2. **Lead with 3–6 findings, ranked by money, data and safety risk, each with evidence:** file and line, the number you computed, the record affected, and what it costs the owner. Proposing *what* to fix is fine. Do not edit, move or create files in the workspace yet: you do not know what the owner considers sacred.
+3. **Ask at most 3 questions, each answerable in one line,** set apart from the findings:
+   - *Original vision:* "What did you originally want this to do, start to finish?"
+   - *Pain and gaps:* "Where does it waste your time, and what did you want that it never did?"
+   - *Sacred:* "Which files, data or habits must stay exactly as they are?"
 
----
+   Merge or drop any the workspace already answers. Stop and wait.
 
-## Core Operating Principles (The 6 Iron Laws of v3.6 Root-Anchored Evolution)
-
-1. **Law of Root-Vision First, Diagnostics Second:**
-   Never let the messy state of an existing workspace shrink the user's ambition. Record the X-Ray facts first, elicit the user's full **Root Idea-to-Product Vision** second, and measure the workspace against that true vision—not merely against its own existing files.
-2. **Law of the 4-Column Vision-vs-Reality Gap Matrix (Phase 2):**
-   Once the user shares their Root Vision, cross-examine **Root Vision** against **X-Ray Reality** across 4 mandatory buckets before designing the A-to-Z upgrade:
-   * 🟢 **Bucket 1 — Met & Healthy (`KEEP & PROTECT`):** Existing modules/data that genuinely fulfill the Root Vision.
-   * 🟡 **Bucket 2 — Built Wrong or Drifted (`REALIGN & REFACTOR`):** Existing components that attempted a feature but built it poorly, hardcoded it, or missed the user's true intent (includes **15-Min Quick-Win Patches** & **Surgical Upgrades**).
-   * 🔵 **Bucket 3 — Unbuilt Core Vision (`MISSING A-TO-Z BUILD`):** Desires from the user's Root Vision that the current workspace completely failed to build—requiring full Greenfield A-to-Z engineering!
-   * 🚀 **Bucket 4 — 30% Beyond-Expectation Expansion (`KANO DELIGHTERS & 4 SILENT LEAKS`):** Inject 4 hidden Johari leak fixes + 20–30% asymmetric domain delighters (`DOM-01..07`) that exceed the user's original expectations.
-   * **Mandatory 2-Section Decision Format (Personal Open Questions + Pros/Cons/Best-Fit Table):** Whenever presenting the 3 Strategic A-to-Z Evolution Paths (`Option A / B / C` + `Option D Hybrid`), you are **STRICTLY FORBIDDEN** from listing bare 1-line choices! You MUST present:
-     1. **Dedicated Personal Adjustment Questions:** Ask the user directly which specific items in the Gap Matrix they want to prioritize, customize, or add from their own personal perspective.
-     2. **Full Pros / Cons / Best-Fit Comparison Table for Options A, B, C, and D:** Explicitly show `Core Mechanism`, `✅ Pros (Ưu điểm)`, `⚠️ Cons / Trade-offs (Nhược điểm / Đánh đổi)`, and `🎯 Best Fit If You Want (Hợp nhất với bạn nếu...)` for every option so the user can choose or mix-and-match (`A + B + Personal Idea`) with 100% clarity!
-3. **Law of Chesterton's Fence & Red-Zone Historical Protection:**
-   Map existing assets into **Green Zones** (safe to modernize), **Yellow Zones** (refactor with parity tests), and **Red Zones** (historical invoices, customer records, live databases — 100% snapshot-protected before any A-to-Z upgrade).
-4. **Law of Hard C-Suite Competency & Isolated Subagent Critique (Phase 3):**
-   * Phases 1, 3, and 4 require a **High-Reasoning Frontier Model** (Opus/Sonnet Thinking, Gemini Pro/Argon High).
-   * Delegate Phase 3 C-Suite Red-Teaming (CPO, CTO, VP Domain, CFO, CRO/COO, Daily Operator) to an **isolated Critic Subagent** using Adversarial Deduction Scoring (finding $\ge 3$ concrete flaws and proving a score jump from Baseline to $\ge 85/100$).
-5. **Law of Shift-Left Stage Gates, Epistemic Tagging & Dual-Environment Verification:**
-   * Tag claims as `[Verified/Tested]`, `[Industry Benchmark]`, or `[Assumption to Confirm]`.
-   * Every phase (Gate 1 $\rightarrow$ Gate 6) and every A-to-Z build/refactor slice MUST pass `review_gate_audit.py --gate <1..6>` (or a **1 Normal + 2 Chaos/Sabotage Simulation Trace** with a **3-Line Micro-Gate Log** in chat-only environments) with zero `TODO`/`FIXME` stubs.
-6. **Law of the 12-Month Evergreen Immunity Horizon, Hot-Swap Pivot & Quantitative Upgrade Triggers:**
-   Architect the upgraded system with **3-Tier Decoupling** (Tier-A Core / Tier-B 2-Minute Editable Config / Tier-C Adapters), **5-Zone Workspace Hygiene**, **Hot-Swap Pivot capability**, explicit **Quantitative Upgrade Triggers**, and a **1-Click Rollback SOP**.
+**Why this order:** findings prove the review is worth the owner's time. The vision questions stop you from polishing the wrong thing. A read-only Turn 1 protects data the owner has not yet called sacred.
 
 ---
 
-## The 6-Phase Root-Anchored Review & Full A-to-Z Evolution Pipeline
+## Turn 2 onward: outcomes, not a script
 
-```
-[Phase 1: Silent X-Ray Snapshot + Root-Vision A-to-Z Interview] ──► [STOP & WAIT FOR USER: Zero Premature Fixes Proposed!]
-       │
-       ▼
-[Phase 2: Vision-vs-Reality Gap Matrix + 30% Kano A-to-Z Spec]  ──► [GATE 2 CHECK: Keep / Realign / Missing A-to-Z / Kano Locked]
-       │
-       ▼
-[Phase 3: 6-Role C-Suite Red-Team Council (Subagent Critique)]  ──► [GATE 3 CHECK: Baseline vs. Target A-to-Z Score >=85/100]
-       │
-       ▼
-[Phase 4: Unified A-to-Z 3-Tier Evergreen & Strangler Blueprint]──► [GATE 4 CHECK: review_gate_audit.py --gate 4 PASS]
-       │
-       ▼
-[Phase 5: Full A-to-Z Build (Missing) + Surgical Refactor (Old)]──► [GATE 5 CHECK: Snapshot Backup + Parity Tests + Zero Stubs]
-       │
-       ▼
-[Phase 6: Vision-Fulfillment Delta Report & 365-Day Handover]   ──► [GATE 6 CHECK: review_gate_audit.py --gate 6 FULL PASS]
-```
+All of these must be true before handover.
 
-### Executable Forensic & Verification Commands
-* **Run Automated X-Ray & Scaffold Review Ledger (Phase 1A):**
-  `python "<skill_dir>/scripts/xray_scanner.py" --dir "<target_dir>" --name "<project_name>" --domain "<DOM-01..07>"`
-* **Run Step-by-Step Review Gate Audit (Gates 1–6) & Anti-Stub Scanner:**
-  `python "<skill_dir>/scripts/review_gate_audit.py" --dir "<target_dir>" --gate <1|2|3|4|5|6> --scan-target "<target_dir>"`
+- **Gap matrix shown, short and plain:**
+  - *keep*: what already serves the vision;
+  - *built wrong*: what drifted;
+  - *never built*: vision items with no implementation;
+  - *beyond expectation*: cheap, high-value additions and silent-leak fixes.
 
----
+  See [`01`](./references/01-forensic-discovery-and-dual-elicitation.md) and [`02`](./references/02-multi-domain-audit-matrix.md); the archetypes there are examples, not a boundary. Every item becomes a `TRACE.md` row.
+- **Path chosen:**
+  - If the owner delegates ("cứ chọn phương án bạn thấy hợp nhất và làm tiếp", "you decide", "làm luôn"), decide in one line and build in the same reply.
+  - Otherwise, show at most 3 options with pros, cons, best-fit and your recommendation, only where the choice is genuinely theirs.
+- **Safe first:** slice 1 is a verified backup of the current state plus locked history. Historical invoices, customer records and live data stay read-only, with a hash, and are never moved or edited.
+- **Heaviest flow next:** then the owner's biggest pain or volume, then the rest of *never built*, then the delighters.
+- **Proven:**
+  - every slice has real tests or a real run;
+  - parity holds: existing valid inputs give the same results unless intentionally corrected, and you state it when they do;
+  - at least 3 change scenarios pass (08).
+- **Swept:** a full completeness sweep (07). All `TRACE.md` rows are final.
+- **Measured:** a baseline and a before/after on 2–4 metrics the owner cares about. When the system already works, run the continuous-improvement loop (10) and leave `IMPROVEMENT-LOG.md` plus a re-review prompt.
+- **Handed over:**
+  - what changed, before and after;
+  - the daily use;
+  - how to change prices or rules safely;
+  - backup and rollback;
+  - the short traceability table ("Bạn cần → Nằm ở đâu → Đã kiểm thế nào").
 
-## Quick Command & Mode Triggers
+- **No silent deferral:** a **High** row (law or compliance, safety or health, money at risk, irreversible or historical data, the owner's root vision, their #1 pain) ends `DONE`, with at least a minimal working version or exact actionable instructions, or ends `DEFERRED` only with `agreed: "<owner's words>"`. A line saying "check later" is not coverage.
+- **Looking ahead:** the domain brief's next-12–24-months section (scheduled mandates, price risk and hedging, financing, the growth path toward the owner's long-term goal) has been checked against the plan.
 
-* **`/review-product [path or description]`** or **`/apex-review`**: Record X-Ray state, interview Root Vision from scratch, build Vision-vs-Reality Gap Matrix, and execute full A-to-Z Idea-to-Product upgrade.
-* **`/audit-workspace`**: Record workspace entropy, interview desired operational flow, and reorganize into a 5-Zone Evergreen workspace.
-* **`/apex-review-lean`**: Fast-track X-Ray + Root-Vision alignment + immediate A-to-Z upgrade in 1 compact report.
-* **`/apex-delta`**: Run `review_gate_audit.py` to compare Before vs. After Vision-Fulfillment & Health scores across all 6 C-Suite dimensions.
+## Native-first: improve the owner's world, not yours
+
+Improve inside the tools the owner and their people already use. Walk the delivery ladder in [`08` §2](./references/08-definition-of-done-and-traceability.md):
+1. configure what they have;
+2. native artifacts in their tool (formulas, validation, protected ranges, templates);
+3. light automation inside that tool;
+4. code only if they already run it and can maintain it.
+
+Eval run 3 showed why this matters: an Excel-only accountant received a Python engine whose summary sheet showed `#NAME?` in real Excel.
+- Shared workflows must not depend on one machine.
+- Verify in the target app: recalculate spreadsheets in a real engine with zero error values, and use only functions their version supports. If you could not, say so and give a 1-minute check.
+- Tests prove the deliverable; they never justify changing its medium.
+
+## Respect the owner's time
+
+- Start every substantial reply with a summary of 10 lines or fewer. Put details in files written in the owner's language.
+- **Leave no clutter:** process files (trace, ledger, notes) go in one `_apex/` folder (or `docs/apex-review/` in STANDARD/DEEP mode), never loose in the owner's working folder. User-facing files are few, plain, and in the owner's language.
+- Lenses, gates, zone colours, scores and phase names are internal; do not show them unless asked.
+- For rules, rates and fees, give the identifier and date, and mark unverified items with who can confirm them.
+
+## Rigor modes (choose silently)
+
+| Mode | When | Shape |
+| :--- | :--- | :--- |
+| `LEAN` (default) | Small workspace, one to a few operators | `_apex/TRACE.md` + one compact review (`_apex/REVIEW.md`, ≤ 120 lines) or none. |
+| `STANDARD` | Multi-module app or business-critical workflow | Ledger in `docs/apex-review/`; gates per slice. |
+| `DEEP` | The owner asks, or the stakes are high (money movement, health, legal, irreversible data, safety) | One synchronous critic-subagent pass, run once; never sleep-poll. See [`03`](./references/03-c-suite-diagnostic-council.md). |
+
+In chat-only hosts, keep `TRACE.md` and the change scenarios as tables in the reply, and replace script gates with a traced simulation: 1 normal case and 2 failure cases.
+
+## Scripts (CLI/IDE hosts)
+
+* **Turn-1 inventory (read-only):** `python "<skill_dir>/scripts/xray_scanner.py" --dir "<target>" --name "<name>" --scan-only`
+* **Scaffold (Turn 2+):** the same command with `--domain "<DOM-01..07 or any free-text field>"` and without `--scan-only`. It writes `docs/apex-review/` and `TRACE.md`. In `LEAN` mode skip the scaffold and create only `_apex/TRACE.md` yourself.
+* **Gate audit:** `python "<skill_dir>/scripts/review_gate_audit.py" --dir "<target>" --gate <1..6> --scan-target "<target>"`
+* **How the gates judge:**
+  - Documents contain `[[FILL: hint]]` markers; a gate is vetoed while any remain.
+  - Gate 3 needs `TOTAL UPGRADED SCORE` ≥ 85.
+  - Gate 5 needs `--scan-target`, a proven slice in `REVIEW-STATE.json` (slice-1 = backup), and a valid `TRACE.md`.
+  - Gate 6 needs all slices proven, no `OPEN` rows, and at least 3 passed `change_scenarios`.
+  - Never pre-select an option or write a score, proof or status you did not obtain.
+* When building, load only [`06`](./references/06-stage-gates-rollback-and-regression.md), `TRACE.md` and the locked plan.
+
+## Shortcuts the user may type
+
+* `/review-product [path or description]` or `/apex-review`: Turn-1 findings and questions, then the upgrade.
+* `/audit-workspace`: findings on organisation and risk, then a cleaner structure with protected history.
+* `/apex-improve`: continuous-improvement loop on a system that already works (10).
+* `/apex-review-lean`: `LEAN` mode; findings plus an upgrade in one compact report.
+* `/apex-delta`: before/after comparison with `review_gate_audit.py`.

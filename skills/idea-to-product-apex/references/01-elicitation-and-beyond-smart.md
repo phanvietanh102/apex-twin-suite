@@ -8,19 +8,27 @@ When an AI presents 3 bare options (`Option A`, `Option B`, `Option C`) without 
 
 ---
 
-## 2. The APEX v3.7 Mandate: Strict 2-Section Discovery Format
+## 2. When to Use the 2-Section Format (and When Not To)
 
-Every discovery turn in Phase 1 & Phase 2 MUST be explicitly divided into **Two Mandatory Sections** in visible chat output (even if the host IDE also has a multiple-choice UI tool):
+The 2-section format solves two real problems: personal open questions so the user's own ideas surface, and pros/cons/best-fit so options are never chosen blindly. But eval run 1 showed it hurting when applied mechanically. It cost the most points when it was shown *again* after the user had already said "just pick and continue".
+
+Use it only when all three hold:
+1. There is a **genuine fork**: 2–3 viable paths that differ in ways only the user can weigh (cost vs. speed, manual vs. automated, scope).
+2. The user has **not delegated** the decision ("cứ chọn phương án bạn thấy hợp nhất", "you decide", "làm luôn").
+3. You have **already led with value**: Turn 1 opens with 2–4 concrete domain findings, and the questions and table come after them.
+
+Otherwise, recommend one path in a sentence, say what would change your mind, and keep going. When the user delegates, convert their answers into decisions and build in the same reply.
+
+Always keep **one open question** for the user's own idea, even when you skip the table. That is where knowledge the model does not have comes from.
 
 ```
-[SECTION 1: Dedicated Personal Open-Canvas Questions (No A/B/C Attached!)]
-  --> Excavates the user's personal desires, custom ideas, and Socratic edge cases
-                                   +
-[SECTION 2: AI 3-Option Decision Matrix (With Pros ✅ / Cons ⚠️ / Best-Fit 🎯 + Hybrid Option D)]
-  --> Gives clear trade-offs so the user knows exactly which option (or mix) fits their true desire
+[Turn 1]  2–4 concrete findings for this user's domain  →  recommended direction (+ draft if cheap)
+          →  ≤ 3 questions that change the build (one of them open)  →  options table ONLY if a real fork exists
+[Turn 2+] user delegated?  → decide in one line, build slice 1 (the biggest flow) now
+          user chose/mixed? → acknowledge how their own idea changed the plan, then build
 ```
 
-### Canonical 2-Section Discovery Template (Translate Naturally into the User's Language):
+### 2-Section Template (when a genuine fork exists; translate naturally into the user's language; add a "Khuyến nghị của tôi" line):
 
 ```markdown
 ### 💬 PHẦN 1: Câu Hỏi Riêng Khai Thác Mong Muốn & Ý Tưởng Cá Nhân Của Bạn (Personal Open Excavation)
@@ -48,12 +56,13 @@ Every discovery turn in Phase 1 & Phase 2 MUST be explicitly divided into **Two 
 
 ---
 
-## 3. The 2-Pass Discovery Loop (Pass 1: Personal + Trade-Off Matrix $\rightarrow$ Pass 2: Convergent Grill-Me)
+## 3. The 2-Pass Discovery Loop (Pass 1: Value + Questions $\rightarrow$ Pass 2: Decide & Build)
 
-* **Pass 1 (Divergent Personal Excavation + Trade-Off Matrix):** Present **Section 1 (Personal Open Questions)** and **Section 2 (Pros/Cons/Best-Fit Table for Options A/B/C/D)** using the template above.
-* **Pass 2 (Convergent "Grill-Me" Stress-Test):** Once the user replies with their personal answers and chosen/hybrid direction:
-  * Explicitly acknowledge how their **personal desires from Section 1** modify or override the standard options in Section 2.
-  * Stress-test any remaining operational edge cases (*"To make sure your custom combination of [Option A + Personal Idea X] runs for 12 months without breaking, let's lock down 2 final edge cases..."*) — and again provide Pros/Cons for each resolution!
+* **Pass 1:** Lead with findings. Then ask the personal questions, plus the options table if a genuine fork exists (see §2).
+* **Pass 2:** Once the user replies:
+  * Say briefly how their own ideas changed the plan.
+  * Resolve the remaining edge cases **yourself** with sensible defaults and list them as assumptions they can override. Do not open another question round unless an edge case is truly blocking and only the user can answer it.
+  * Start building slice 1, the flow carrying most of their volume or pain.
 
 ---
 
