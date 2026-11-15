@@ -12,3 +12,5 @@ docs/apex-blueprint/
 docs/apex-review/
 local-vi-docs/
 APEX-Twin-Suite-v3.5-GitHub-Full-Repo.zip
+# Upload archives are generated locally by install-skills.ps1; never committed
+dist/

@@ -1,0 +1,4 @@
+- nho sua gia thep moi thang trong file py (ca 2 file??)
+- khach hoi bao gia co tinh hao hut chua -> chua
+- gui khach bang cach copy so vao Zalo, khach che khong chuyen nghiep
+- file csv gia vat tu chua dung toi

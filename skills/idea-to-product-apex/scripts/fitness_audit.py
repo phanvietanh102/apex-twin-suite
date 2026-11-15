@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Idea-to-Product (v3.0) — Shift-Left Stage-Gate & Anti-Stub Code Auditor (fitness_audit.py)
+APEX Idea-to-Product (v4.3) — Shift-Left Stage-Gate & Anti-Stub Code Auditor (fitness_audit.py)
 Supports:
   1. Step-by-step Gate Verification (--gate 1..6) so errors in Step 2 or 3 are caught immediately!
   2. Full Blueprint Completeness & 12-Month Evergreen Audit.
@@ -63,13 +63,105 @@ CONTENT_CHECKS = [
 CODE_EXTENSIONS = {".py", ".js", ".ts", ".tsx", ".jsx", ".html", ".css", ".ps1", ".sh"}
 IGNORE_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", "dist", "build", ".agents", ".claude", "skills"}
 
+# TODO/FIXME are matched case-sensitively and only inside a comment, so identifiers such as
+# `todo-list` (a todo app) or URLs such as `https://todo...` are not flagged.
 STUB_PATTERNS = [
-    (r"\bTODO\b\s*[:\-]", "Unfinished TODO marker"),
-    (r"\bFIXME\b\s*[:\-]", "Unresolved FIXME marker"),
-    (r"NotImplementedError", "Unimplemented function stub (NotImplementedError)"),
-    (r"pass\s*#\s*(?:todo|implement|stub)", "Empty Python pass stub"),
-    (r"//\s*(?:todo|implement later|placeholder)", "Commented placeholder logic"),
+    (re.compile(r"(?:#|//|/\*|<!--|\*)\s*TODO\b"), "Unfinished TODO marker"),
+    (re.compile(r"(?:#|//|/\*|<!--|\*)\s*FIXME\b"), "Unresolved FIXME marker"),
+    (re.compile(r"\braise\s+NotImplementedError\b"), "Unimplemented function stub (NotImplementedError)"),
+    (re.compile(r"pass\s*#\s*(?:todo|implement|stub)", re.IGNORECASE), "Empty Python pass stub"),
+    (re.compile(r"(?<![:/])//\s*(?:implement later|placeholder)\b", re.IGNORECASE), "Commented placeholder logic"),
 ]
+
+# Every decision the model or user must make is scaffolded as [[FILL: hint]].
+# A gate document that still contains one is unfinished and earns 0 points.
+FILL_MARKER = re.compile(r"\[\[FILL:[^\]]*\]\]")
+C_SUITE_TOTAL = re.compile(r"TOTAL C-SUITE AUDIT SCORE:\W*(\d{1,3})\s*/\s*100", re.IGNORECASE)
+PASS_SCORE = 85
+
+
+def force_utf8_output() -> None:
+    """Windows consoles default to cp1252 and crash on paths such as 'Từ idea'."""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
+def check_slices(state: dict, max_gate: int) -> list[str]:
+    """Gate 5 needs at least one verified slice; Gate 6 needs every slice verified."""
+    slices = state.get("slices") or []
+    if not slices:
+        return ["STATE.json has no slices to verify."]
+    done = [s for s in slices if s.get("status") == "done"]
+    errors = [
+        f"Slice '{s.get('id')}' is marked done without a verification_proof."
+        for s in done
+        if not str(s.get("verification_proof") or "").strip()
+    ]
+    if max_gate == 5 and not done:
+        errors.append("Gate 5 needs at least one slice marked done with a verification_proof.")
+    if max_gate >= 6:
+        errors += [
+            f"Gate 6 needs every slice done; '{s.get('id')}' is '{s.get('status')}'."
+            for s in slices
+            if s.get("status") != "done"
+        ]
+        passed = [
+            c for c in (state.get("change_scenarios") or [])
+            if str(c.get("status", "")).lower() == "pass" and str(c.get("proof") or "").strip()
+        ]
+        # The context profile may lower the count (one-off or low-stakes work), but only with a stated reason.
+        try:
+            required = int(state.get("change_scenarios_required", 3))
+        except (TypeError, ValueError):
+            required = 3
+        if required < 3 and not str(state.get("change_scenarios_waiver") or "").strip():
+            errors.append(f"change_scenarios_required={required} (< 3) needs a one-line change_scenarios_waiver reason.")
+        if len(passed) < required:
+            errors.append(f"Gate 6 needs >= {required} change_scenarios with status 'pass' and a proof; found {len(passed)}.")
+    return errors
+
+
+TRACE_STATUSES = {"OPEN", "DONE", "DEFERRED", "DROPPED", "N/A"}
+
+
+def check_trace(paths: list[str], max_gate: int) -> list[str]:
+    """Every need (stated or discovered) must carry a status; DONE needs evidence; Gate 6 allows no OPEN rows."""
+    path = next((p for p in paths if os.path.isfile(p)), None)
+    if path is None:
+        return ["Missing TRACE.md (traceability ledger of every stated and discovered need)."]
+    errors, rows = [], 0
+    with open(path, "r", encoding="utf-8") as f:
+        for lineno, line in enumerate(f, start=1):
+            s = line.strip()
+            if not s.startswith("|") or re.match(r"^\|\s*:?-{3,}", s):
+                continue
+            cells = [c.strip() for c in s.strip("|").split("|")]
+            if cells and cells[0].upper() == "ID":
+                continue
+            rows += 1
+            where = f"TRACE.md:{lineno}"
+            if FILL_MARKER.search(s):
+                errors.append(f"{where}: unresolved [[FILL]] marker.")
+                continue
+            if len(cells) < 6:
+                errors.append(f"{where}: expected 6 columns (ID | Need | Source | Weight | Status | Evidence / Reason).")
+                continue
+            status, evidence = cells[4].upper(), cells[5]
+            if status not in TRACE_STATUSES:
+                errors.append(f"{where}: status '{cells[4]}' is not one of {sorted(TRACE_STATUSES)}.")
+            elif status != "OPEN" and not evidence:
+                errors.append(f"{where}: {status} row '{cells[0]}' needs evidence or a reason.")
+            elif status == "DEFERRED" and cells[3].lower().startswith("high") and not evidence.lower().startswith("agreed:"):
+                errors.append(f"{where}: High-weight row '{cells[0]}' is DEFERRED without the user's agreement "
+                              f"(write evidence as agreed: \"<user's words>\", or deliver a minimal DONE version).")
+            elif status == "OPEN" and max_gate >= 6:
+                errors.append(f"{where}: row '{cells[0]}' is still OPEN at Gate 6.")
+    if rows == 0:
+        errors.append("TRACE.md has no rows.")
+    return errors
 
 
 def scan_code_quality(scan_dir: str) -> tuple[bool, list[str], int]:
@@ -100,7 +192,7 @@ def scan_code_quality(scan_dir: str) -> tuple[bool, list[str], int]:
                     lines = f.readlines()
                 for idx, line in enumerate(lines, start=1):
                     for pat, desc in STUB_PATTERNS:
-                        if re.search(pat, line, re.IGNORECASE):
+                        if pat.search(line):
                             issues.append(f"{rel_path}:{idx} -> {desc}: {line.strip()[:80]}")
             except Exception as e:
                 issues.append(f"{rel_path} -> Could not read file: {e}")
@@ -120,15 +212,17 @@ def audit_blueprint(target_dir: str, max_gate: int = 6, scan_code_dir: str = Non
             return 1
 
     print("=" * 76)
-    print(f"APEX v3.0 SHIFT-LEFT AUDITOR | TARGET GATE: 1..{max_gate}")
+    print(f"APEX v4.3 SHIFT-LEFT AUDITOR | TARGET GATE: 1..{max_gate}")
     print("=" * 76)
     print(f"Blueprint Path: {blueprint_dir}\n")
 
     score = 0
     possible_score = 0
     warnings = []
+    blockers = []  # any blocker vetoes the gate regardless of score
 
     # 1. Check STATE.json validity
+    state = None
     state_path = os.path.join(blueprint_dir, "STATE.json")
     if os.path.isfile(state_path):
         try:
@@ -157,17 +251,39 @@ def audit_blueprint(target_dir: str, max_gate: int = 6, scan_code_dir: str = Non
         matched = [kw for kw in keywords if re.search(re.escape(kw), text, re.IGNORECASE)]
         ratio = len(matched) / len(keywords)
         earned = round(weight * ratio)
+        status = "PASS" if earned >= int(weight * 0.8) else "WARN"
 
-        placeholders = re.findall(r"\[(?:Specify|Choose|Locked Option|feature X)[^\]]*\]", text)
-        if len(placeholders) > 3:
-            earned = max(0, earned - 2)
-            warnings.append(f"{filename}: Contains {len(placeholders)} uncustomized template placeholders.")
+        unfilled = FILL_MARKER.findall(text)
+        if unfilled:
+            earned = 0
+            status = "TODO"
+            blockers.append(f"{filename}: {len(unfilled)} [[FILL: ...]] marker(s) still unresolved, e.g. {unfilled[0][:70]}")
+
+        if filename == "05-FITNESS-FUNCTIONS-AND-RUNBOOK.md" and not unfilled:
+            m = C_SUITE_TOTAL.search(text)
+            if not m:
+                blockers.append(f"{filename}: no 'TOTAL C-SUITE AUDIT SCORE: NN / 100' line found.")
+            elif int(m.group(1)) < PASS_SCORE:
+                blockers.append(f"{filename}: C-Suite score {m.group(1)}/100 is below {PASS_SCORE}; fix the flaws and re-score.")
 
         score += earned
-        status = "PASS" if earned >= int(weight * 0.8) else "WARN"
         print(f"  [{earned:2d}/{weight:2d} pts] {status:4s} | {filename:<34s} -> {label}")
 
     normalized_score = round((score / possible_score) * 100) if possible_score > 0 else 0
+
+    # Gates 5 & 6 are about the build itself, not the blueprint documents.
+    if max_gate >= 5:
+        if state is None:
+            blockers.append("Gates 5-6 need a valid STATE.json with slice verification proofs.")
+        else:
+            blockers += check_slices(state, max_gate)
+        blockers += check_trace(
+            [os.path.join(blueprint_dir, "TRACE.md"), os.path.join(os.path.abspath(target_dir), "_apex", "TRACE.md"),
+             os.path.join(os.path.abspath(target_dir), "TRACE.md")],
+            max_gate,
+        )
+        if not scan_code_dir:
+            blockers.append("Gates 5-6 need --scan-code <dir> pointing at the built product.")
 
     # 3. Optional Code Anti-Stub Scan (Gates 5 & 6)
     code_ok = True
@@ -186,10 +302,15 @@ def audit_blueprint(target_dir: str, max_gate: int = 6, scan_code_dir: str = Non
             normalized_score = max(0, normalized_score - (len(code_issues) * 5))
 
     print("-" * 76)
-    passed_gate = (normalized_score >= 85) and code_ok
+    passed_gate = (normalized_score >= PASS_SCORE) and code_ok and not blockers
     verdict = f"GATE 1..{max_gate} APPROVED (READY TO ADVANCE)" if passed_gate else f"GATE 1..{max_gate} VETOED (FIX ERRORS BEFORE ADVANCING)"
     print(f"NORMALIZED GATE SCORE: {normalized_score} / 100  -->  VERDICT: {verdict}")
     print("-" * 76)
+
+    if blockers:
+        print("\nBlocking Issues (must be fixed before advancing):")
+        for b in blockers:
+            print(f"  x {b}")
 
     if warnings:
         print("\nActionable Advisories:")
@@ -200,11 +321,12 @@ def audit_blueprint(target_dir: str, max_gate: int = 6, scan_code_dir: str = Non
 
 
 def main():
-    parser = argparse.ArgumentParser(description="APEX v3.0 Shift-Left Gate & Code Auditor")
+    parser = argparse.ArgumentParser(description="APEX v4.3 Shift-Left Gate & Code Auditor")
     parser.add_argument("--dir", default=".", help="Project root or blueprint directory")
     parser.add_argument("--gate", type=int, default=6, choices=[1, 2, 3, 4, 5, 6], help="Stage gate to verify (1..6)")
     parser.add_argument("--scan-code", default=None, help="Directory to scan for TODO/FIXME/mock stubs")
     args = parser.parse_args()
+    force_utf8_output()
     sys.exit(audit_blueprint(args.dir, args.gate, args.scan_code))
 
 

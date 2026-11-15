@@ -5,14 +5,14 @@
     "email": "phanvietanh102@gmail.com"
   },
   "metadata": {
-    "description": "APEX Twin Engine Suite (v3.6): Multi-Domain Idea-to-Product & Root-Vision Re-Anchored Product/Workspace Reviewer for Claude & Antigravity",
-    "version": "3.6.0"
+    "description": "APEX Twin Suite v4.3: two skills that add what strong models lack - completeness, traceability and proof - to building from an idea (idea-to-product-apex) and to reviewing and upgrading an existing system (product-workspace-reviewer-apex), in any field, country or context. Tailored by a context profile; validated by blind, pre-registered evals.",
+    "version": "4.3.0"
   },
   "plugins": [
     {
       "name": "apex-twin-suite",
-      "description": "Symmetric Twin Engine Suite (v3.6): Greenfield Idea-to-Product (idea-to-product-apex) + Brownfield Root-Vision Re-Anchored Product/Workspace Reviewer (product-workspace-reviewer-apex) with 6-Role C-Suite Red-Team, 7 Industry Playbooks, and Python Stage-Gate Verification.",
-      "version": "3.6.0",
+      "description": "APEX Twin Suite v4.3: two skills that add what strong models lack - completeness, traceability and proof - to building from an idea (idea-to-product-apex) and to reviewing and upgrading an existing system (product-workspace-reviewer-apex), in any field, country or context. Tailored by a context profile; validated by blind, pre-registered evals.",
+      "version": "4.3.0",
       "author": {
         "name": "Phan Viet Anh",
         "email": "phanvietanh102@gmail.com"

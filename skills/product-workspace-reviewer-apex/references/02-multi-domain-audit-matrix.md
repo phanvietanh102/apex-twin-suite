@@ -1,5 +1,7 @@
 # 02. Universal 7-Domain Forensic Audit & Modernization Matrix
 
+> **These archetypes are worked examples, not a boundary.** For any field, country or context not listed (agriculture, clinics, education, events, logistics, nonprofits, legal practice, hospitality, public services, personal goals, hybrids), build a domain brief with `09-domain-discovery-protocol.md`. Use the playbooks below as models of the depth expected.
+
 Just like its Greenfield twin, `product-workspace-reviewer-apex` adapts its forensic lenses, leak detectors, workspace hygiene rules, and 30% Kano upgrades across all **7 Core Domain Archetypes** (`DOM-01` through `DOM-07`).
 
 ---

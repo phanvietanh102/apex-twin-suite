@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# APEX Twin Engine Suite (v3.5) — Cross-Platform Installer (macOS / Linux / WSL)
+# APEX Twin Engine Suite (v4.3) — Cross-Platform Installer (macOS / Linux / WSL)
 # Installs BOTH symmetric skills:
 #   1. idea-to-product-apex (Greenfield A-to-Z Idea-to-Product Engine)
 #   2. product-workspace-reviewer-apex (Brownfield Product/App/Workspace Reviewer)
@@ -12,7 +12,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS=("idea-to-product-apex" "product-workspace-reviewer-apex")
 
 echo "======================================================================"
-echo "  APEX TWIN ENGINE SUITE (v3.5) - MACOS / LINUX / WSL INSTALLER"
+echo "  APEX TWIN ENGINE SUITE (v4.3) - MACOS / LINUX / WSL INSTALLER"
 echo "======================================================================"
 
 mkdir -p "$REPO_ROOT/dist"
