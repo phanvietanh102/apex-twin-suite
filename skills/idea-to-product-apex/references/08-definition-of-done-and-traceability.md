@@ -19,21 +19,22 @@ These three mechanisms turn "I think it's complete" into evidence. They constrai
 
 **Rules:**
 - **What becomes a row:** every need the user stated, every need you discovered (lens findings), and every question you asked whose answer creates work.
-- **Statuses:**
+- **Statuses** (keep these codes, and the weights High / Medium / Low, in English even when the rest of the table is in the user's language, because the gate script reads them):
   - `OPEN` while working.
   - Final statuses: `DONE` (evidence required), `DEFERRED` (reason and when), `DROPPED` (only with the user's agreement; quote it) or `N/A` (why).
-- **No silent deferral of high-weight rows.** Eval run 3 showed the ledger being gamed: important items such as product labelling, traceability, data retention, and even the owner's core vision got a one-line "DEFERRED: check later" instead of substance. A deferral is not coverage.
+- **No silent deferral of high-weight rows.** A ledger can be gamed: important items such as product labelling, traceability, data retention, and even the owner's core vision got a one-line "DEFERRED: check later" instead of substance. A deferral is not coverage.
   - A row is **High** weight if it touches law/compliance, safety or health, money at risk, irreversible data, the user's stated root vision, or their #1 pain.
   - A High row may only end as `DONE` (at least a minimal working version, or concrete instructions the user can act on today, e.g. the exact label fields to print or the exact rule and who to call) or `DEFERRED` with the user's explicit agreement. Write that evidence as `agreed: "<user's words>"`.
   - If time is short, deliver the smallest version that removes the risk now, and defer only its polish.
 - **Rows never disappear between turns.** When direction changes, update rows; do not delete them.
 - **Order rows by weight** (lens 2). High-weight rows reach `DONE` before low-weight rows get polish.
 - **At handover,** show the user a short version in their language: *"Bạn cần → Nằm ở đâu → Đã kiểm thế nào"*. This is often the single most reassuring thing they read.
-- **Location:** `_apex/TRACE.md`. All process files (trace, spec, ledger, notes to yourself) live in a single `_apex/` folder, or in `docs/apex-blueprint/` / `docs/apex-review/` in STANDARD/DEEP mode, and never loose in the user's working folder.
+- **Location:** `_apex/TRACE.md` in LEAN mode (create it with the scaffolder's `--lean` flag, which also creates `_apex/STATE.json`). All process files (trace, spec, ledger, notes to yourself) live in a single `_apex/` folder, or in `docs/apex-blueprint/` / `docs/apex-review/` in STANDARD/DEEP mode, and never loose in the user's working folder.
 - **In chat-only hosts,** keep the table in the reply instead of a file.
 
 `fitness_audit.py` / `review_gate_audit.py` read `TRACE.md`:
-- **Gate 5** blocks on `DONE` rows without evidence, on unfilled markers, and on `DROPPED` rows without a reason.
+- **At every gate, once the file exists:** it blocks on unfilled markers, on `DONE` rows without evidence, on any non-`OPEN` row without a reason, and on High rows deferred without `agreed:`.
+- **From Gate 5:** the file is required.
 - **Gate 6** also blocks on any `OPEN` row.
 
 ---
@@ -44,7 +45,7 @@ This skill's users are comfortable with AI tools. Installing Python or a package
 
 What decides the *deliverable's* medium is the people who will **operate it every day**. Sometimes that is the user. Often it is an accountant, a receptionist, a packer or a team lead. They live in their phone, Excel, Outlook or an existing platform.
 
-Eval run 3 showed what goes wrong otherwise:
+What goes wrong otherwise:
 - an Excel-only accountant received a Python engine whose summary sheet showed `#NAME?` in real Excel;
 - a bakery's shared order book depended on one laptop running a nightly script.
 
@@ -94,9 +95,11 @@ Pick every type that applies; most real projects mix two or three. Within a type
 
    | Profile | Required |
    | :--- | :--- |
-   | Long-lived (g) and medium or high stakes, or STANDARD/DEEP mode | ≥ 3 |
-   | Long-lived but low stakes, or LEAN | 1–2 |
+   | Long-lived (g) with medium or high stakes (i) | ≥ 3 |
+   | Long-lived with low stakes | 1–2 |
    | One-off (an event, a single document) or past its date | 0 |
+
+   The rigor mode does not change the count; the stakes do.
 
    Whenever fewer than 3, set `change_scenarios_required` and a one-line `change_scenarios_waiver` reason in STATE. Choose the scenarios from lens 9 and the domain brief (09), for *this* user. Examples:
    - a key price rises 15%;
@@ -108,7 +111,7 @@ Pick every type that applies; most real projects mix two or three. Within a type
 2. For each, state the event, the expected behaviour, and how it was verified:
    - **Software:** an automated test, e.g. change a price; old documents keep their numbers; new ones use the new price.
    - **Non-software:** a written walk-through showing exactly which file, sheet or step changes and what stays untouched; or a rehearsal with sample data.
-3. Record the results in `STATE.json` / `REVIEW-STATE.json` → `change_scenarios`:
+3. Record the results under `change_scenarios` in the STATE file: `_apex/STATE.json` in LEAN mode, `STATE.json` / `REVIEW-STATE.json` in the ledger folder otherwise:
    ```json
    {"id": "CS-1", "event": "steel price +15%", "expected": "old quotes unchanged, new quotes +X",
     "status": "pass", "proof": "test_price_change: old 823,237,800 unchanged; new +8,448,000"}

@@ -2,11 +2,11 @@
 
 <img src="./assets/logo.svg" alt="APEX Twin Suite Logo" width="110" height="110" />
 
-# APEX Twin Suite `v4.3`
+# APEX Twin Suite `v4.4`
 ### Strong models are smart. They are not always thorough. APEX adds the missing layer.
 *Two skills for Claude Code, Claude Desktop, Codex, Cursor and Google Antigravity: one turns an idea into a working result, the other makes an existing system better. Works in any field, country or context.*
 
-[![Version](https://img.shields.io/badge/version-4.3.0-6366F1?style=for-the-badge)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.4.0-6366F1?style=for-the-badge)](./CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](./LICENSE)
 [![Evals](https://img.shields.io/badge/evals-blind_%26_pre--registered-F59E0B?style=for-the-badge)](./evals/EVAL-RESULTS.md)
 
@@ -104,8 +104,11 @@ Each deliverable type (software, spreadsheet workflow, plan, content system, phy
 ### 6. The daily operators decide the medium
 Installing Python or packages for the agent's own work is one command and is not a cost. What the **people who use it every day** receive, though, must run where they already live: their phone, Excel, Outlook or existing platform. It must also be **verified there**: spreadsheets recalculated in a real engine with zero error values. Code that *builds and checks* a native workbook gives you both.
 
-### 7. Respectful conversation
-- Every substantial reply opens with a summary of 10 lines or fewer.
+### 7. Projects built with an older APEX version
+If a project already contains `docs/apex-blueprint/` or `docs/apex-review/` from an older version, the skills read it for the original vision and decisions but do not trust its scores or "approved" lines, because older templates were pre-filled. The gate scripts refuse to audit such a ledger and continue with a fresh trace in `_apex/`.
+
+### 8. Respectful conversation
+- Every substantial reply opens with a summary of 10 lines or fewer and is meant to be read in about two minutes; details go in files.
 - Process files live in a single `_apex/` folder.
 - Gates, scores and tiers stay backstage; you see plain outcomes and a short "you asked → where it is → how it was checked" table.
 
@@ -113,7 +116,7 @@ Installing Python or packages for the agent's own work is one command and is not
 
 ## Evidence: blind, pre-registered evals
 
-Everything below is in [`evals/`](./evals/): prompts, fixtures, pre-registrations, results and a [gap analysis](./evals/GAP-ANALYSIS.md).
+Everything is in [`evals/`](./evals/): results, pre-registrations, the run 1–2 prompts and fixture, a [gap analysis](./evals/GAP-ANALYSIS.md), and the raw evidence for runs 3–4 in [`evals/runs/`](./evals/runs/) (scenarios, hidden checklists, both assistants' replies and the graders' reports).
 
 **Method (runs 3–4):**
 - **Scenarios** are drawn at random, with a logged seed, from a pool of 12 diverse cases, in Vietnamese and English, business and personal, greenfield and existing.
@@ -140,7 +143,7 @@ Everything below is in [`evals/`](./evals/): prompts, fixtures, pre-registration
 **Honest caveats:**
 - **n = 1 run per scenario.** Grader noise is about ±7 points per scenario, so only one run-4 scenario (the law firm, +10) is a win on its own.
 - **The skill costs about 1.9× the tokens** of a plain model and takes longer.
-- **v4.2 and v4.3 are not yet re-evaluated.** They add the fixes from the [gap analysis](./evals/GAP-ANALYSIS.md) (seven things the plain model sometimes did better) and context-based applicability. v4.1 is the last version with eval evidence.
+- **Everything after v4.1 is not yet re-evaluated.** v4.2 and v4.3 add the fixes from the [gap analysis](./evals/GAP-ANALYSIS.md) and context-based applicability; later changes reconcile the older references, make the gates work in `LEAN` mode and in any language, and handle projects built with older versions. v4.1 is the last version with eval evidence.
 - **Only Claude Opus 5.5 has been tested** so far. A Gemini (Antigravity) run is pending.
 
 ---
@@ -165,7 +168,7 @@ In **Claude Code** (CLI, VS Code extension, or the Claude Desktop Code tab):
 /plugin marketplace add phanvietanh102/apex-twin-suite
 /plugin install apex-twin-suite@apex-twin-suite
 ```
-The repo also ships host manifests for **Codex** (`.codex-plugin/`), **Cursor** (`.cursor-plugin/`) and **Antigravity** (`.antigravity-plugin/`). In those hosts, add the plugin by the same GitHub link. Updates arrive when `main` changes.
+For **Codex**, **Cursor** and **Antigravity** the repo includes manifests (`.codex-plugin/`, `.cursor-plugin/`, `.antigravity-plugin/`), but installing from the GitHub link has only been verified in Claude Code. On those hosts, use the local installer below, which copies the skills into each host's skills folder.
 
 ### Alternative: local installer (copies the skills into every host on this machine)
 **Windows (PowerShell):**
@@ -187,7 +190,7 @@ Only if you use the **claude.ai chat**, which accepts skills as `.zip` uploads o
 
 ## Using it
 
-Just describe what you want: *"Build an order app for my shop that sells on Facebook and Shopee"* or *"Review this workspace: ./my-quotes-folder"*. The skills trigger on intent. Starting your message with one of these phrases makes the intent explicit. Dedicated slash-command files are not shipped yet, so the phrase works as part of your message:
+Just describe what you want: *"Build an order app for my shop that sells on Facebook and Shopee"* or *"Review this workspace: ./my-quotes-folder"*. The skills trigger on intent. The repo also ships slash commands in [`commands/`](./commands/) that only point at the skills: the local installer copies them to `~/.claude/commands`, and a plugin install exposes them under the plugin's namespace. The other phrases below work as part of your message.
 
 | Phrase | What happens |
 | :--- | :--- |
@@ -199,7 +202,7 @@ Just describe what you want: *"Build an order app for my shop that sells on Face
 | `/audit-workspace` | Organisation and risk clean-up with protected history |
 
 **Rigor modes** are chosen automatically:
-- `LEAN` (default): `_apex/TRACE.md` plus a compact spec;
+- `LEAN` (default): `_apex/TRACE.md` and `_apex/STATE.json`, plus a compact spec if useful;
 - `STANDARD`: a full ledger and gates per slice;
 - `DEEP`: adds one isolated critic subagent pass when the stakes are high.
 
@@ -219,18 +222,26 @@ skills/
     SKILL.md
     references/01..10   # same shared 07–09, plus continuous improvement (10)
     scripts/            # xray_scanner.py (--scan-only inventory / scaffold), review_gate_audit.py
-evals/                  # eval pack, fixtures, pre-registrations, results, gap analysis
+commands/               # slash commands that point at the two skills
+tests/test_gates.py     # end-to-end checks for scaffolders, gates, commands and installers
+evals/                  # eval pack, fixtures, pre-registrations, results, gap analysis, raw run evidence
+.github/workflows/      # CI: runs tests/test_gates.py on Linux and Windows
+docs/archive/           # v3.5-v3.7 whitepaper and pitch deck, kept for history
 .claude-plugin/ .codex-plugin/ .cursor-plugin/ .antigravity-plugin/   # host manifests
 ```
 
 ### What the gate scripts actually check
-Earlier versions' gates passed an empty template at 100/100. They no longer do:
-- **Scaffolds contain only `[[FILL: hint]]` markers.** Any unresolved marker vetoes the gate.
-- **Gate 3** reads the real critique score.
-- **Gate 5** needs a proven slice and a valid `TRACE.md`. A `DONE` row needs evidence, and a High-weight row can be `DEFERRED` only with `agreed: "<user's words>"`.
-- **Gate 6** needs every slice proven, no `OPEN` rows, and the required number of passed change scenarios. Fewer than 3 needs a stated waiver.
+The scripts check structure and evidence. They cannot judge quality, and they say so.
+- **Scaffolds contain only `[[FILL: hint]]` markers.** A document with an unresolved marker, or with almost no content, vetoes its gate. The check is structural, so documents can be written in any language.
+- **`TRACE.md` is checked at every gate.** A `DONE` row needs evidence, and a High-weight row can be `DEFERRED` only with `agreed: "<user's words>"`. Headers may be translated; the status and weight codes stay in English.
+- **Gate 3** needs a recorded critique score of 85 or more. The script reads the number the critique produced; it cannot verify that the critique was honest.
+- **Gate 5** needs a stub scan of the built product and, in ledger modes, a proven slice.
+- **Gate 6** needs no `OPEN` rows and the required number of passed change scenarios. Fewer than 3 needs a stated waiver.
+- **`LEAN` mode works too.** With only `_apex/TRACE.md` (created by `--lean`), the trace, stub-scan and change-scenario checks still run.
 - The stub scanner matches only real `TODO`/`FIXME` comments and `raise NotImplementedError`, so names like `todo-list` do not trip it.
 - All scripts print UTF-8, so non-ASCII paths work on Windows.
+
+Run the checks with `python tests/test_gates.py` (standard library only).
 
 ---
 
@@ -244,7 +255,7 @@ Changes to the prompts should be measured, not argued. See [`evals/EVAL-PROMPTS.
 5. grade blind;
 6. report failures as plainly as wins.
 
-Background documents from v3.7 ([whitepaper](./DEEPSEARCH-ARCHITECTURE-WHITEPAPER.md), [pitch deck](./EXECUTIVE-PITCH-DECK.md)) are kept for history. Where they disagree with this README, this README wins.
+The v3.5–v3.7 whitepaper and pitch deck are archived in [`docs/archive/`](./docs/archive/). They describe an older design; where they disagree with this README, this README wins.
 
 <div align="center">
   <b>MIT License</b>

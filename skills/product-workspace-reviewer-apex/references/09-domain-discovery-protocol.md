@@ -28,7 +28,7 @@ The 7 archetypes in `02-*` are worked examples of what a good brief contains. Th
    - **Standard instruments first** (when the work belongs to an established trade, profile (h)). For each core process, ask *"what instrument does this field already use for exactly this step?"* before inventing a custom one. Examples: bundle tickets for piece-rate work in garment factories; a key-dates register with a second-person check in law firms; a channel manager or iCal sync for multi-OTA lodging; an allergen matrix tied to recipe versions in food.
    - Custom solutions that ignore the field's standard instrument lose to it. Adopt the standard and improve on it.
 6. **Typical failure modes & seasonality:** how projects like this usually fail, and when the field's peaks and troughs occur.
-7. **The next 12–24 months:** strong models under-cover what is coming. In eval run 3, both the skill and the plain model missed price risk, cheaper financing and upcoming mandates. Cover:
+7. **The next 12–24 months.** Price risk, cheaper financing and upcoming mandates are the items most often missed. Cover:
    - **scheduled changes:** new mandates (e-invoicing, reporting, licensing, labelling), rates that expire or change, platform policy shifts;
    - **money over time:** price volatility of the key inputs and outputs and how practitioners hedge it (contracts, timing, buffers); working-capital and financing options typical for this field (supplier credit, preferential or cooperative loans, prepayments, deposits);
    - **growth path:** what the user's stated long-term goal requires that is not in place yet (a certification, a licence, a data history, a reputation asset), so that today's design does not block it.

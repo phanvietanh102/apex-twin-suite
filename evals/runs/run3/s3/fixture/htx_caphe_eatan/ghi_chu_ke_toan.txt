@@ -1,0 +1,39 @@
+GHI CHÚ KẾ TOÁN – cô Ngân (cập nhật 10/11/2026)
+
+1. TỔNG HỢP VỤ 2025–2026 (số tạm, chưa đối chiếu)
+   - Tổng mua của bà con (kg quy đổi, theo file thu mua): 200.722 kg – 21,17 tỷ
+   - Tổng bán cho thương lái / công ty:                   189.170 kg – 23,23 tỷ
+   - Tồn kho kiểm đếm ngày 05/11/2026: 3.200 kg (bao cũ, một số bị ẩm mốc)
+   - Chênh lệch khoảng 8,3 tấn: chưa giải thích được. Anh Hùng nói "hao hụt phơi sấy bình thường".
+   - Chi phí vận hành cả năm (lương, điện, xăng xe, bao bì, sửa sân phơi): khoảng 600 triệu
+   - Lợi nhuận tạm tính: 1,46 tỷ (= tiền bán – tiền mua – chi phí; chưa tính tồn kho,
+     chưa trừ khoản anh Phát còn nợ)
+
+2. CHIA LÃI: anh chủ nhiệm muốn chia hết 1,46 tỷ theo vốn góp như năm ngoái cho đơn giản.
+   Script của cháu Khoa đã chạy ra bảng. Chưa trích quỹ gì.
+
+3. Đại hội thành viên dự kiến 20/12/2026. Chưa gửi báo cáo tài chính, phương án chia lãi cho thành viên.
+
+4. Mua cà phê của bà con: trả tiền mặt hết (bà con thích tiền mặt), anh Hùng vừa cân vừa chi.
+   Không có hóa đơn, chưa làm bảng kê thu mua hàng nông sản.
+   Năm nay có 3 người ngoài HTX bán vào (chị Lựu, anh Thắng, ông Ba Đen) – nhập chung file, mã KN.
+
+5. QUY ĐỊNH HTX (biên bản họp 2021): quy đổi về độ ẩm chuẩn 13%:
+      kg quy đổi = kg cân × (100 – độ ẩm) / (100 – 13)
+   Hôm nào em cân thay anh Hùng thì em lấy chuẩn 12,5% theo thói quen chỗ làm cũ.
+
+6. ỨNG PHÂN BÓN: lãi 2%/tháng tính từ ngày nhận phân đến ngày trừ tiền.
+   Khi trừ vào tiền bán cà phê thì em đánh dấu "x", anh Hùng đánh "X" ở cột da_tru.
+
+7. Bà Nguyễn Thị Hoa (TV041) mất tháng 4/2026 (tháng 3 con trai là anh Bình bán cà phê thay).
+   Anh Bình đang xin rút vốn góp 40 triệu của mẹ và hỏi phần lãi năm nay. Danh sách vẫn để "Hoạt động".
+   Anh Mai Văn Bảo (TV033) xin rút từ 08/2025, chưa hoàn vốn 15 triệu.
+
+8. Anh Phát (Buôn Hồ) còn nợ 380 triệu từ tháng 5–6/2026, không có hợp đồng, hẹn mãi.
+
+9. Cân điện tử 2 tấn ở kho: tem kiểm định hết hạn 08/2024. Cân đồng hồ 100 kg (cân lẻ) chưa kiểm định bao giờ.
+
+10. File danh sách thành viên (có số CCCD, SĐT) em gửi lên nhóm Zalo "HTX Ea Tân – Ban QT" (9 người)
+    để mọi người tiện tra. File thu mua cũng gửi lên đó.
+
+11. Sổ quỹ tiền mặt: em ghi sổ tay riêng, cuối tháng cộng. Chưa đối chiếu với file thu mua.

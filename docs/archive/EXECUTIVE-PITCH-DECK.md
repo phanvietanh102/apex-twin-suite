@@ -1,3 +1,5 @@
+> **Archived (v3.5–v3.7).** This document describes an older design and makes claims that later blind evals did not support (for example "guarantee" and comparisons with other tools). It is kept for history only. The current design and evidence are in the [README](../../README.md).
+
 # EXECUTIVE PITCH DECK: THE `APEX TWIN ENGINE SUITE (v3.7)`
 > **Target Audience:** C-Suite Executives (CEO / CTO / CPO), Engineering Leaders, Agency Owners & Enterprise Clients
 > **Core Psychological & Economic Thesis:** Why deploying the `APEX Twin Engine Suite v3.7` eliminates the **3 Silent AI Failure Modes** that waste 70% of engineering and operational budgets—delivering products and workspace modernizations that exceed expectations by **+30%** and run for **12 months without a single structural rewrite**.

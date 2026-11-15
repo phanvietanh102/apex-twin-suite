@@ -1,0 +1,20 @@
+Rezeptänderungen / Lieferanten  (Katrin – lose Notizen, Ordner "Backstube")
+
+03/2026  Allergenliste "FINAL" erstellt, laminiert und in beiden Läden an die Theke gehängt.
+         Kunden fragen -> Liste zeigen oder mündlich sagen.
+
+09/2026  Streusel-Fertigmischung von Lieferant A nicht mehr lieferbar.
+         Neue Mischung von Lieferant B, Zutatenliste: Weizenmehl, Zucker, Butter,
+         HASELNUSS gemahlen (8%), Salz.  -> allergen_matrix_v3 angepasst (nur hier im Ordner).
+
+10/2026  Dinkel-Saatenbrot: neue Körnermischung obendrauf mit Sesam + Leinsamen
+         (Kunden wollten mehr Kruste). Allergenliste noch nicht geändert.
+
+10/2026  Neues Backmittel für Weizenbrötchen von Lieferant C (günstiger).
+         Datenblatt kam per Mail, noch nicht gelesen. Mehmet meint, da ist Lupinenmehl drin?
+
+11/2026  Vegan Schokokuchen jetzt mit Hafermilch statt Sojamilch.
+
+Stollen: Rosinen + Zitronat/Orangeat wie immer vom Großhandel, Etiketten haben wir nie angeschaut.
+Chargennummern der Zutaten heben wir nicht auf, Lieferscheine kommen in den Karton im Büro.
+Torten für Samstag werden Freitag ab 14 Uhr gemacht, Kühlraum Backstube fasst max. 12 Torten.

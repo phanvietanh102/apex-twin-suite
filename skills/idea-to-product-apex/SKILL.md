@@ -4,7 +4,7 @@ description: >-
   Use this skill when someone wants to turn an idea, goal or vague problem that matters to them into a complete, working result: a product, app, tool, system, business process, content operation, event, project or personal plan, in ANY field, industry, country or context (business, public sector, education, health, creative, personal). Includes short requests such as "build me an app that does a, b, c", "help me plan X" or "I want to start Y". Triggers on "/idea-to-product", "/apex", "/apex-lean", or when the user asks to brainstorm, elicit requirements, red-team a plan, or design something meant to run for 12+ months. Not for small edits, single bug fixes, or quick factual questions.
 ---
 
-# APEX Idea-to-Product (v4.3)
+# APEX Idea-to-Product (v4.4)
 
 ## What this skill is for
 
@@ -31,12 +31,12 @@ The goal: the user ends up thinking *"I would never have thought of that, and it
 
 ## How to talk to the user
 
-1. **Lead with value on Turn 1.** Build the domain brief first (09). Open with 2–4 specific findings from it for this user's field, location and situation: an obligation, a cost trap, a data-loss risk, a practitioner's norm, a capability they did not mention. Then give your recommended direction and, when cheap, a first draft. Then ask questions.
+1. **Lead with value on Turn 1.** Build the domain brief first (09). Open with the specific findings it produced for this user's field, location and situation (usually 2–4; never pad, and say so plainly if little turned up): an obligation, a cost trap, a data-loss risk, a practitioner's norm, a capability they did not mention. Then give your recommended direction and, when cheap, a first draft. Then ask questions.
 2. **Ask at most 3 questions, each answerable in one line,** and only ones whose answers change what you build. Give a sample answer when it helps. Always leave one open question for the user's own idea or local knowledge; they know things no model does.
 3. **Offer options only when the choice is genuinely the user's.** When paths differ in ways only the user can weigh, show at most 3, with pros, cons, "best if you want…" and your recommendation. Otherwise recommend in one sentence and move on. See [`01`](./references/01-elicitation-and-beyond-smart.md).
 4. **When the user delegates** ("cứ chọn phương án bạn thấy hợp nhất và làm tiếp", "you decide", "làm luôn", "just build it"), decide in one line, list your assumptions, and build in the same reply. No new options round.
 5. **Heaviest flow first.** Rank flows by volume, money and risk (lens 2). The heaviest one must be complete before minor ones get polish.
-6. **Respect the user's time.** Start every substantial reply with a summary of 10 lines or fewer: what I found, what I built, what you do next. Put details in files.
+6. **Respect the user's time.** Start every substantial reply with a summary of 10 lines or fewer: what I found, what I built, what you do next. After it, include only what the user must read to decide or act, so the whole reply reads in about two minutes. Put details in files and link them instead of repeating them. Write only the documents someone will use: one how-to beats several overlapping guides.
 7. **The daily operators decide the medium.** Installing Python or packages for your own work is one command and costs nothing; use code freely to build, generate and verify. But the deliverable must run where the people who use it every day already live: their phone, Excel, Outlook or existing platform. See [`08` §2](./references/08-definition-of-done-and-traceability.md).
    - Shared workflows must not depend on one machine.
    - Verify in the target app: recalculate spreadsheets in a real engine with zero `#NAME?`/`#REF!`, and use only functions their version supports.
@@ -73,35 +73,61 @@ Order and merge these freely. All of them must be true before handover.
   - what to check in 3, 6 and 12 months;
   - a re-review prompt.
 
+### If the project already has APEX files
+
+- **`docs/apex-blueprint/` from an older version:** read it with care. Older templates were pre-filled, so trust only the parts clearly specific to this project, confirm those with the user in one line, and ignore its scores and "approved" lines. Leave it in place and start a fresh trace with `--lean`.
+- **`_apex/` from a current version:** continue it. Keep the existing rows and update their statuses.
+- **The user wants an existing system assessed and improved** rather than something new built: that is the `product-workspace-reviewer-apex` skill's job.
+
 ### Rigor modes (choose silently)
 
 | Mode | When | Shape |
 | :--- | :--- | :--- |
-| `LEAN` (default) | One operator, single-session scope | `_apex/TRACE.md` + a compact spec (`_apex/SPEC.md`, ≤ 120 lines) or none. Most effort goes into building and proving. |
+| `LEAN` (default) | One operator, single-session scope | `_apex/TRACE.md` and `_apex/STATE.json`, plus a compact spec (`_apex/SPEC.md`, ≤ 120 lines) if useful. Most effort goes into building and proving. |
 | `STANDARD` | Multi-session product or business-critical process | Full ledger in `docs/apex-blueprint/`; gates per slice. |
-| `DEEP` | The user asks, or the stakes are high (money movement, health, legal, irreversible data, safety) | Adds one synchronous critic-subagent pass, run once; never sleep-poll. |
+| `DEEP` | The user asks, or the stakes are high (money movement, health, legal, irreversible data, safety) | `STANDARD` plus one synchronous critic-subagent pass, run once; never sleep-poll. |
 
 In chat-only hosts (no files or terminal), keep `TRACE.md` and the change scenarios as tables in the reply, and replace script gates with a short traced simulation: 1 normal case and 2 failure cases.
+
+### Which references to load
+
+Load a reference only when its moment comes. **This file and references 07–09 take precedence** over 01–06 wherever they differ.
+
+| Moment | Load |
+| :--- | :--- |
+| Every request, before the first reply | `09` (domain brief) |
+| Before presenting a plan and before handover | `07` (context profile, lenses), `08` (trace, definition of done, change scenarios) |
+| A genuine fork to put to the user | `01` |
+| Self-critique at medium or high stakes | `03` |
+| Designing something long-lived | `04` |
+| Starting to build | `06` |
+| `STANDARD` / `DEEP` ledger work | `05`; `02` for worked examples of field depth |
+
+A small `LEAN` request needs only `09`, `07`, `08`, and `06` once you build.
 
 ---
 
 ## Scripts (CLI/IDE hosts)
 
-* **Scaffold:** `python "<skill_dir>/scripts/init_project.py" --dir "<target>" --name "<project>" --domain "<DOM-01..07 or any free-text field, e.g. 'dental clinic, Da Nang'>"`
-  - It creates `docs/apex-blueprint/` (STANDARD/DEEP) and `TRACE.md`.
-  - For LEAN, skip the scaffold and create only `_apex/TRACE.md` yourself.
-* **Gate audit:** `python "<skill_dir>/scripts/fitness_audit.py" --dir "<target>" --gate <1..6> --scan-code "<code_dir>"`
-* **How the gates judge:**
-  - Documents contain `[[FILL: hint]]` markers; a gate is vetoed while any remain.
-  - Gate 3 needs `TOTAL C-SUITE AUDIT SCORE` ≥ 85.
-  - Gate 5 needs `--scan-code`, at least one proven slice in `STATE.json`, and a valid `TRACE.md` (no `DONE` without evidence).
-  - Gate 6 needs all slices proven, no `OPEN` rows in `TRACE.md`, and `change_scenarios_required` passed scenarios (default 3; fewer needs a `change_scenarios_waiver` reason).
-  - Never write a score, proof or status you did not actually obtain. Report results as plain outcomes, not gate numbers.
+* **Scaffold:**
+  - `LEAN`: `python "<skill_dir>/scripts/init_project.py" --dir "<target>" --name "<project>" --lean` creates `_apex/TRACE.md` and `_apex/STATE.json`.
+  - `STANDARD` / `DEEP`: the same command without `--lean` creates `docs/apex-blueprint/`.
+  - `--domain` accepts `DOM-01..07` or any free-text field, e.g. `"dental clinic, Da Nang"`.
+* **Gate audit:** `python "<skill_dir>/scripts/fitness_audit.py" --dir "<target>" --gate <1..6> --scan-code <files or folders you built>`. It works in both modes: with a ledger it checks the documents; with only `_apex/TRACE.md` it runs the LEAN checks.
+* **What the gates check** (details in `06`):
+  - Documents are present, substantive and free of `[[FILL: hint]]` markers. The check is structural, so write them in the user's language.
+  - `TRACE.md` rows are checked at every gate once the file exists: `DONE` has evidence, and a High row is `DEFERRED` only with `agreed: "<user's words>"`. Keep the status and weight codes in English.
+  - Gate 3 (ledger modes): a critique score ≥ 85, read from the scorecard line or from `c_suite_audit_score` in STATE.
+  - Gate 5: `--scan-code`, and at least one proven slice (ledger modes).
+  - Gate 6: no `OPEN` rows, all slices proven (ledger modes), and `change_scenarios_required` passed scenarios (default 3; fewer needs a `change_scenarios_waiver` reason).
+* The script checks structure and evidence, not quality. Never write a score, proof or status you did not actually obtain. Report results as plain outcomes, not gate numbers.
 
-## Shortcuts the user may type
+## Requests the user may make
+
+Plain words are enough; these phrases make the intent explicit.
 
 * `/idea-to-product [idea]` or `/apex [idea]`: start (Turn-1 rules above).
 * `/apex-lean [idea]`: `LEAN` mode; build as early as possible.
-* `/apex-redteam`: critique an idea, plan or codebase (critic subagent if available).
-* `/apex-blueprint`: scaffold `docs/apex-blueprint/` and run Gate 4.
-* `/apex-verify` or `/apex-audit`: run `fitness_audit.py` with `--scan-code`.
+* `/apex-redteam`: critique an idea, plan or codebase (`03`; critic subagent if available).
+* `/apex-blueprint`: scaffold `docs/apex-blueprint/` for `STANDARD` work.
+* `/apex-verify` or `/apex-audit`: run `fitness_audit.py` with `--scan-code` and report what is still open.

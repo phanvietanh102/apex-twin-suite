@@ -1,0 +1,29 @@
+BẢNG GIÁ PHÒNG – HOMESTAY SƯƠNG MAI (cập nhật 03/2026)
+
+P1, P2 (phòng đôi, view vườn): 700k ngày thường / 850k cuối tuần
+P3 (gia đình 3 người, ban công): 900k / 1.100k
+P4 (phòng đôi gác mái) – CHỈ để trên Airbnb, để giá USD 30–55$/đêm cho tiện khách Tây
+P5, P6 (4 người): 800k / 1.100k
+
+Lễ Noel – Tết Dương (23/12 – 2/1): +40%
+Tết Nguyên Đán: +80%, tối thiểu 2 đêm
+
+GHI CHÚ KÊNH:
+- Booking gửi mail tháng 6: từ 1/7/2026 mình vào gói Preferred, hoa hồng 15% (trước là 12%).
+  -> nhớ sửa cột hoa_hong_pct trong sheet (CHƯA SỬA)
+- Agoda 15%. Có bật bán thêm "giá không hoàn hủy" rẻ hơn 10%.
+- Airbnb: phí host 3%? (em Duy bảo vậy, chưa kiểm tra lại)
+- Tiền Airbnb về TK Vietcombank bằng VND, ngân hàng tự đổi.
+
+BÀI GHIM TRÊN FANPAGE + ZALO:
+"Đặt trực tiếp qua Zalo/Facebook RẺ HƠN Booking/Agoda 20%! Khách quen không cần cọc."
+
+KHÁCH QUEN: giảm 10%, nhớ trừ tay khi tính tiền.
+
+CHÍNH SÁCH HỦY:
+- Khách Zalo/FB: cọc 50%. Hủy trước 7 ngày hoàn 100% (nói miệng với khách, chưa đăng ở đâu).
+- Booking: hủy miễn phí đến 1 ngày trước ngày đến.
+- Agoda: có loại hoàn hủy và loại không hoàn hủy.
+- Airbnb: để chế độ "Linh hoạt".
+
+NHẬN PHÒNG 14h – TRẢ PHÒNG 12h (Airbnb đang để nhận phòng 13h, chưa sửa)

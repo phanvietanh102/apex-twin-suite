@@ -1,75 +1,47 @@
-# 06. Step-by-Step Stage Gates, Code Verification & Anti-Bloat Protocol
+# 06. Gates and Verification While Building
 
-## 1. Solving the "Context Bloat vs. Output Quality" Paradox
+Load this when you start building (any mode). SKILL.md and references 07–09 take precedence over anything here. Which references to load, and the three rigor modes (`LEAN`, `STANDARD`, `DEEP`), are defined once in SKILL.md.
 
-**The Engineering Reality:**
-When an AI agent loads a massive workflow prompt into its context window while simultaneously trying to write code, design UI, or draft deep content, **Transformer Attention Dilution** occurs. The model spends 40% of its token and reasoning capacity on "meta-bureaucracy" (writing long process reports) and rushes the actual product output!
+## 1. Keep process smaller than the product
 
-### The APEX v3.5 Solution: 3 Laws of Zero-Bloat Execution
+A plan is a means; the working result is what the user came for. Do not let process text crowd out the build: load a reference only when you need it, and once building starts, work from the spec and `TRACE.md`. Every build step should leave complete, working files, with no placeholders.
 
-1. **Law of Phase-Isolated Context (Load Only Active Phase Reference):**
-   * Never read all reference files at once.
-   * Read **only** the reference file for the current active phase:
-     * Phase 1–2 $\rightarrow$ Read only `01` & `02`.
-     * Phase 3 $\rightarrow$ Read only `03`.
-     * Phase 4 $\rightarrow$ Read only `04` & `05`.
-     * Phase 5 (Building/Coding) $\rightarrow$ **Drop all philosophical prose!** Read only the locked `02-KANO-SPEC-AND-DELIGHT.md` acceptance table and dedicate **95% of output tokens to writing complete, production-grade code/assets**.
-2. **Law of Adaptive Rigor Tiers (3 Modes Matched to Project Scale):**
-   Classify the project size in Phase 1 so bureaucracy never exceeds product value:
-   * **Mode 1 — `LEAN` (Micro-products / Fast tools / Single-session execution):**
-     Compress Phases 1–4 into a single compact `docs/apex-blueprint/APEX-COMPACT-SPEC.md` ($\le 150$ lines) and spend **85% of time building and testing the actual product**.
-   * **Mode 2 — `STANDARD` (Standard products / Websites / Operational workflows):**
-     Standard 6-phase flow with concise blueprint files and per-slice automated testing.
-   * **Mode 3 — `DEEP-ENTERPRISE` (Large systems / Multi-domain architectures / Long-term investments):**
-     Full 6-document ledger + isolated Subagent C-Suite Red-Team + full stress-test suite.
-3. **Law of Code/Output Supremacy:**
-   A blueprint is only a contract, never the final product. In Phase 5, every turn must produce **100% complete, working, non-truncated implementation files** with zero placeholders.
+## 2. What the gate script checks, and what stays your judgement
 
----
+`fitness_audit.py --dir <target> --gate <1..6> --scan-code <dir>` checks structure and evidence. It cannot judge quality; that part is yours.
 
-## 2. Shift-Left Stage-Gate Verification (Gates 1 $\rightarrow$ 6)
+| Gate | The script checks | You must judge |
+| :--- | :--- | :--- |
+| 1–2 | Blueprint documents exist, have real content and no `[[FILL]]` markers (STANDARD/DEEP). `TRACE.md` rows are valid whenever the file exists | The goal, constraints and the user's own ideas are captured. Field-specific traps from the domain brief are addressed |
+| 3 | A critique score ≥ 85 is recorded (scorecard line or `c_suite_audit_score` in STATE). Ledger modes only | The critique was honest and its flaws were actually fixed. The script only reads the number |
+| 4 | Architecture and roadmap documents are complete | Volatile values live in one editable place and history is protected from later edits |
+| 5 | At least one proven slice. `TRACE.md` valid: `DONE` has evidence, no High row deferred without `agreed:`. No stubs in the scanned files | The tests really pass. The deliverable works where the daily operators will use it |
+| 6 | Every slice proven, no `OPEN` rows, the required change scenarios passed | The handover is usable: setup, daily routine, backup, what to change and how |
 
-**Why End-of-Pipeline Scoring Fails:**
-If Step 1 (JTBD/Vision) or Step 2 (Scope/Delight) or Step 3 (Architecture) has a flaw, discovering it at Step 6 means throwing away 80% of the work.
+In `LEAN` mode there are no blueprint documents. The script then checks `_apex/TRACE.md`, the stub scan and, at Gate 6, the change scenarios in `_apex/STATE.json` (create both with `init_project.py --lean`).
 
-Every phase has its own **Hard Stage-Gate Breaker** enforced before moving to the next phase:
+When the user has delegated the decisions, do not stop at a gate to ask for confirmation; record your assumptions and continue. Report results as plain outcomes, never as gate numbers.
 
-| Gate | Trigger Point | Mandatory Verification Check | Fail/Block Condition (Stop & Fix Immediately) |
-| :--- | :--- | :--- | :--- |
-| **Gate 1** | End of Phase 1 (Discovery) | `fitness_audit.py --gate 1` + User confirmation | Fails if user's open-ended unique vision wasn't probed, or if JTBD + Hard Constraints (Budget, Bus Factor) are still ambiguous. |
-| **Gate 2** | End of Phase 2 (Blind-Spots & Kano) | `fitness_audit.py --gate 2` | Fails if $<4$ Quadrant-4 domain blind spots are identified, or if 30% Kano Delighters introduce fragile maintenance burdens. |
-| **Gate 3** | End of Phase 3 (C-Suite Red-Team) | `fitness_audit.py --gate 3` (Adversarial Deduction Score $\ge 85/100$) | Fails if any C-Suite persona gave generic praise without mathematical/architectural proof, or if $<3$ concrete flaws were caught and fixed. |
-| **Gate 4** | End of Phase 4 (12M Architecture) | `fitness_audit.py --gate 4` | Fails if Tier-A (Core) and Tier-B (Volatile Config/Prices) are mixed, or if historical snapshot isolation is missing. |
-| **Gate 5** | During Phase 5 (After **EVERY** Vertical Slice) | `fitness_audit.py --gate 5 --scan-code <dir>` + **Actual Test Execution** | Fails if **ANY** test fails, if `TODO`/`FIXME`/`mock`/placeholder stubs exist in code, or if volatile values are hardcoded. |
-| **Gate 6** | End of Phase 6 (365-Day Handover) | `fitness_audit.py --gate 6 --scan-code <dir>` | Fails if 1-Click Backup/Export, 5-Min Manual Fallback SOP, or Quarterly Audit Prompt is missing/untested. |
+## 3. Verifying each slice
 
----
+Saying "it is finished" is not verification. Before marking a slice `done`:
 
-## 3. Phase 5 Executable Code & Deliverable Verification Protocol
+1. **Stub scan.** Run the gate script with `--scan-code`. It flags `TODO`/`FIXME` comments and `raise NotImplementedError`. Also check by reading that there is no fake data, no button without a handler, and no secret or business number hard-coded in core logic. A faithful mock used only in tests is fine; say so.
+2. **Tests that could fail.** Cover:
+   - the normal path with exact expected output;
+   - boundaries: zero, negative, empty, very large, non-ASCII input;
+   - a config-change test: change a price or rule, confirm new results use it and previously saved records are unchanged.
+3. **A real run.** Execute the command or open the result as the operator would:
+   - scripts and services: run them and read the output and generated files;
+   - web or UI: load it, check for runtime errors, check phone width;
+   - spreadsheets and documents: recalculate in the target app with zero error values; check formatting.
+4. **Record the proof** in `TRACE.md` (and in `STATE.json` slices for STANDARD/DEEP): the command and its result, not a claim.
 
-When building software, scripts, calculators, spreadsheets, or automated workflows in Phase 5, **self-reported "I finished coding" is strictly forbidden.**
+## 4. When the user changes scope mid-build
 
-For **every vertical slice** (`Slice 1`, `Slice 2`, `Slice 3`, `Slice 4`), execute this 4-step verification loop before marking the slice `done` in `STATE.json`:
+Classify the change before touching the core:
+- **A value or rule:** change the config only.
+- **A new capability:** add it as a separate module or schedule it as a later slice.
+- **Something that conflicts with a core decision** (for example, it would let history be edited or make costs uncapped): tell the user what it breaks and offer a safe alternative.
 
-### Step 1: Automated Anti-Stub & Anti-Hardcode Scan
-Run `python "<skill_dir>/scripts/fitness_audit.py" --dir "<project_dir>" --scan-code "<project_dir>"` to verify:
-* **Zero Stubs/Mocks:** No `TODO`, `FIXME`, `pass # implement`, `mockData`, or fake UI buttons without real handlers.
-* **Zero Hardcoded Secrets/Volatility:** No hardcoded API keys or magic business numbers inside Tier-A core logic files.
-
-### Step 2: Deterministic Unit & Edge-Case Tests (TDD Enforcement)
-Write and execute an automated test script (`tests/test_slice_<N>.py` or `npm test`) covering:
-1. **Happy Path:** Standard valid inputs produce exact expected output.
-2. **Boundary / Zero / Negative Values:** `0`, negative numbers, empty strings, huge numbers ($10^9$), non-ASCII Unicode characters.
-3. **Config Mutation Isolation Test:** Change a price/rule in Tier-B `config` $\rightarrow$ verify that a new calculation uses the new price **AND** previously saved historical snapshots remain 100% unchanged!
-
-### Step 3: Live Runtime / UI Smoke Verification
-* If CLI / Backend / Script: Execute the actual command via `run_command` and inspect stdout/stderr and generated output files.
-* If Web / UI App: Start the local server and verify the rendered DOM/console (zero runtime JS errors, mobile viewport layout intact).
-* If Document / Spreadsheet / Content System: Verify formula integrity, formatting, and schema compliance.
-
-### Step 4: Mid-Flight Scope Change Guard
-If the user requests a new feature or change during Phase 5:
-1. **Pause 10 seconds** and classify the change:
-   * *Type 1 (Config/Parameter tweak):* Update Tier-B config only.
-   * *Type 2 (New Modular Capability):* Add as a decoupled Tier-C plugin/adapter or schedule as `Slice N+1`.
-   * *Type 3 (Core Invariant Conflict):* Warn the user if the change violates `00-PROJECT-CONSTITUTION.md` (e.g., breaks historical immutability or explodes recurring costs) and propose a safe alternative.
+Add a `TRACE.md` row for it either way.

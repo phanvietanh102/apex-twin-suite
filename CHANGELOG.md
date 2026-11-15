@@ -2,6 +2,33 @@
 
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
+## [4.4.0] — 2026-11-15
+### Fixed (review of v4.3.0)
+- **Windows installer no longer reinstalls v3.7 behaviour.** `install-skills.ps1` used to write slash commands containing the old "MANDATORY 2-SECTION" rule into `~/.claude/commands`. Both installers now copy the new `commands/` files, which only point at the skills. They also replace each target cleanly and skip `__pycache__`.
+- **Slash commands are shipped** in `commands/`: `/apex`, `/idea-to-product`, `/apex-lean`, `/apex-review`, `/review-product`, `/apex-improve`.
+- **Gates run in `LEAN`, the default mode.** Previously they stopped with "ledger not found", so the TRACE rules were never checked there. `init_project.py --lean` and `xray_scanner.py --lean` create `_apex/TRACE.md` and `_apex/STATE.json`; the auditors detect that layout.
+- **Gates are language-independent.** Document checks are structural (present, substantive, no `[[FILL]]`) instead of matching English keywords. The critique score can be read from STATE. The TRACE parser accepts translated headers, escaped pipes and bold status cells.
+- **References 01–06 reconciled with SKILL.md.**
+  - History is protected in place, never moved by default.
+  - Option tables no longer pre-select or over-promise.
+  - Forced quotas (3–5 flaws, 4 blind spots, 30% delighters, three tiers for every system) now scale with stakes.
+  - The reviewer's scorecard label matches the gate.
+  - Host-specific tool names, the model-tier warning and two unverified statistics are removed.
+- **SKILL.md files:** a "which references to load" table per moment, with SKILL.md and 07–09 taking precedence; the reviewer no longer waits when the owner's first message already delegates; the backup location is specified.
+- **Scaffold templates no longer pre-write promises or fixed plans:** slice names are neutral and can be renamed; rows that do not apply become `N/A` with a reason; no "zero downtime", "100% accurate" or pre-decided archive moves. The entropy-only baseline score is no longer printed on Turn 1.
+- **`TRACE.md` is checked at every gate** once it exists, in both modes.
+- **Projects built with an older APEX version are handled.** The auditors refuse to audit a pre-v4 ledger (its templates were pre-filled) and continue with `_apex/TRACE.md`; the scaffolders will not mix new files into it; the Turn-1 inventory reports earlier APEX files; both skills read an old ledger for the original vision but do not trust its scores.
+- **Scaffold templates rewritten** for both skills: plain headings, no percentages or promises, no pre-written plan rows, no invented baseline score; rows that do not apply become `N/A`.
+- **Stub scan targets your own work:** `--scan-code` / `--scan-target` accept several files or folders. A `TODO` already in the owner's code is a finding to report, not a veto that pushes the model to edit unrelated code.
+- **Safer zoning and history rules:** code files are no longer marked "never touch" because of a word in their name; `.env` files are protected; live data is backed up but not set read-only.
+- **A broken STATE file** is reported as an error to fix, not mistaken for an old version.
+- **Shorter replies, fewer documents:** replies are meant to be read in about two minutes, and only documents someone will use are written.
+- **Eval evidence for runs 3–4 is in the repo** (`evals/runs/`, local paths scrubbed, all data synthetic).
+- **CI:** GitHub Actions runs the test suite on Linux and Windows.
+- **Archived:** the v3.5–v3.7 whitepaper and pitch deck moved to `docs/archive/` with a notice.
+- **README:** installing from the GitHub link is stated as verified for Claude Code only.
+- **Tests are in the repo:** `tests/test_gates.py` (62 checks).
+
 ## [4.3.0] — 2026-11-15
 ### Release housekeeping
 - **README rewritten for v4.3:** what the skills do, how they work, honest eval evidence and caveats, install, and usage. The unverified competitor comparison and the v3.7 mechanics that v4 replaced are removed.

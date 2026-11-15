@@ -1,0 +1,19 @@
+Mã đơn,Khách hàng,Mã hàng,Mô tả,SL đặt,Đơn giá gia công,Thành tiền,Ngày nhận NPL,Hạn giao,Trạng thái,Ghi chú
+DH2601,Cty TNHH May XK An Phát,AP-SM-01,Sơ mi nam dài tay,2500,21000,52500000,08/01/2026,10/02/2026,Đã giao,
+DH2602,Shop Mộc Miên,MM-DAM-03,Đầm suông,600,32000,19200000,15/01/2026,05/02/2026,Đã giao,khách trả trước 50%
+DH2603,Hanbok Trading,HB-JK-11,Áo khoác gió,1800,1.10,1980,02/03/2026,04/15/2026,Đã giao,giá USD/sp
+DH2604,Cty TNHH May XK An Phát,AP-QT-01,Quần tây nam,2000,24000,48000000,02/03/2026,10/04/2026,Đã giao,
+DH2605,Mộc Miên,MM-AK-02,Áo kiểu nữ,900,22000,19800000,04/04/2026,25/04/2026,Đã giao,
+DH2606,Hanbok Trading,HB-JK-13,Áo khoác gió lót lưới,2200,1.05,2310,05/02/2026,06/20/2026,Đã giao,giá USD/sp
+DH2607,An Phat,AP-POLO-02,Áo polo nam,3000,18500,55500000,20/06/2026,25/07/2026,Đã giao,
+DH2608,Shop Mộc Miên,MM-DAM-05,Đầm suông cổ V,1000,32000,32000000,05/08/2026,28/08/2026,Đã giao,
+DH2609,ANPHAT,AP-SM-04,Sơ mi nam ngắn tay,2800,21000,58800000,10/08/2026,15/09/2026,Đang may,
+DH2609,Cty TNHH May XK An Phát,AP-SM-04,Sơ mi nam ngắn tay,2800,21000,58800000,10/08/2026,15/09/2026,Đã giao,"trễ 3 ngày do mất điện, An Phát trừ 12tr"
+DH2610,Hanbok Trading,HB-JK-14,Áo khoác gió,1500,0.95,1425,08/20/2026,09/30/2026,Đã giao,giá USD/sp
+DH2611,An Phát,AP-SM-05,Sơ mi nam dài tay,3000,21000,63000000,25/09/2026,20/10/2026,Đã giao,"định mức vải 1,32 m/sp; HĐ: phạt chậm giao 0,5%/ngày trên giá trị đơn"
+DH2612,Hanbok Trading,HB-JK-15,Áo khoác có mũ,2000,0.95,1900,10/01/2026,11/15/2026,Đang may,"định mức vải 1,2 m/sp; giá USD/sp"
+DH2613,Mộc Miên,MM-DAM-08,Đầm hai dây,1500,32000,48000000,02/10/2026,30/10/2026,Đã giao,
+DH2614,Shop Mộc Miên,MM-SM-01,Sơ mi nữ,800,26000,20800000,05/11/2026,30/11/2026,Đang cắt,dùng vải kate thừa trong kho
+TỔNG DOANH THU 2026,,,,,,476407615,,,,
+# Ghi chú công thức (file Excel gốc DonHang.xlsx): G = E*F ; G17 = SUM(G2:G16)
+# Mấy đơn Hanbok anh Tú nhập ngày theo kiểu tháng/ngày (copy từ email khách)

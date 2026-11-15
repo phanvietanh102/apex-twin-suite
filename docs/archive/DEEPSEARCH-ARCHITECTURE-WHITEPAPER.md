@@ -1,3 +1,5 @@
+> **Archived (v3.5–v3.7).** This document describes an older design and makes claims that later blind evals did not support (for example "guarantee" and comparisons with other tools). It is kept for history only. The current design and evidence are in the [README](../../README.md).
+
 # DEEPSEARCH ARCHITECTURE WHITEPAPER: THE `APEX TWIN ENGINE SUITE (v3.7)`
 > **Systems Engineering, Cognitive Psychology & AI Harness Monograph (2026 Edition)**
 > **Subject:** Overcoming LLM Sycophancy, Anchoring Bias, Choice Paralysis, Premature Patching, Context Dilution, and Month-2 Architectural Rot across Greenfield (`0 -> 1`) and Brownfield (`1 -> 10x`) Multi-Domain Systems.

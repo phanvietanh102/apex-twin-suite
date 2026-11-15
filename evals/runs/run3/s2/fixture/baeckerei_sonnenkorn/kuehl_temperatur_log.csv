@@ -1,0 +1,17 @@
+datum,uhrzeit,geraet,temp_c,kuerzel,bemerkung
+2026-11-02,06:30,Kühlraum Backstube,4,KH,
+2026-11-03,06:30,Kühlraum Backstube,4,KH,
+2026-11-03,06:40,Vitrine Filiale,7,MK,
+2026-11-04,06:30,Kühlraum Backstube,5,KH,
+2026-11-04,06:40,Vitrine Filiale,8,MK,ok
+2026-11-05,06:30,Kühlraum Backstube,4,KH,
+2026-11-05,18:05,Vitrine Filiale,8.5,JA,ok
+2026-11-06,06:30,Kühlraum Backstube,4,KH,
+2026-11-07,06:55,Vitrine Filiale,9,MK,Tür zugedrückt
+2026-11-09,06:30,Kühlraum Backstube,5,KH,
+2026-11-10,06:30,Kühlraum Backstube,4,KH,
+2026-11-10,18:10,Vitrine Filiale,9.5,JA,ok
+2026-11-11,06:30,Kühlraum Backstube,4,KH,
+2026-11-11,06:35,Vitrine Filiale,8.5,MK,
+2026-11-13,06:30,Kühlraum Backstube,5,KH,
+2026-11-13,06:35,Vitrine Filiale,9,MK,ok

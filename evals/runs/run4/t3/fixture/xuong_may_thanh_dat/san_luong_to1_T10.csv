@@ -1,0 +1,34 @@
+Mã NV,Họ tên,Mã đơn,Công đoạn,Số lượng,Đơn giá (đ/sp),Ca,Người ghi
+NV01,Nguyễn Thị Hoa,DH2611,Kiểm hàng,2985,600,Thường,Hoa
+NV01,Nguyễn Thị Hoa,DH2612,Kiểm hàng,1960,800,Thường,Hoa
+NV02,Trần Thị Lan,DH2611,Ráp thân,1985,2600,Thường,Hoa
+NV02,Trần Thị Lan,DH2611,Ráp thân,600,2600,Tăng ca Chủ nhật,Hoa
+NV02,Trần Thị Lan,DH2612,Ráp thân,900,3600,Thường,Hoa
+NV03,Lê Thị Mai,DH2611,May cổ,1800,2400,Thường,Hoa
+NV03,Lê Thị Mai,DH2612,May mũ,1000,2400,Tăng ca tối 18h-21h,Hoa
+NV04,Phạm Văn Hùng,DH2611,May tay,1500,1600,Thường,Hoa
+NV04,Phạm Văn Hùng,DH2612,May khóa,1200,3000,Thường,Hoa
+NV05,Vũ Thị Hằng,DH2611,May tay,1485,1600,Thường,Hoa
+NV05,Vũ Thị Hằng,DH2612,May mũ,960,2400,Thường,Hoa
+NV06,Đỗ Thị Thu,DH2611,Thùa khuy đính cúc,1985,1100,Thường,Hoa
+NV06,Đỗ Thị Thu,DH2613,May viền,700,2200,Thường,Hoa
+NV07,Hoàng Thị Ngọc,DH2611,Là ủi đóng gói,2985,800,Thường,Hoa
+NV07,Hoàng Thị Ngọc,DH2613,Vắt sổ,1500,800,Thường,Hoa
+NV07,Hoàng Thị Ngọc,DH2613,May viền,800,2200,Tăng ca đêm 22h-24h,Hoa
+NV08,Bùi Thị Yến,DH2612,May khóa,760,3000,Thường,Hoa
+NV08,Bùi Thị Yến,DH2613,Tra khóa,1500,2600,Thường,Hoa
+NV09,Ngô Thị Thảo,DH2613,May thân,1000,4500,Thường,Hoa
+NV09,Phan Thị Quỳnh,DH2612,Là ủi đóng gói,1960,900,Thường,Hoa
+NV09,Phan Thị Quỳnh,DH2613,Là ủi đóng gói,1500,1000,Thường,Hoa
+NV10,Đặng Văn Tú,DH2611,Cắt,2985,1200,Thường,Hoa
+NV10,Đặng Văn Tú,DH2612,Cắt,1960,1400,Thường,Hoa
+NV11,Đinh Thị Nga,DH2611,Vắt sổ,2985,600,Thường,Hoa
+NV11,Đinh Thị Nga,DH2612,Vắt sổ,1960,700,Thường,Hoa
+NV11,Đinh Thị Nga,DH2613,Cắt,1500,1500,Thường,Hoa
+NV12,Mai Thị Huyền,DH2611,Thùa khuy đính cúc,1000,1100,Thường,Hoa
+NV12,Mai Thị Huyền,DH2611,Nhặt chỉ vệ sinh SP,2985,400,Thường,Hoa
+NV13,Lý Thị Diệu,DH2611,May cổ,1185,2400,Thường,Hoa
+NV13,Lý Thị Diệu,DH2611,Ráp thân,400,2600,Thường,Hoa
+NV13,Lý Thị Diệu,DH2613,May thân,500,4500,Thường,Hoa
+NV14,Trịnh Thị Oanh,DH2612,Ráp thân,1060,3600,Thường,Hoa
+NV14,Trịnh Thị Oanh,DH2613,Đính nhãn,1500,600,Thường,Hoa

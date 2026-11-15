@@ -1,0 +1,13 @@
+Ngày giao,Mã đơn,Khách,SL giao,SL lỗi khách trả về,SL xuất hóa đơn,Số HĐ,Người giao,Biên bản giao nhận,Ghi chú
+10/02/2026,DH2601,An Phát,2480,12,2500,0000123,anh Tuấn,Có,
+05/02/2026,DH2602,Mộc Miên,600,0,600,0000121,Grab,Không,
+15/04/2026,DH2603,Hanbok,1790,0,1800,0000141,xe khách,Không,
+10/04/2026,DH2604,An Phát,1985,8,2000,0000139,anh Tuấn,Có,
+25/04/2026,DH2605,Mộc Miên,900,0,900,0000144,Grab,Không,
+20/06/2026,DH2606,Hanbok,2200,0,2200,0000160,xe khách,Không,
+26/07/2026,DH2607,An Phát,2970,25,3000,0000171,anh Tuấn,Có,trễ 1 ngày
+28/08/2026,DH2608,Mộc Miên,1000,0,1000,0000180,Grab,Không,
+18/09/2026,DH2609,An Phát,2790,20,2800,0000187,anh Tuấn,Có,trễ 3 ngày
+30/09/2026,DH2610,Hanbok,1500,0,1500,0000190,xe khách,Không,
+24/10/2026,DH2611,An Phát,2985,35,3000,0000201,anh Tuấn,Có,"trễ 4 ngày; 35 áo lỗi đường may cổ, An Phát trả về sửa"
+29/10/2026,DH2613,Mộc Miên,1500,0,1500,0000203,Grab,Không,khách nhắn Zalo là đã nhận

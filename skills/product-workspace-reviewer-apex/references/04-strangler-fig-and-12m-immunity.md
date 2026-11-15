@@ -1,50 +1,47 @@
-# 04. Agentic Strangler-Fig Evolution & 12-Month Immunity Architecture
+# 04. Upgrading in Place: Strangler-Fig Steps, Organisation, 12-Month Roadmap
 
-## 1. Why "Rip-and-Replace" Rewrites Fail — And How the Strangler Fig Pattern Wins
+Load this when planning the upgrade architecture (any mode). SKILL.md and references 07–09 take precedence over anything here.
 
-When upgrading a product, app, or workspace that is actively being used:
-* **Never do a Big-Bang Rewrite** that breaks current operations while the new version is being built.
-* **Use the Agentic Strangler-Fig Pattern:**
-  1. **Step 1 — Quarantine & Freeze Historical Data (Red-Zone Protection):**
-     Move all historical invoices, completed projects, old contracts, and raw archives into an immutable `archive/` or `history/` vault so they remain 100% untouched and readable forever.
-  2. **Step 2 — Extract Hardcoded Volatility into Tier B:**
-     Locate every hardcoded price, rate, tax percentage, product SKU, prompt template, or contact detail scattered across the old files, and consolidate them into a single, clean **Tier-B Configuration Source of Truth** (`config.json`, `settings.yaml`, or Master Config Sheet).
-  3. **Step 3 — Wrap & Upgrade Core Workflows (+30% Kano Delighters):**
-     Connect the cleaned core logic (Tier A) to the new Tier-B Config and attach modern Tier-C outputs (1-click PDF/Excel generators, automated SEO/AIO checkers, interactive dashboards).
-  4. **Step 4 — Verify Behavioral Parity & Switch Over:**
-     Prove that historical test cases produce accurate results in the upgraded system, while keeping a 1-click rollback path to the pre-upgrade state.
+## 1. Upgrade around what works; never rip and replace
 
----
+A system in daily use must keep working while it is improved. Work in this order:
 
-## 2. Universal Workspace Hygiene & Anti-Entropy Architecture (12-Month Clutter Immunity)
+1. **Protect history where it is.** Finished records (issued invoices, completed projects, signed contracts, closed periods) stay **in place**: take a verified backup, record a hash, and set them read-only where that does not disturb the system. Do not move, rename or edit them. Live data the system still writes to (a running database, the current working sheet) is backed up but not set read-only; change it only with a tested rollback. A file the owner's people open by habit, or that other files link to, breaks when moved. If the owner asks for an archive folder, copy first, verify the copy, update every reference, and only then retire the old location with their agreement.
+2. **Pull volatile values into one editable place.** Find every price, rate, tax percentage, rule, template or contact detail hard-coded across files and consolidate them into a single source the operators can edit (a config sheet or file in their own tool).
+3. **Wrap and upgrade the core flows.** Connect the cleaned logic to that config and add the improvements agreed in the gap matrix, heaviest flow first.
+4. **Prove parity, then switch over.** Old valid inputs must give the same results unless a correction is intended and stated. Keep a one-step rollback to the pre-upgrade state.
 
-When auditing a messy project folder or business workspace (e.g., scattered PDFs, spreadsheets, images, scripts, and drafts), transform it into the **Immutable 5-Zone Workspace Taxonomy**:
+## 2. Reorganising folders is optional
+
+Reorganise only when clutter is one of the owner's stated pains or they agree to it. Clutter that nobody trips over is not worth the risk of broken links and lost habits.
+
+When you do reorganise:
+- Apply the new structure to **new** files first; leave existing ones where people expect them unless the owner agrees to move them.
+- Keep one canonical template per document type instead of `v1 / v2 / final_copy` duplicates; generate dated outputs from it.
+- Prefer names that sort chronologically, such as `<YYYY-MM-DD>_<client-or-project>_<type>`.
+- After any move, scan scripts, formulas and links for broken paths.
+
+A layout that has worked for small businesses, offered as an example, not a requirement:
 
 ```text
-<Project-Or-Business-Root>/
-├── 00-CONFIG-AND-TEMPLATES/    # Tier B: Canonical pricing tables, configs, master templates
-├── 01-ACTIVE-OPERATIONS/       # Active work / projects (Named: YYYY-MM-DD_Code_Name)
-├── 02-CORE-SYSTEM-AND-TOOLS/   # Tier A & C: Source code, automation scripts, processing engines
-├── 03-IMMUTABLE-ARCHIVE/       # Red Zone: Finalized invoices, delivered projects (Sorted by Year/Quarter)
-├── 04-EXPORTS-AND-DELIVERABLES/# Client-facing packaged exports (PDF/XLSX/Media)
-└── docs/apex-review/           # Forensic Audit Ledger, SOP Runbook & REVIEW-STATE.json
+<root>/
+├── config/          # prices, rates, rules, master templates (the one editable place)
+├── active/          # current work
+├── tools/           # scripts, workbooks, automations
+├── archive/         # finished, read-only records (only if the owner wants history gathered here)
+└── exports/         # what is sent to clients
 ```
 
-### The 3 Laws of Workspace Immunity:
-1. **Zero `v1 / v2 / final_copy` Rule:** Never duplicate code or template files to change a number. Keep 1 canonical template in `00-CONFIG-AND-TEMPLATES/` and generate dated snapshots into `03-IMMUTABLE-ARCHIVE/` or `04-EXPORTS-AND-DELIVERABLES/`.
-2. **ISO-8601 & Slug Naming Convention:** Standardize filenames as `<YYYY-MM-DD>_<Entity-Or-ProjectCode>_<DocType>_v<SemVer>.<ext>` so sorting alphabetically always sorts chronologically.
-3. **Automated Hygiene Guard (`review_gate_audit.py`):** A single command checks if stray temporary files, duplicate copies, or unarchived items have accumulated.
+Process files belong in `_apex/` (LEAN) or `docs/apex-review/` (STANDARD/DEEP), never loose in the owner's working folders.
 
----
+## 3. Twelve-month roadmap (adapt to the owner's context)
 
-## 3. The 365-Day Post-Upgrade Immunity Roadmap (Day 1 $\rightarrow$ Day 365)
+Give the owner a short schedule of what to expect and what each step costs them. Fill it with their real events; the rows below are a starting shape.
 
-Every upgraded product/workspace includes a 12-month operational immunity schedule in `04-ZERO-DOWNTIME-MIGRATION-ROADMAP.md`:
-
-| Horizon | System State After Review & Upgrade | Built-In Immunity Mechanism | Operator Effort |
+| Horizon | What happens | What protects them | Owner effort |
 | :--- | :--- | :--- | :--- |
-| **Day 1 (Surgical Upgrade Complete)** | Clutter eliminated; Tier-B Config extracted; 30% Delighters live; old data 100% preserved. | Pre-upgrade snapshot archived + Behavioral Parity tests passed. | 0 downtime; use upgraded flow immediately. |
-| **Day 30 (1-Month Drift Check)** | First month of new operations; operator adjusts prices/templates. | Edit Tier-B Config in 2 minutes; zero need to duplicate files. | 5 mins config calibration. |
-| **Day 90 (Quarterly Hygiene Sweep)** | New client/project files accumulated over Q1. | Run 1-click Archive move from `01-ACTIVE` to `03-IMMUTABLE-ARCHIVE/Q1`. | 5 mins quarterly cleanup. |
-| **Day 180 (Mid-Year Evolution)** | Business expands or external API/market rule shifts. | Adapter layer & schema versioning (`schema_version`) absorb changes without touching core. | 15 mins Mid-Year AI Audit. |
-| **Day 365 (1-Year Evergreen Proof)** | 12 months of zero-rewrite operation and clean historical records. | 1-Click Annual Summary & Backup Export. | Ready for Year 2 with zero tech debt. |
+| Day 1 | Upgrade in use; history untouched | Verified backup, parity checks passed | None beyond normal use |
+| Day 30 | First price or rule change | Edit the one config place | A few minutes |
+| Day 90 | A quarter of new records | Backup routine; optional tidy-up | A few minutes |
+| Day 180 | A rule, platform or volume change | The change scenarios already tested (08 §4) | A short review |
+| Day 365 | Year-end review | Annual summary and backup export | A short review |

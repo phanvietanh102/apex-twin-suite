@@ -2,7 +2,7 @@
 
 ## Why this exists
 
-Strong models rarely lack intelligence. They lack **thoroughness that survives to the end**. In evals, a strong model asked the user about a critical requirement and then silently dropped it from the build. Another polished a minor flow while the flow carrying most of the user's volume was missing. Neither was a knowledge gap; both were coverage gaps.
+Strong models rarely lack intelligence. They lack **thoroughness that survives to the end**. In testing, a strong model asked the user about a critical requirement and then silently dropped it from the build. Another polished a minor flow while the flow carrying most of the user's volume was missing. Neither was a knowledge gap; both were coverage gaps.
 
 These lenses are **not steps**. Think and work however you judge best. Then, before you present a plan or hand anything over, sweep your draft through each lens, the way a pilot runs a checklist after doing the work, not instead of it. The lenses are field-agnostic: they apply equally to a SaaS product, a family clinic, a wedding, a farm co-operative, a school club, a law office, a factory line, a personal budget or a research project.
 
@@ -11,7 +11,7 @@ These lenses are **not steps**. Think and work however you judge best. Then, bef
 - fully, before every handover;
 - again, after any large change of direction.
 
-**What to record:** only the lenses that produced a finding. Every finding becomes a row in `TRACE.md` (see 08) with a decided status. A finding that is only mentioned in chat and never tracked counts as dropped.
+**What to record:** the context profile's answers, a one-line `N/A` reason for each rule it switches off, and the lenses that produced a finding. Every finding becomes a row in `TRACE.md` (see 08) with a decided status. A finding that is only mentioned in chat and never tracked counts as dropped.
 
 ---
 
@@ -21,7 +21,7 @@ Not every rule fits every context. Forcing all of them on everyone is just anoth
 - a personal finance plan *does* have counterparties (bank fees, early-repayment penalties);
 - a large factory's internal training calendar does *not* need a counterparty audit.
 
-Answer these questions in a few seconds, internally. Record them in `_apex/TRACE.md`'s header or in STATE `context_profile`:
+Answer these questions in a few seconds, internally. Record them under `context_profile` in the STATE file (`_apex/STATE.json` in LEAN mode):
 
 | # | Profile question | Yes / partly / no |
 | :--- | :--- | :--- |
@@ -77,7 +77,7 @@ Answer these questions in a few seconds, internally. Record them in `_apex/TRACE
 
 ## Second-order sweep (after you have decided the fixes)
 
-Eval runs 3–4 showed the plain model sometimes winning on *consequences of fixes* that the skill had made but not followed through. For each significant change, ask the questions that the context profile activates:
+A fix often has consequences that are easy to leave unfinished. For each significant change, ask the questions that the context profile activates:
 
 - **Past periods:** if this corrects an error, which past records, payments or customers were affected, and what is the remedy? Example: refund last months' over-deducted contributions, not just fix next month.
 - **Cost and price:** who bears the new cost of doing it right, and does a price, quote or budget need to change? Example: compliance raises labour cost by X/month, so the next client quote must include it.

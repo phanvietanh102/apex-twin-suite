@@ -2,9 +2,7 @@
 
 > **These archetypes are worked examples, not a boundary.** For any field, country or context not listed (agriculture, clinics, education, events, logistics, nonprofits, legal practice, hospitality, public services, personal goals, hybrids), build a domain brief with `09-domain-discovery-protocol.md`. Use the playbooks below as models of the depth expected.
 
-Most existing AI skills (`obra/superpowers`, `BMAD-METHOD`, `spec-kit`) are hardcoded for **Software Engineering only**. When a user brings an idea in Construction, Real Estate, SEO/Content Marketing, E-Commerce, Agency Operations, or Finance, software-only skills force awkward tech jargon or fail completely.
-
-The **APEX Engine** dynamically adapts its vocabulary, blind-spot radar, Kano delighters, deliverables, and 12-month durability guardrails across **7 Core Domain Archetypes** (plus hybrid combinations).
+The archetypes below show how vocabulary, blind spots, delighters and durability concerns differ by field. Use them as models of depth, and treat every number or rule in them as an example to verify for the user's own context (09), never as a fact to repeat.
 
 ---
 
@@ -30,8 +28,8 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 * **Common User Blind Spots (Quadrant 4):**
   * Hardcoding LLM prompts, model names, or third-party APIs directly into business logic (breaks when APIs deprecate in 3–6 months).
   * Ignoring authentication/authorization boundaries, rate limiting, and token/infra cost ceilings.
-  * Building complex microservices when a modular monolith with SQLite/PostgreSQL is 10x easier to maintain for 1 year.
-* **Signature 30% Kano Delighters:**
+  * Building complex microservices when a modular monolith with SQLite/PostgreSQL is far easier to maintain for a year.
+* **Example delighters (cheap to build and maintain):**
   * Built-in **Admin Config & Health Dashboard** (change prompts, pricing, or rules without touching code).
   * **1-Click Export / Backup & Restore** (JSON/CSV/SQLite snapshot) so data is never trapped.
   * **Dry-Run / Simulation Mode** to preview actions before committing changes.
@@ -44,10 +42,10 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 
 ### 2. `DOM-02`: Construction, Architecture & Real Estate
 * **Common User Blind Spots (Quadrant 4):**
-  * **Material & Labor Price Drift:** A construction quote generator or sales tool with hardcoded prices becomes obsolete in 60 days when steel, cement, or finishing material costs fluctuate.
+  * **Material & Labor Price Drift:** A construction quote generator or sales tool with hardcoded prices goes stale as soon as steel, cement, or finishing material costs move.
   * **Trust Deficit in High-Ticket Decisions:** Clients buying property or signing construction contracts do not convert from generic text—they require **Visual Proof (Before/After, 3D/AR previews, actual site photography, stage-by-stage inspection checklists, transparent Bill of Quantities)**.
-  * **Speed-to-Lead Decay:** If a prospect requests a quote and waits $>15$ minutes, conversion drops by $80\%$.
-* **Signature 30% Kano Delighters:**
+  * **Speed-to-Lead Decay:** Slow replies to quote requests lose prospects; how fast is fast enough depends on the market, so ask or measure.
+* **Example delighters (cheap to build and maintain):**
   * **Interactive Instant Preliminary Estimator & PDF Proposal Generator:** Client selects area, floors, style, and package $\rightarrow$ immediately receives a branded, itemized budget breakdown + milestone chart.
   * **Visual Progress / Legal Milestone Tracker:** Interactive timeline showing exact legal steps or construction inspection gates (Foundation $\rightarrow$ Structure $\rightarrow$ Roofing $\rightarrow$ Finishing) with photo evidence slots.
   * **Smart Comparison & Cashflow Assistant:** Built-in loan amortization calculator, rental yield estimator, or site orientation quick-check.
@@ -58,10 +56,10 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 
 ### 3. `DOM-03`: Content, SEO, AIO (AI Overviews / GEO) & Digital Media
 * **Common User Blind Spots (Quadrant 4):**
-  * Writing generic AI articles that search engines penalize as "scaled thin content" within 3 months.
+  * Writing generic AI articles that search engines penalize as "scaled thin content".
   * Optimizing only for legacy keywords while ignoring **AIO / GEO (Generative Engine Optimization)**: structured Schema.org JSON-LD, Entity-Attribute-Value (E-A-V) density, original data tables, and first-hand E-E-A-T proof (real photos, case studies, author credentials).
   * Lack of **Content Decay & Cannibalization Tracking** (multiple articles competing for the same intent).
-* **Signature 30% Kano Delighters:**
+* **Example delighters (cheap to build and maintain):**
   * **Multi-Channel Atomizer:** 1 core deep-research pillar automatically outputs: (1) SEO/AIO Pillar Article with Schema JSON-LD, (2) Comparison Table & FAQ block, (3) Social posts, and (4) Short-video script.
   * **Automated E-E-A-T & AIO Citation Scorer:** A checklist/script that scores every draft for entity completeness, citation readiness, and zero-fluff density before publishing.
 * **12-Month Evergreen Guardrails:**
@@ -75,7 +73,7 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
   * Focusing on storefront aesthetics while ignoring **Unit Economics** (CAC, AOV, Gross Margin, Return Rate, Cash Conversion Cycle).
   * Manual order/invoice errors (wrong SKU pricing, missing discount tiers, inconsistent customer history, unformatted PDF/Excel invoices).
   * Zero post-purchase retention loop (losing 100% of customers after the first transaction).
-* **Signature 30% Kano Delighters:**
+* **Example delighters (cheap to build and maintain):**
   * **Smart Bundle & Margin Guardrail Engine:** Automatically suggests cross-sells/bundles while warning the operator if a discount pushes net margin below the safety floor.
   * **Dual-Format Instant Invoice & Reconciliation System:** Generates pixel-perfect PDF + Excel invoices with automatic version tracking, customer debt/payment ledger, and 1-click messaging summary.
   * **Automated Re-Order / VIP Care Trigger:** Flags customers due for replenishment or follow-up based on purchase cycle.
@@ -89,7 +87,7 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 * **Common User Blind Spots (Quadrant 4):**
   * **Bus Factor = 1:** The workflow only works when the founder operates it manually because tacit knowledge isn't codified into decision trees and templates.
   * Scope creep and unstandardized deliverables eating up profit margins.
-* **Signature 30% Kano Delighters:**
+* **Example delighters (cheap to build and maintain):**
   * **Self-Serve Client Intake & Diagnostic Scorecard:** Prospects answer 7 structured questions and immediately receive an automated "Health/Readiness Audit Report" (builds instant authority before the sales call).
   * **SOP Runbook with Embedded Quality Checklists:** Every operational task includes a "Definition of Done" verifier.
 * **12-Month Evergreen Guardrails:**
@@ -101,7 +99,7 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 * **Common User Blind Spots (Quadrant 4):**
   * Using probabilistic LLMs to do financial math, tax calculations, or medical/legal rule evaluation (LLMs hallucinate arithmetic!).
   * Missing audit trails (who changed what number and when) and PII/privacy protection.
-* **Signature 30% Kano Delighters:**
+* **Example delighters (cheap to build and maintain):**
   * **Hybrid Deterministic + AI Architecture:** 100% of math/rules run in deterministic code/formulas (with unit tests), while AI is used strictly for natural language explanation, intake parsing, and personalized coaching.
   * **Explainable Citation Trail:** Every output shows the exact formula, rule, or source document behind the conclusion.
 * **12-Month Evergreen Guardrails:**
@@ -113,7 +111,7 @@ Identify which primary domain (and secondary domain, if hybrid) matches the user
 * **Common User Blind Spots (Quadrant 4):**
   * Assuming 100% Wi-Fi/Internet connectivity (systems freeze when network drops).
   * No remote diagnostics or physical calibration fallback.
-* **Signature 30% Kano Delighters:**
+* **Example delighters (cheap to build and maintain):**
   * **Offline-First Local Queue + QR Quick-Diagnostic:** Works offline and syncs later; scanning a QR code on the physical asset opens instant status/maintenance logs.
 * **12-Month Evergreen Guardrails:**
   * Backward-compatible payload schemas and hardware abstraction layers.

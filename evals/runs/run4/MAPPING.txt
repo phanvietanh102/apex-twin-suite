@@ -1,0 +1,3 @@
+t1: A=v4.1 B=no-skill
+t2: A=no-skill B=v4.1
+t3: A=v4.1 B=no-skill

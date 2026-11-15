@@ -1,7 +1,7 @@
 {
   "name": "apex-twin-suite",
-  "version": "4.3.0",
-  "description": "APEX Twin Suite v4.3: two skills that add what strong models lack - completeness, traceability and proof - to building from an idea (idea-to-product-apex) and to reviewing and upgrading an existing system (product-workspace-reviewer-apex), in any field, country or context. Tailored by a context profile; validated by blind, pre-registered evals.",
+  "version": "4.4.0",
+  "description": "APEX Twin Suite v4.4: two skills that add what strong models lack - completeness, traceability and proof - to building from an idea (idea-to-product-apex) and to reviewing and upgrading an existing system (product-workspace-reviewer-apex), in any field, country or context. Tailored by a context profile; validated by blind, pre-registered evals.",
   "author": {
     "name": "Phan Viet Anh",
     "email": "phanvietanh102@gmail.com",

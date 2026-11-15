@@ -1,24 +1,26 @@
-# 04. The 12-Month Evergreen Architecture Framework (1-Year Zero-Rewrite Guarantee)
+# 04. Designing for 12 Months Without a Rewrite
 
-## 1. Why 90% of AI-Built Products & Plans Break Within 30–90 Days
+Load this when designing the architecture (any mode). SKILL.md and references 07–09 take precedence over anything here. Apply each principle as far as the context profile (07 Step 0) calls for it: a one-off plan or a tiny personal tool does not need all six.
 
-When users build products or plans with standard AI prompts, the output looks impressive on Day 1 ("Demo-Driven Development"), but collapses by Month 2 or Month 3 due to **6 Systemic Decay Forces**:
+## 1. Why products and plans built in a hurry decay within months
+
+When users build products or plans with standard AI prompts, the output looks impressive on Day 1 ("Demo-Driven Development"), but often decays within a few months because of six forces:
 
 1. **Volatility Coupling:** Prices, tax rates, supplier lists, prompt templates, API endpoints, or SEO rules are hardcoded inside source code or static documents. When reality changes in Month 2, the user cannot update it without calling a developer to rewrite the system.
 2. **Dependency & API Rot:** Relying on unstable third-party packages, unpinned dependencies, or a single AI model version that gets deprecated.
 3. **Historical State Corruption:** Updating a product price or business rule accidentally alters past invoices, quotes, or reports because state wasn't versioned or snapshot-isolated.
 4. **Context Amnesia Across Time:** Three months later, when the user wants to tweak a small feature, the AI has zero memory of why the system was built that way, and its new edit breaks three existing features.
 5. **Silent Operational Drift:** A webhook, scraper, formula, or integration fails silently; the owner only discovers it weeks later when customers complain.
-6. **Cognitive Overload on the Owner:** The system requires 15 manual steps every day. After 3 weeks of excitement, human discipline fades and the system is abandoned.
+6. **Cognitive Overload on the Owner:** The system requires 15 manual steps every day. Once the first excitement fades, a routine that heavy is abandoned.
 
 ---
 
-## 2. The 6 Architectural Laws for a 1-Year Zero-Rewrite System
+## 2. Six design principles for a system that lasts a year
 
-To guarantee that a product or execution plan works reliably for **at least 12 months without needing core upgrades**, every APEX design enforces these 6 engineering laws:
+These principles aim at a product or plan that keeps working for 12 months or more without core rework. They are aims to design toward and then test with change scenarios (08 §4), not a guarantee.
 
 ### Law 1: Strict 3-Tier Separation (Immutable Core — Editable Config — Presentation Adapters)
-Every system (whether software, spreadsheet engine, content factory, or business workflow) must be partitioned into:
+Any system with values that change over time (software, a spreadsheet engine, a content operation, a business workflow) benefits from three separate parts. For a very small tool, one editable config block and protected history is enough:
 * **Tier A — The Immutable Core Engine (12+ Months Stable):**
   * Pure calculation engines, state machines, accounting/ledger rules, data validation schemas, and file/export pipelines.
   * *Rule:* Zero business numbers, zero seasonal text, and zero vendor-specific hardcoded strings allowed here.
@@ -48,22 +50,22 @@ A system stays healthy for 1 year only if it can **self-verify**. Embed lightwei
 ### Law 5: Graceful Degradation & The "5-Minute Manual Fallback"
 * Ask: *"What happens if the internet is slow, the AI API is down, or a third-party service changes policy?"*
 * Every automated step must have a **Graceful Fallback**:
-  * If AI API fails $\rightarrow$ fall back to deterministic rule/template mode so business operations never halt.
+  * If AI API fails $\rightarrow$ fall back to deterministic rule/template mode so the critical path keeps working.
   * Provide a **5-Minute Manual SOP** in the Runbook for critical path operations.
 
-### Law 6: Day-1 Blast-Radius Zoning & 5-Zone Workspace Hygiene
-To maintain 100% parity with `product-workspace-reviewer-apex` and guarantee the workspace never degrades into `v1_final_copy` chaos over 12 months:
+### Law 6: Zones from day one, and an optional folder layout
+To keep the workspace from sliding into `v1_final_copy` chaos:
 * **Blast-Radius Zoning from Day 1:**
   * 🟢 **Green Zone:** UI themes, static templates, docs (safe for rapid iteration).
   * 🟡 **Yellow Zone:** Core calculation/workflow engine (protected by unit tests).
   * 🔴 **Red Zone:** Historical customer records, issued invoices, database ledgers, credentials (100% immutable snapshots).
-* **5-Zone Directory Taxonomy:** Structure business/project workspaces into `00-CONFIG-AND-TEMPLATES`, `01-ACTIVE-OPERATIONS`, `02-CORE-SYSTEM-AND-TOOLS`, `03-IMMUTABLE-ARCHIVE`, and `04-EXPORTS-AND-DELIVERABLES`.
+* **A simple, optional folder layout** for projects that will accumulate files: one place each for config and templates, active work, tools, finished read-only records, and exports. Do not impose it on a small project, and keep process files in `_apex/`.
 
 ---
 
 ## 3. The 4-Horizon Longevity Stress-Test Matrix (Day 1 $\rightarrow$ Day 365)
 
-Every roadmap generated in `04-12M-EVERGREEN-ROADMAP.md` must explicitly plan for these 5 time horizons so the user just follows the plan without needing to re-architect:
+Every roadmap generated in `04-12M-EVERGREEN-ROADMAP.md` should say what to expect at each horizon that applies, so the user can follow it without re-designing. Drop horizons a one-off or short-lived project will not reach:
 
 | Time Horizon | Focus & System State | Built-in Mechanism Designed on Day 1 | User Action Required |
 | :--- | :--- | :--- | :--- |

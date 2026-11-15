@@ -1,0 +1,30 @@
+GHI CHÚ XƯỞNG - anh Đạt (ghi linh tinh, chưa sắp xếp)
+=====================================================
+
+* Xưởng ~40 người, 3 tổ. Mới nhập máy tổ 1 (chị Hoa). Tổ 2, tổ 3 tổ trưởng vẫn ghi sổ tay, cuối tháng đọc cho vợ anh cộng tay.
+* Lương khoán theo công đoạn, đơn giá chị Hoa với anh thống nhất theo từng mã hàng. Công nhân quen kiểu này rồi, không đổi.
+* Sản lượng: công nhân tự báo cuối ngày, chị Hoa ghi vào sổ tay rồi tối nhập máy. Tháng nào cũng có người kêu thiếu sản lượng -> cãi nhau. Chị Hoa nghỉ thì không ai biết sổ ghi gì.
+
+* Tạm ứng T10 (ghi ở sổ đỏ trong ngăn kéo, không có trong file):
+    Lan 2tr, Hằng 1tr5, Huyền 1tr, Ngọc 500k, Thảo 1tr
+  -> hình như chưa trừ vào lương T10?? hỏi lại chị Hoa
+* Lương tháng 10 đã chuyển khoản 5/11 theo file final. Hôm sau chị Hoa sửa ra final_v2 (thêm Quỳnh mới vào, sửa Huyền) rồi gửi chị Vân kế toán. Chưa chuyển bù cho Quỳnh với Huyền.
+* Bảng lương in xong gửi vào nhóm Zalo "Xưởng Thành Đạt - Công nhân" (38 thành viên) cho mọi người tự dò, ai sai thì báo. Danh sách nhân sự (có CCCD, số TK) cũng gửi trong nhóm đó để kế toán lấy.
+
+* BHXH: chị Vân (kế toán dịch vụ) kê khai cho những người HĐ 12 tháng/không thời hạn, đóng theo mức lương tối thiểu vùng. Thời vụ thì không đóng (chị Vân bảo thời vụ dưới 3 tháng không phải đóng).
+  Trong bảng lương vẫn để trừ 10.5% cho cả tổ, cho công bằng, số dư để quỹ xưởng.
+* Lương tối thiểu: chị Vân bảo xưởng mình vẫn tính vùng III. Sau đợt sáp nhập tỉnh/xã năm ngoái không biết có đổi không.
+
+* Tăng ca: đơn gấp thì cho làm tối với Chủ nhật, tính cùng đơn giá khoán (công nhân đồng ý).
+  Lan với Mai năm nay chắc tăng ca hơn 300 tiếng rồi, hai đứa chăm.
+  Ngọc nhỏ tuổi nhưng làm nhanh, cho tăng ca đêm gấp đơn Mộc Miên cuối tháng 10.
+
+* Tháng 3/2026 máy tính văn phòng hỏng ổ cứng, mất hết file lương T1-T2/2026 và file đơn hàng năm 2025. Phải làm lại lương T1-T2 từ sổ tay, đơn hàng 2025 thì thôi. Giờ vẫn chỉ có 1 máy đó, chưa backup gì.
+* Tháng 9 mất điện 3 ngày, DH2609 An Phát trễ 3 ngày, bị trừ 12tr (An Phát bảo là phạt + phí đổi tàu). Không có máy phát.
+* DH2611 giao trễ 4 ngày (24/10). An Phát chưa thanh toán, hẹn 30 ngày sau giao. Chưa biết họ có trừ phạt không.
+* Hanbok trả USD chuyển khoản, tỷ giá lúc nào tính lúc đó. Trong file đơn hàng cứ để giá USD.
+* Hanbok DH2612: vải nhận 2.600 mét, định mức 1,2 m/áo x 2000 = 2.400 m -> dư 200 m, thoải mái. Hạn giao 15/11.
+* Vải thừa của khách để kho, cái nào dùng được thì tận dụng cho đơn khác (shop Mộc Miên không biết đâu).
+* Hóa đơn: cứ xuất theo số lượng đặt cho nhanh, lỗi thì khách trừ sau.
+
+* Việc muốn làm: một nhãn hàng xuất khẩu đi châu Âu (qua cty trung gian) muốn đặt đơn lớn từ T2/2027, đầu T1/2027 họ cho người xuống AUDIT xưởng (giờ làm, lương, BHXH, an toàn...).

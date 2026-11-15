@@ -1,54 +1,57 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# APEX Twin Engine Suite (v4.3) — Cross-Platform Installer (macOS / Linux / WSL)
-# Installs BOTH symmetric skills:
-#   1. idea-to-product-apex (Greenfield A-to-Z Idea-to-Product Engine)
-#   2. product-workspace-reviewer-apex (Brownfield Product/App/Workspace Reviewer)
+# APEX Twin Suite — local installer (macOS / Linux / WSL / Git Bash)
+# Copies both skills and the slash commands into every supported host on this
+# machine. Each target is replaced cleanly, so files removed upstream do not
+# linger. Prefer installing from the GitHub link (see README) for auto-updates.
 # ==============================================================================
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SKILLS=("idea-to-product-apex" "product-workspace-reviewer-apex")
+AGY_PLUGIN="$HOME/.gemini/config/plugins/idea-to-product-apex"
+
+# Replace a target skill folder with a clean copy (no Python caches).
+install_skill() {
+    local src="$1" dest="$2"
+    rm -rf "$dest"
+    mkdir -p "$dest"
+    cp -R "$src/." "$dest/"
+    find "$dest" -type d -name "__pycache__" -prune -exec rm -rf {} +
+}
 
 echo "======================================================================"
-echo "  APEX TWIN ENGINE SUITE (v4.3) - MACOS / LINUX / WSL INSTALLER"
+echo "  APEX TWIN SUITE - LOCAL INSTALLER"
 echo "======================================================================"
-
-mkdir -p "$REPO_ROOT/dist"
-mkdir -p "$HOME/.claude/skills"
-mkdir -p "$HOME/.gemini/config/skills"
-mkdir -p "$HOME/.gemini/config/plugins/idea-to-product-apex/skills"
-mkdir -p "$HOME/.gemini/config/plugins/idea-to-product-apex/assets"
 
 for SKILL in "${SKILLS[@]}"; do
     SRC="$REPO_ROOT/skills/$SKILL"
 
-    # 1. Workspace local skills
-    mkdir -p "$REPO_ROOT/.agents/skills/$SKILL"
-    cp -R "$SRC/"* "$REPO_ROOT/.agents/skills/$SKILL/"
-    mkdir -p "$REPO_ROOT/.claude/skills/$SKILL"
-    cp -R "$SRC/"* "$REPO_ROOT/.claude/skills/$SKILL/"
+    # Workspace-local copies (git-ignored) for hosts that read project skills
+    install_skill "$SRC" "$REPO_ROOT/.agents/skills/$SKILL"
+    install_skill "$SRC" "$REPO_ROOT/.claude/skills/$SKILL"
 
-    # 2. Global Claude Code / Claude Desktop skills & Codex skills
-    mkdir -p "$HOME/.claude/skills/$SKILL"
-    cp -R "$SRC/"* "$HOME/.claude/skills/$SKILL/"
-    mkdir -p "$HOME/.codex/skills/$SKILL"
-    cp -R "$SRC/"* "$HOME/.codex/skills/$SKILL/"
+    # Global: Claude Code / Claude Desktop, Codex, Antigravity
+    install_skill "$SRC" "$HOME/.claude/skills/$SKILL"
+    install_skill "$SRC" "$HOME/.codex/skills/$SKILL"
+    install_skill "$SRC" "$HOME/.gemini/config/skills/$SKILL"
+    install_skill "$SRC" "$AGY_PLUGIN/skills/$SKILL"
 
-    # 3. Global Antigravity skills & plugin
-    mkdir -p "$HOME/.gemini/config/skills/$SKILL"
-    cp -R "$SRC/"* "$HOME/.gemini/config/skills/$SKILL/"
-    mkdir -p "$HOME/.gemini/config/plugins/idea-to-product-apex/skills/$SKILL"
-    cp -R "$SRC/"* "$HOME/.gemini/config/plugins/idea-to-product-apex/skills/$SKILL/"
-
-    echo "[OK] Installed Twin Skill: $SKILL"
+    echo "[OK] Installed skill: $SKILL"
 done
 
-if [ -f "$REPO_ROOT/plugin.json" ]; then
-    cp "$REPO_ROOT/plugin.json" "$HOME/.gemini/config/plugins/idea-to-product-apex/plugin.json"
-fi
+# Slash commands for Claude Code (/apex, /idea-to-product, /apex-lean,
+# /apex-review, /review-product, /apex-improve)
+mkdir -p "$HOME/.claude/commands"
+cp "$REPO_ROOT"/commands/*.md "$HOME/.claude/commands/"
+echo "[OK] Installed slash commands -> ~/.claude/commands"
+
+# Antigravity plugin manifest and logo
+mkdir -p "$AGY_PLUGIN/assets"
+cp "$REPO_ROOT/plugin.json" "$AGY_PLUGIN/plugin.json"
+cp "$REPO_ROOT/assets/logo.svg" "$AGY_PLUGIN/assets/logo.svg"
 
 echo "======================================================================"
-echo "  INSTALLATION COMPLETE! READY FOR CLAUDE & ANTIGRAVITY."
+echo "  DONE. Restart your host (Claude Code, Codex, Antigravity) to load it."
 echo "======================================================================"

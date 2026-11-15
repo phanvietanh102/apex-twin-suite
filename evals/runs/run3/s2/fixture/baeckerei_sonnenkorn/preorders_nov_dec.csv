@@ -1,0 +1,23 @@
+order_id,shop,taken_by,taken_on,customer,phone,email,item,qty,pickup_date,pickup_time,price_eur,deposit_eur,deposit_method,allergy_note,status
+PO-1181,Hauptladen,Katrin,2026-11-02,Schneider,0761 4482910,,Schwarzwälder Kirschtorte 26cm,1,2026-11-14,10:00,42.00,0,,,picked up
+PO-1184,Filiale,Jana,2026-11-05,Müller Sabine,0176 22918840,s.mueller@web.de,Apfelkuchen Blech,1,2026-11-14,11:30,34.00,0,,,picked up
+PO-1186,Hauptladen,Tom,2026-11-06,Weber,,,Käsesahnetorte,1,2026-11-14,15:00,39.00,0,,,no-show
+PO-1187,Filiale,Jana,2026-11-10,Familie Becker,0151 77310452,becker.fam@gmx.de,Streuselkuchen Blech (Kindergeburtstag),1,2026-11-21,10:00,36.00,0,,"Sohn (6) Haselnuss-Allergie, Anaphylaxie! keine Nüsse",confirmed
+PO-1189,Hauptladen,Katrin,2026-11-11,Dr. Hoffmann,0761 3390127,,Dinkel-Saatenbrot,4,2026-11-21,08:00,22.00,0,,Zöliakie - deshalb Dinkel statt Weizen,confirmed
+PO-1190,Filiale,Mehmet,2026-11-12,Steuerbüro Klein GmbH,0761 2200450,buchhaltung@stb-klein.de,Catering Frühstück 25 Pers. (Angebot A-2026-031),1,2026-11-27,07:30,486.00,0,,"2x vegan, 1x laktosefrei",confirmed
+PO-1192,Hauptladen,Tom,2026-11-13,Yilmaz,0172 5583019,,Hochzeitstorte 3-stöckig,1,2026-12-05,09:00,320.00,100.00,bar (Dose),,confirmed
+PO-1193,Filiale,Lena,2026-11-13,Krause,0160 9921348,,Sachertorte,1,2026-11-30,14:00,44.00,0,,,confirmed
+PO-1194,Hauptladen,Katrin,2026-11-13,Kindergarten Sonnenblume,0761 5510233,kita.sonnenblume@freiburg-kita.de,Nikolaus-Hefezopf,6,2026-12-04,08:00,57.00,0,,"1 Kind Ei-Allergie, 2 Kinder Milch",confirmed
+PO-1195,Filiale,Jana,2026-11-13,Wagner,0157 33021987,,Bienenstich Blech,1,2026-11-28,10:00,38.00,0,,,confirmed
+PO-1196,Hauptladen,Katrin,2026-11-09,Fischer,0761 7781204,,Schwarzwälder Kirschtorte 26cm,2,2026-12-19,10:00,84.00,0,,,confirmed
+PO-1197,Hauptladen,Tom,2026-11-10,Braun,0176 4419025,,Käsesahnetorte,1,2026-12-19,11:00,39.00,0,,,confirmed
+PO-1198,Filiale,Lena,2026-11-10,Zimmermann,0162 7720915,,Sachertorte,1,2026-12-19,09:30,44.00,0,,,confirmed
+PO-1199,Filiale,Jana,2026-11-11,Hartmann,0761 2290461,,Schwarzwälder Kirschtorte 26cm,2,2026-12-19,10:30,84.00,40.00,bar (Dose),,confirmed
+PO-1200,Hauptladen,Katrin,2026-11-11,Schmitt,0151 6603382,,Frankfurter Kranz,1,2026-12-19,12:00,41.00,0,,,confirmed
+PO-1201,Filiale,Mehmet,2026-11-12,Lange,0173 5518840,,Käsesahnetorte,2,2026-12-19,09:00,78.00,0,,,confirmed
+PO-1202,Hauptladen,Tom,2026-11-12,Koch,0761 4097718,,Himbeer-Sahnetorte,2,2026-12-19,14:00,86.00,0,,,confirmed
+PO-1203,Hauptladen,Katrin,2026-11-12,Lorenz Haustechnik GmbH,0761 8830140,office@lorenz-haustechnik.de,Butterstollen 750g einzeln verpackt mit Firmenetikett,40,2026-12-15,08:00,796.00,0,,Geschenke für Mitarbeiter,confirmed
+PO-1204,Filiale,Lena,2026-11-13,Richter,0159 0234411,,Schwarzwälder Kirschtorte 26cm,1,2026-12-19,11:30,42.00,0,,,confirmed
+PO-1205,Hauptladen,Katrin,2026-11-13,Wolf,0176 9932210,,Schwarzwälder Kirschtorte 26cm,2,2026-12-19,10:00,84.00,0,,,confirmed
+PO-1206,Filiale,Jana,2026-11-13,Schäfer,0761 6618823,,Mohn-Sahnetorte,2,2026-12-19,13:00,82.00,0,,ohne Alkohol bitte,confirmed
+PO-1208,Hauptladen,web,2026-11-13,Neumann,0170 1188264,neumann.k@posteo.de,Sachertorte,1,12/19/2026,15:30,44.00,0,,,confirmed
