@@ -159,13 +159,15 @@ Everything below is in [`evals/`](./evals/): prompts, fixtures, pre-registration
 
 ## Install
 
-### Claude Code (CLI or VS Code extension)
+### Recommended: install from the GitHub link (auto-updates)
+In **Claude Code** (CLI, VS Code extension, or the Claude Desktop Code tab):
 ```text
 /plugin marketplace add phanvietanh102/apex-twin-suite
 /plugin install apex-twin-suite@apex-twin-suite
 ```
+The repo also ships host manifests for **Codex** (`.codex-plugin/`), **Cursor** (`.cursor-plugin/`) and **Antigravity** (`.antigravity-plugin/`). In those hosts, add the plugin by the same GitHub link. Updates arrive when `main` changes.
 
-### Multi-host installer (Claude Code, Claude Desktop, Codex, Antigravity)
+### Alternative: local installer (copies the skills into every host on this machine)
 **Windows (PowerShell):**
 ```powershell
 git clone https://github.com/phanvietanh102/apex-twin-suite.git
@@ -179,11 +181,7 @@ cd apex-twin-suite
 chmod +x ./install-skills.sh && ./install-skills.sh
 ```
 
-### Claude Desktop / claude.ai (upload)
-Upload the archives in [`dist/`](./dist/) under *Settings → Capabilities → Skills*:
-- `idea-to-product-apex-claude-desktop.zip`
-- `product-workspace-reviewer-apex-claude-desktop.zip`
-- or both together: `apex-twin-suite-bundle.zip`
+Only if you use the **claude.ai chat**, which accepts skills as `.zip` uploads only, under *Settings → Capabilities → Skills*: the Windows installer also writes upload-ready archives to a local `dist/` folder. No archives are stored in the repo, so they can never be out of date.
 
 ---
 
@@ -222,7 +220,6 @@ skills/
     references/01..10   # same shared 07–09, plus continuous improvement (10)
     scripts/            # xray_scanner.py (--scan-only inventory / scaffold), review_gate_audit.py
 evals/                  # eval pack, fixtures, pre-registrations, results, gap analysis
-dist/                   # pre-built skill archives for upload
 .claude-plugin/ .codex-plugin/ .cursor-plugin/ .antigravity-plugin/   # host manifests
 ```
 

@@ -6,7 +6,7 @@ All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `produc
 ### Release housekeeping
 - **README rewritten for v4.3:** what the skills do, how they work, honest eval evidence and caveats, install, and usage. The unverified competitor comparison and the v3.7 mechanics that v4 replaced are removed.
 - All manifests (`.claude-plugin`, `.codex-plugin`, `.cursor-plugin`, `.antigravity-plugin`, `plugin.json`), installers, script banners and SKILL.md headers are synced to **4.3.0**.
-- `dist/` archives are rebuilt from the current skills. The bundle is renamed `apex-twin-suite-bundle.zip`.
+- `dist/` is removed from the repo and git-ignored. Install from the GitHub link (auto-updates); the Windows installer still generates upload archives locally for claude.ai chat users.
 
 ### Changed (v4.3: context applicability, so rules are tailored rather than forced)
 - **07 Step 0, context profile:** 9 quick questions (money with other parties, personal data, regulated, others operate it, controls on behalf of others, replaces something existing, long-lived, established trade, stakes). Applicability is decided by **context features, not the industry label**.
