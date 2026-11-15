@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "APEX Twin Suite v4.5: two skills that add what strong models lack - completeness, traceability and proof. /apex turns an idea into a complete, working result from A to Z; /apex-review audits something you already use and proposes and builds the optimisations. Any field, country or context; validated by blind, pre-registered evals.",
-    "version": "4.5.0"
+    "version": "4.5.1"
   },
   "plugins": [
     {
       "name": "apex-twin-suite",
       "description": "APEX Twin Suite v4.5: two skills that add what strong models lack - completeness, traceability and proof. /apex turns an idea into a complete, working result from A to Z; /apex-review audits something you already use and proposes and builds the optimisations. Any field, country or context; validated by blind, pre-registered evals.",
-      "version": "4.5.0",
+      "version": "4.5.1",
       "author": {
         "name": "Phan Viet Anh",
         "email": "phanvietanh102@gmail.com"

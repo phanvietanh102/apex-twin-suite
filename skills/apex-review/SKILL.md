@@ -1,7 +1,8 @@
 ---
 name: apex-review
+disable-model-invocation: true
 description: >-
-  APEX Review: a whole-system audit of something the user ALREADY uses (a product, app, business workflow, spreadsheet or invoice system, content operation, project workspace), followed by concrete optimisation proposals and, when they agree, the upgrade itself, in any field or country. Use when the user types /apex-review, asks for an "APEX review", or asks to audit and optimise an existing system as a whole (for example "audit this workspace and make it better", "it works, but how can it be better?", or a short request to review a whole app or workspace folder). Words in the request steer it: "improve" for continuous improvement of a system that already works, "lean" for a compact report. This is not an ordinary review: do not use it for a code review, a pull request or diff, a single file or document, or fixing one bug, and do not use it only because the word "review" appears; those belong to other review skills or a plain review. To build something new from an idea, use apex instead.
+  APEX Review: a whole-system audit of something the user ALREADY uses (a product, app, business workflow, spreadsheet or invoice system, content operation, project workspace), followed by concrete optimisation proposals and, when they agree, the upgrade itself, in any field or country. Explicit use only: use this skill ONLY when the user types /apex-review or asks for an APEX review by name (for example "use apex-review", "dùng apex review"). Never start it on your own because a request says "review", "audit" or "improve": an ordinary review request, a code review, a pull request or diff, a single file, or a small task gets an ordinary review without this skill. Words after the command steer it: "improve" for continuous improvement of a system that already works, "lean" for a compact report. To build something new from an idea, the user types /apex instead.
 ---
 
 # APEX Review: audit and optimise what already exists (v4.5)
@@ -152,7 +153,7 @@ A small `LEAN` review needs only `09`, `07`, `08`, and `06` once you change file
 
 ## How the user invokes it
 
-`/apex-review <path or description>` is the one command. Plain words work too when the user clearly wants a whole existing system audited and optimised. Words in the request steer the mode:
+`/apex-review <path or description>` is the one command, and the skill runs only when the user types it or asks for an APEX review by name. It is a deliberate, heavier process; a request that merely says "review" or "audit" gets an ordinary review. Words in the request steer the mode:
 
 * **"improve"**: the system already works; run the continuous-improvement loop (`10`).
 * **"lean"**: `LEAN` mode; findings plus an upgrade in one compact report.

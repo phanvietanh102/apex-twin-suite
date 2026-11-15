@@ -1,7 +1,7 @@
 {
   "name": "apex-twin-suite",
   "displayName": "APEX Twin Suite (v4.5)",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "description": "APEX Twin Suite v4.5: two skills that add what strong models lack - completeness, traceability and proof. /apex turns an idea into a complete, working result from A to Z; /apex-review audits something you already use and proposes and builds the optimisations. Any field, country or context; validated by blind, pre-registered evals.",
   "logo": "assets/logo.svg",
   "suggestedPrompts": [

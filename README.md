@@ -6,7 +6,7 @@
 ### Strong models are smart. They are not always thorough. APEX adds the missing layer.
 *Two skills for Claude Code, Claude Desktop, Codex, Cursor and Google Antigravity: one turns an idea into a working result, the other makes an existing system better. Works in any field, country or context.*
 
-[![Version](https://img.shields.io/badge/version-4.5.0-6366F1?style=for-the-badge)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.5.1-6366F1?style=for-the-badge)](./CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](./LICENSE)
 [![Evals](https://img.shields.io/badge/evals-blind_%26_pre--registered-F59E0B?style=for-the-badge)](./evals/EVAL-RESULTS.md)
 
@@ -209,7 +209,7 @@ Words in the request steer the mode, so there is nothing else to memorise:
 | `/apex-review improve …` | It already works; make it better (baseline → improvements ranked by return → improvement log) |
 | `/apex-review lean …` | Findings plus an upgrade in one compact report |
 
-Plain words also work: *"Build an order app for my shop that sells on Facebook and Shopee"* triggers `apex`. `apex-review` triggers on plain words only when you clearly ask for a whole existing system to be audited and optimised. In a plugin install the commands appear under the plugin's namespace (`/apex-twin-suite:apex`).
+**The skills never start on their own.** They run only when you type the command or ask for APEX by name. A plain request such as *"review this"* or *"build me a script"* gets the model's ordinary answer, so small tasks are not pushed through the full APEX process, and you choose when the heavier process is worth it. In a plugin install the commands appear under the plugin's namespace (`/apex-twin-suite:apex`).
 
 **Rigor modes** are chosen automatically:
 - `LEAN` (default): `_apex/TRACE.md` and `_apex/STATE.json`, plus a compact spec if useful;

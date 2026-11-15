@@ -312,6 +312,8 @@ try:
     check("skill names match their folders, so they are invoked as /apex and /apex-review", names == ["apex", "apex-review"], names)
     check("no separate command files: the two skill names are the only entry points", not os.path.isdir(os.path.join(REPO, "commands")))
     review_desc = re.search(r"(?s)description: >-\n(.*?)\n---", read(os.path.join(REV, "SKILL.md"))).group(1)
+    check("both skills are explicit-use only (never auto-started by the model)",
+          all("disable-model-invocation: true" in read(os.path.join(s, "SKILL.md")) and "Explicit use only" in read(os.path.join(s, "SKILL.md")) for s in (I2P, REV)))
     check("apex-review says it is not for code, PR or diff reviews", "pull request" in review_desc and "code review" in review_desc, review_desc[:200])
     check("skill descriptions fit the 1024-character limit",
           all(len(" ".join(re.search(r"(?s)description: >-\n(.*?)\n---", read(os.path.join(s, "SKILL.md"))).group(1).split())) <= 1024 for s in (I2P, REV)))

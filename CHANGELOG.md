@@ -2,6 +2,10 @@
 
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
+## [4.5.1] — 2026-11-15
+### Changed: explicit use only
+- **The skills no longer start on their own.** `apex` and `apex-review` run only when the user types `/apex` or `/apex-review`, or asks for APEX by name. Both set `disable-model-invocation: true` and say so in their descriptions. Reason: the evals do not show the skill beating a plain model on every task, and small tasks should not be pushed through the full process; the user decides when it is worth it.
+
 ## [4.5.0] — 2026-11-15
 ### Changed: two commands, named after the two skills
 - **Skills renamed.** `idea-to-product-apex` is now **`apex`** (`/apex`: develop an idea from A to Z) and `product-workspace-reviewer-apex` is now **`apex-review`** (`/apex-review`: whole-system audit with optimisation proposals). The skill names are the commands, so there are no separate command files.

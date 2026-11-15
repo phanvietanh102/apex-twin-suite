@@ -1,7 +1,8 @@
 ---
 name: apex
+disable-model-invocation: true
 description: >-
-  APEX: turn an idea, goal or vague problem into a complete, working result from A to Z (a product, app, tool, system, business process, content operation, event, project or personal plan), in any field or country. Use when the user types /apex, or asks to build or plan something new that matters to them and should keep working for months, including short requests such as "build me an app that does a, b, c" or "help me plan X". Words in the request steer it: "lean" for a small scope, "red-team" to only critique a plan, "verify" to audit what was built. Not for small edits, single bug fixes or quick questions. To assess and improve something that already exists, use apex-review instead.
+  APEX: turn an idea, goal or vague problem into a complete, working result from A to Z (a product, app, tool, system, business process, content operation, event, project or personal plan), in any field or country. Explicit use only: use this skill ONLY when the user types /apex or asks for APEX by name (for example "use apex", "dùng apex"). Never start it on your own because a request looks like a build or planning task; ordinary requests get an ordinary answer. Words after the command steer it: "lean" for a small scope, "red-team" to only critique a plan, "verify" to audit what was built. To assess and improve something that already exists, the user types /apex-review instead.
 ---
 
 # APEX: from idea to working result (v4.5)
@@ -124,7 +125,7 @@ A small `LEAN` request needs only `09`, `07`, `08`, and `06` once you build.
 
 ## How the user invokes it
 
-`/apex <idea or goal>` is the one command. Plain words work too. Words in the request steer the mode:
+`/apex <idea or goal>` is the one command, and the skill runs only when the user types it or asks for APEX by name. It is a deliberate, heavier process; do not start it for a request that merely looks like a build task. Words in the request steer the mode:
 
 * **"lean"**: `LEAN` mode; small scope, build as early as possible.
 * **"red-team"**: only critique an idea, plan or codebase (`03`; critic subagent if available).
