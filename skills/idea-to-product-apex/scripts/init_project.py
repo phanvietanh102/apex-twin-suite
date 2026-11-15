@@ -25,7 +25,7 @@ DOMAIN_MAP = {
 
 def build_state_json(project_name: str, domain_key: str, today: str) -> dict:
     return {
-        "schema_version": "2.0.0-apex",
+        "schema_version": "4.3.0-apex",
         "project_name": project_name,
         "domain_primary": domain_key,
         "domain_label": DOMAIN_MAP.get(domain_key, domain_key),

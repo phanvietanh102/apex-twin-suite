@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Idea-to-Product (v3.0) — Shift-Left Stage-Gate & Anti-Stub Code Auditor (fitness_audit.py)
+APEX Idea-to-Product (v4.3) — Shift-Left Stage-Gate & Anti-Stub Code Auditor (fitness_audit.py)
 Supports:
   1. Step-by-step Gate Verification (--gate 1..6) so errors in Step 2 or 3 are caught immediately!
   2. Full Blueprint Completeness & 12-Month Evergreen Audit.
@@ -212,7 +212,7 @@ def audit_blueprint(target_dir: str, max_gate: int = 6, scan_code_dir: str = Non
             return 1
 
     print("=" * 76)
-    print(f"APEX v3.0 SHIFT-LEFT AUDITOR | TARGET GATE: 1..{max_gate}")
+    print(f"APEX v4.3 SHIFT-LEFT AUDITOR | TARGET GATE: 1..{max_gate}")
     print("=" * 76)
     print(f"Blueprint Path: {blueprint_dir}\n")
 
@@ -321,7 +321,7 @@ def audit_blueprint(target_dir: str, max_gate: int = 6, scan_code_dir: str = Non
 
 
 def main():
-    parser = argparse.ArgumentParser(description="APEX v3.0 Shift-Left Gate & Code Auditor")
+    parser = argparse.ArgumentParser(description="APEX v4.3 Shift-Left Gate & Code Auditor")
     parser.add_argument("--dir", default=".", help="Project root or blueprint directory")
     parser.add_argument("--gate", type=int, default=6, choices=[1, 2, 3, 4, 5, 6], help="Stage gate to verify (1..6)")
     parser.add_argument("--scan-code", default=None, help="Directory to scan for TODO/FIXME/mock stubs")

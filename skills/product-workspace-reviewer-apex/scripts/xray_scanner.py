@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Product, App & Workspace Reviewer (v3.5) — Automated Forensic X-Ray & Ledger Scaffolder (xray_scanner.py)
+APEX Product, App & Workspace Reviewer (v4.3) — Automated Forensic X-Ray & Ledger Scaffolder (xray_scanner.py)
 Performs a non-destructive forensic scan of an existing workspace, app, or project folder:
   1. Inventories file topology, extensions, and directory depth.
   2. Detects Workspace Entropy (duplicate/versioned files like v1, v2, final, copy, (1)).
@@ -105,7 +105,7 @@ def scan_workspace(target_root: str) -> dict:
 
 def build_review_state(project_name: str, domain_key: str, today: str, xray: dict) -> dict:
     return {
-        "schema_version": "3.5.0-apex-review",
+        "schema_version": "4.3.0-apex-review",
         "target_name": project_name,
         "domain_primary": domain_key,
         "domain_label": DOMAIN_MAP.get(domain_key, domain_key),
@@ -361,7 +361,7 @@ def main():
         sys.exit(1)
 
     print("=" * 76)
-    print(f"APEX v3.5 FORENSIC X-RAY SCANNER | TARGET: {target_root}")
+    print(f"APEX v4.3 FORENSIC X-RAY SCANNER | TARGET: {target_root}")
     print("=" * 76)
     xray = scan_workspace(target_root)
     print(f"  - Total Files Scanned : {xray['total_files']} ({xray['total_kb']} KB, max depth {xray['max_depth']})")

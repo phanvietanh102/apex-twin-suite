@@ -2,7 +2,12 @@
 
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
-## [Unreleased]
+## [4.3.0] — 2026-11-15
+### Release housekeeping
+- **README rewritten for v4.3:** what the skills do, how they work, honest eval evidence and caveats, install, and usage. The unverified competitor comparison and the v3.7 mechanics that v4 replaced are removed.
+- All manifests (`.claude-plugin`, `.codex-plugin`, `.cursor-plugin`, `.antigravity-plugin`, `plugin.json`), installers, script banners and SKILL.md headers are synced to **4.3.0**.
+- `dist/` archives are rebuilt from the current skills. The bundle is renamed `apex-twin-suite-bundle.zip`.
+
 ### Changed (v4.3: context applicability, so rules are tailored rather than forced)
 - **07 Step 0, context profile:** 9 quick questions (money with other parties, personal data, regulated, others operate it, controls on behalf of others, replaces something existing, long-lived, established trade, stakes). Applicability is decided by **context features, not the industry label**.
 - **Activation table:** every lens and v4.2 rule has an activation condition. Rules that do not apply are `N/A` with a one-line reason, never forced and never silently skipped. Depth follows stakes.

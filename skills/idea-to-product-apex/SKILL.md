@@ -4,7 +4,7 @@ description: >-
   Use this skill when someone wants to turn an idea, goal or vague problem that matters to them into a complete, working result: a product, app, tool, system, business process, content operation, event, project or personal plan, in ANY field, industry, country or context (business, public sector, education, health, creative, personal). Includes short requests such as "build me an app that does a, b, c", "help me plan X" or "I want to start Y". Triggers on "/idea-to-product", "/apex", "/apex-lean", or when the user asks to brainstorm, elicit requirements, red-team a plan, or design something meant to run for 12+ months. Not for small edits, single bug fixes, or quick factual questions.
 ---
 
-# APEX Idea-to-Product (v4.0)
+# APEX Idea-to-Product (v4.3)
 
 ## What this skill is for
 

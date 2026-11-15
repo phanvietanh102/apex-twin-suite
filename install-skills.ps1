@@ -1,7 +1,7 @@
 ﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
-    1-Click Multi-Host Installer for the APEX Twin Engine Suite (v3.5 Twin-Synchronized Edition)
+    1-Click Multi-Host Installer for the APEX Twin Engine Suite (v4.3)
     Installs BOTH symmetric skills:
       1. idea-to-product-apex (Greenfield A-to-Z Idea-to-Product Engine)
       2. product-workspace-reviewer-apex (Brownfield Existing Product, App & Workspace Forensic Reviewer)
@@ -18,7 +18,7 @@ $Skills = @("idea-to-product-apex", "product-workspace-reviewer-apex")
 $Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
 Write-Host "======================================================================" -ForegroundColor Cyan
-Write-Host "  APEX TWIN ENGINE SUITE (v3.5) - SYMMETRIC MULTI-HOST INSTALLER" -ForegroundColor Cyan
+Write-Host "  APEX TWIN ENGINE SUITE (v4.3) - SYMMETRIC MULTI-HOST INSTALLER" -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
 
 $DistDir = Join-Path $RepoRoot "dist"
@@ -118,7 +118,7 @@ $ARGUMENTS
 Write-Host "[OK] Registered Claude Code & VS Code Slash Commands (/apex, /idea-to-product, /apex-review, /review-product)" -ForegroundColor Green
 
 # Create combined Twin Suite ZIP
-$BundleZip = Join-Path $DistDir "apex-twin-suite-v3.5-bundle.zip"
+$BundleZip = Join-Path $DistDir "apex-twin-suite-bundle.zip"
 if (Test-Path $BundleZip) { Remove-Item $BundleZip -Force }
 Compress-Archive -Path (Join-Path $RepoRoot "skills\*") -DestinationPath $BundleZip -Force
 Write-Host "[OK] Packaged Combined Twin Suite ZIP -> $BundleZip" -ForegroundColor Green
@@ -126,8 +126,8 @@ Write-Host "[OK] Packaged Combined Twin Suite ZIP -> $BundleZip" -ForegroundColo
 # Write plugin.json for Antigravity Global Plugin
 $PluginJson = @{
     name = "idea-to-product-apex"
-    displayName = "APEX Twin Suite (v3.5): Idea-to-Product & Product/Workspace Reviewer"
-    version = "3.5.0"
+    displayName = "APEX Twin Suite (v4.3): Idea-to-Product & Product/Workspace Reviewer"
+    version = "4.3.0"
     description = "Symmetric Twin Engine Suite: (1) idea-to-product-apex for A-to-Z Greenfield development and (2) product-workspace-reviewer-apex for Brownfield Product/App/Workspace forensic auditing, refactoring & 12-Month Evergreen immunity."
     logo = "assets/logo.svg"
     suggestedPrompts = @(
@@ -157,5 +157,5 @@ $LogoSvg = @'
 [System.IO.File]::WriteAllText((Join-Path $GlobalAgyPluginAssets "logo.svg"), $LogoSvg, $Utf8NoBom)
 
 Write-Host "======================================================================" -ForegroundColor Cyan
-Write-Host "  TWIN ENGINE SUITE v3.5 INSTALLED (100% SYMMETRY VERIFIED)" -ForegroundColor Green
+Write-Host "  TWIN ENGINE SUITE v4.3 INSTALLED (100% SYMMETRY VERIFIED)" -ForegroundColor Green
 Write-Host "======================================================================" -ForegroundColor Cyan

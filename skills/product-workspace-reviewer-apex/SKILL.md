@@ -4,7 +4,7 @@ description: >-
   Use this skill when someone wants something they ALREADY use assessed as a whole and made better: a product, app, business workflow, spreadsheet or invoice system, content operation, service process, project workspace or personal system, in ANY field, industry, country or context. Includes short requests such as "review giùm tôi workspace này" pointing at a folder, "audit / clean up / modernize what I've been using", or "it works, but how can it be better?". Triggers on "/review-product", "/apex-review", "/audit-workspace", "/apex-improve". Not for reviewing a single pull request or diff, a line-by-line code review of a change, or fixing one specific bug.
 ---
 
-# APEX Product & Workspace Reviewer (v4.0)
+# APEX Product & Workspace Reviewer (v4.3)
 
 ## What this skill is for
 

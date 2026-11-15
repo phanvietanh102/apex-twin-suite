@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Product, App & Workspace Reviewer (v3.5) — Shift-Left Stage-Gate & Parity Auditor (review_gate_audit.py)
+APEX Product, App & Workspace Reviewer (v4.3) — Shift-Left Stage-Gate & Parity Auditor (review_gate_audit.py)
 Audits docs/apex-review/ across Gates 1..6 and optionally scans the target workspace/codebase
 for unfinished TODO/FIXME stubs, unquarantined entropy files, and C-Suite Delta Score >= 85/100.
 """
@@ -198,7 +198,7 @@ def audit_review_ledger(target_dir: str, max_gate: int = 6, scan_target_dir: str
             return 1
 
     print("=" * 78)
-    print(f"APEX v3.5 BROWNFIELD REVIEW GATE AUDITOR | TARGET GATE: 1..{max_gate}")
+    print(f"APEX v4.3 BROWNFIELD REVIEW GATE AUDITOR | TARGET GATE: 1..{max_gate}")
     print("=" * 78)
     print(f"Review Ledger Path: {review_dir}\n")
 
@@ -307,7 +307,7 @@ def audit_review_ledger(target_dir: str, max_gate: int = 6, scan_target_dir: str
 
 
 def main():
-    parser = argparse.ArgumentParser(description="APEX v3.5 Brownfield Review Gate Auditor")
+    parser = argparse.ArgumentParser(description="APEX v4.3 Brownfield Review Gate Auditor")
     parser.add_argument("--dir", default=".", help="Project root or docs/apex-review directory")
     parser.add_argument("--gate", type=int, default=6, choices=[1, 2, 3, 4, 5, 6], help="Stage gate to verify (1..6)")
     parser.add_argument("--scan-target", default=None, help="Directory to scan for code stubs during Phase 5/6")
