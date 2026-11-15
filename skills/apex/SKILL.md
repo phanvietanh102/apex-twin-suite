@@ -1,10 +1,10 @@
 ---
-name: idea-to-product-apex
+name: apex
 description: >-
-  Use this skill when someone wants to turn an idea, goal or vague problem that matters to them into a complete, working result: a product, app, tool, system, business process, content operation, event, project or personal plan, in ANY field, industry, country or context (business, public sector, education, health, creative, personal). Includes short requests such as "build me an app that does a, b, c", "help me plan X" or "I want to start Y". Triggers on "/idea-to-product", "/apex", "/apex-lean", or when the user asks to brainstorm, elicit requirements, red-team a plan, or design something meant to run for 12+ months. Not for small edits, single bug fixes, or quick factual questions.
+  APEX: turn an idea, goal or vague problem into a complete, working result from A to Z (a product, app, tool, system, business process, content operation, event, project or personal plan), in any field or country. Use when the user types /apex, or asks to build or plan something new that matters to them and should keep working for months, including short requests such as "build me an app that does a, b, c" or "help me plan X". Words in the request steer it: "lean" for a small scope, "red-team" to only critique a plan, "verify" to audit what was built. Not for small edits, single bug fixes or quick questions. To assess and improve something that already exists, use apex-review instead.
 ---
 
-# APEX Idea-to-Product (v4.4)
+# APEX: from idea to working result (v4.5)
 
 ## What this skill is for
 
@@ -77,7 +77,7 @@ Order and merge these freely. All of them must be true before handover.
 
 - **`docs/apex-blueprint/` from an older version:** read it with care. Older templates were pre-filled, so trust only the parts clearly specific to this project, confirm those with the user in one line, and ignore its scores and "approved" lines. Leave it in place and start a fresh trace with `--lean`.
 - **`_apex/` from a current version:** continue it. Keep the existing rows and update their statuses.
-- **The user wants an existing system assessed and improved** rather than something new built: that is the `product-workspace-reviewer-apex` skill's job.
+- **The user wants an existing system assessed and improved** rather than something new built: that is the `apex-review` skill's job.
 
 ### Rigor modes (choose silently)
 
@@ -122,12 +122,13 @@ A small `LEAN` request needs only `09`, `07`, `08`, and `06` once you build.
   - Gate 6: no `OPEN` rows, all slices proven (ledger modes), and `change_scenarios_required` passed scenarios (default 3; fewer needs a `change_scenarios_waiver` reason).
 * The script checks structure and evidence, not quality. Never write a score, proof or status you did not actually obtain. Report results as plain outcomes, not gate numbers.
 
-## Requests the user may make
+## How the user invokes it
 
-Plain words are enough; these phrases make the intent explicit.
+`/apex <idea or goal>` is the one command. Plain words work too. Words in the request steer the mode:
 
-* `/idea-to-product [idea]` or `/apex [idea]`: start (Turn-1 rules above).
-* `/apex-lean [idea]`: `LEAN` mode; build as early as possible.
-* `/apex-redteam`: critique an idea, plan or codebase (`03`; critic subagent if available).
-* `/apex-blueprint`: scaffold `docs/apex-blueprint/` for `STANDARD` work.
-* `/apex-verify` or `/apex-audit`: run `fitness_audit.py` with `--scan-code` and report what is still open.
+* **"lean"**: `LEAN` mode; small scope, build as early as possible.
+* **"red-team"**: only critique an idea, plan or codebase (`03`; critic subagent if available).
+* **"blueprint"**: scaffold `docs/apex-blueprint/` for `STANDARD` work.
+* **"verify"** or **"audit"**: run `fitness_audit.py` with `--scan-code` and report what is still open.
+
+If the user wants something that already exists assessed and improved, that is `/apex-review`, not this skill.

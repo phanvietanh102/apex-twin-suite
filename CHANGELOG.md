@@ -2,6 +2,14 @@
 
 All notable changes to the **APEX Twin Suite** (`idea-to-product-apex` & `product-workspace-reviewer-apex`) are documented in this file.
 
+## [4.5.0] — 2026-11-15
+### Changed: two commands, named after the two skills
+- **Skills renamed.** `idea-to-product-apex` is now **`apex`** (`/apex`: develop an idea from A to Z) and `product-workspace-reviewer-apex` is now **`apex-review`** (`/apex-review`: whole-system audit with optimisation proposals). The skill names are the commands, so there are no separate command files.
+- **Fewer names to remember.** `/idea-to-product`, `/review-product`, `/apex-lean`, `/apex-improve`, `/audit-workspace` and the other aliases are gone. Modes are words in the request: `/apex lean …`, `/apex red-team …`, `/apex verify`, `/apex-review improve …`, `/apex-review lean …`.
+- **`apex-review` is not an ordinary review.** Its description states it must not be used for a code review, a pull request or diff, a single file, or only because the word "review" appears, so it is not confused with other review skills or a plain review.
+- **Installers migrate old installs.** They install `apex` and `apex-review`, remove the pre-v4.5 skill folders from every host, and remove the old command files in `~/.claude/commands` that pointed at the old names.
+- All manifests use the name `apex-twin-suite` and version 4.5.0.
+
 ## [4.4.0] — 2026-11-15
 ### Fixed (review of v4.3.0)
 - **Windows installer no longer reinstalls v3.7 behaviour.** `install-skills.ps1` used to write slash commands containing the old "MANDATORY 2-SECTION" rule into `~/.claude/commands`. Both installers now copy the new `commands/` files, which only point at the skills. They also replace each target cleanly and skip `__pycache__`.

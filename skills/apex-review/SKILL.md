@@ -1,10 +1,10 @@
 ---
-name: product-workspace-reviewer-apex
+name: apex-review
 description: >-
-  Use this skill when someone wants something they ALREADY use assessed as a whole and made better: a product, app, business workflow, spreadsheet or invoice system, content operation, service process, project workspace or personal system, in ANY field, industry, country or context. Includes short requests such as "review giùm tôi workspace này" pointing at a folder, "audit / clean up / modernize what I've been using", or "it works, but how can it be better?". Triggers on "/review-product", "/apex-review", "/audit-workspace", "/apex-improve". Not for reviewing a single pull request or diff, a line-by-line code review of a change, or fixing one specific bug.
+  APEX Review: a whole-system audit of something the user ALREADY uses (a product, app, business workflow, spreadsheet or invoice system, content operation, project workspace), followed by concrete optimisation proposals and, when they agree, the upgrade itself, in any field or country. Use when the user types /apex-review, asks for an "APEX review", or asks to audit and optimise an existing system as a whole (for example "audit this workspace and make it better", "it works, but how can it be better?", or a short request to review a whole app or workspace folder). Words in the request steer it: "improve" for continuous improvement of a system that already works, "lean" for a compact report. This is not an ordinary review: do not use it for a code review, a pull request or diff, a single file or document, or fixing one bug, and do not use it only because the word "review" appears; those belong to other review skills or a plain review. To build something new from an idea, use apex instead.
 ---
 
-# APEX Product & Workspace Reviewer (v4.4)
+# APEX Review: audit and optimise what already exists (v4.5)
 
 ## What this skill is for
 
@@ -150,12 +150,13 @@ A small `LEAN` review needs only `09`, `07`, `08`, and `06` once you change file
   - Gate 6: no `OPEN` rows, all slices proven (ledger modes), and `change_scenarios_required` passed scenarios (default 3; fewer needs a `change_scenarios_waiver` reason).
 * The script checks structure and evidence, not quality. Never pre-select an option or write a score, proof or status you did not obtain. Report results as plain outcomes, not gate numbers.
 
-## Requests the user may make
+## How the user invokes it
 
-Plain words are enough; these phrases make the intent explicit.
+`/apex-review <path or description>` is the one command. Plain words work too when the user clearly wants a whole existing system audited and optimised. Words in the request steer the mode:
 
-* `/review-product [path or description]` or `/apex-review`: Turn-1 findings and questions, then the upgrade.
-* `/audit-workspace`: findings on organisation and risk, then a cleaner structure with protected history (`04` §2).
-* `/apex-improve`: continuous-improvement loop on a system that already works (`10`).
-* `/apex-review-lean`: `LEAN` mode; findings plus an upgrade in one compact report.
-* `/apex-delta`: a before/after comparison on the baseline metrics (`10`), plus `review_gate_audit.py` to list what is still open.
+* **"improve"**: the system already works; run the continuous-improvement loop (`10`).
+* **"lean"**: `LEAN` mode; findings plus an upgrade in one compact report.
+* **"organise"** or **"clean up"**: findings on organisation and risk, then a cleaner structure with protected history (`04` §2).
+* **"delta"**: a before/after comparison on the baseline metrics (`10`), plus `review_gate_audit.py` to list what is still open.
+
+This is a deeper job than an ordinary review. If the user only wants a code review, a pull request or a single file looked at, say that `/apex-review` is the whole-system audit and do the plain review they asked for instead. If they want something new built from an idea, that is `/apex`.

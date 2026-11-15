@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Idea-to-Product (v4.4) - gate auditor (fitness_audit.py)
+APEX Idea-to-Product (v4.5) - gate auditor (fitness_audit.py)
 
 What it checks (and what it does not):
   * Ledger documents: present, substantive, and free of [[FILL: ...]] markers. The check is
@@ -22,7 +22,7 @@ import os
 import re
 import sys
 
-TOOL = "APEX v4.4 GATE AUDITOR"
+TOOL = "APEX v4.5 GATE AUDITOR"
 LEDGER_SUBDIR = "apex-blueprint"
 STATE_FILE = "STATE.json"
 SCAFFOLD_HINT = "Run init_project.py to scaffold docs/apex-blueprint/, or init_project.py --lean for _apex/TRACE.md only."

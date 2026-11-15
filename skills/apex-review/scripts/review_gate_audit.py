@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Product & Workspace Reviewer (v4.4) - review gate auditor (review_gate_audit.py)
+APEX Product & Workspace Reviewer (v4.5) - review gate auditor (review_gate_audit.py)
 
 What it checks (and what it does not):
   * Ledger documents: present, substantive, and free of [[FILL: ...]] markers. The check is
@@ -22,7 +22,7 @@ import os
 import re
 import sys
 
-TOOL = "APEX v4.4 REVIEW GATE AUDITOR"
+TOOL = "APEX v4.5 REVIEW GATE AUDITOR"
 LEDGER_SUBDIR = "apex-review"
 STATE_FILE = "REVIEW-STATE.json"
 SCAFFOLD_HINT = "Run xray_scanner.py to scaffold docs/apex-review/, or xray_scanner.py --lean for _apex/TRACE.md only."

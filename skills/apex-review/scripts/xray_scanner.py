@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APEX Product, App & Workspace Reviewer (v4.4) — Automated Forensic X-Ray & Ledger Scaffolder (xray_scanner.py)
+APEX Product, App & Workspace Reviewer (v4.5) — Automated Forensic X-Ray & Ledger Scaffolder (xray_scanner.py)
 Performs a non-destructive forensic scan of an existing workspace, app, or project folder:
   1. Inventories file topology, extensions, and directory depth.
   2. Detects Workspace Entropy (duplicate/versioned files like v1, v2, final, copy, (1)).
@@ -111,7 +111,7 @@ def scan_workspace(target_root: str) -> dict:
 
 def build_review_state(project_name: str, domain_key: str, today: str, xray: dict) -> dict:
     return {
-        "schema_version": "4.4.0-apex-review",
+        "schema_version": "4.5.0-apex-review",
         "target_name": project_name,
         "domain_primary": domain_key,
         "domain_label": DOMAIN_MAP.get(domain_key, domain_key),
@@ -331,7 +331,7 @@ def build_review_templates(project_name: str, domain_key: str, today: str, xray:
 - **Rollback:** [[FILL: where the backup is and the exact steps to restore it]]
 - **Re-review prompt (paste every 1–3 months):**
 ```text
-/apex-improve Read IMPROVEMENT-LOG.md and the last months of use for {project_name}. Compare with the baseline and propose the next improvements with the best return on effort.
+/apex-review improve: read IMPROVEMENT-LOG.md and the last months of use for {project_name}. Compare with the baseline and propose the next improvements with the best return on effort.
 ```
 """,
     }
@@ -382,7 +382,7 @@ def main():
         sys.exit(1)
 
     print("=" * 76)
-    print(f"APEX v4.4 FORENSIC X-RAY SCANNER | TARGET: {target_root}")
+    print(f"APEX v4.5 FORENSIC X-RAY SCANNER | TARGET: {target_root}")
     print("=" * 76)
     xray = scan_workspace(target_root)
     print(f"  - Total Files Scanned : {xray['total_files']} ({xray['total_kb']} KB, max depth {xray['max_depth']})")

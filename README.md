@@ -2,11 +2,11 @@
 
 <img src="./assets/logo.svg" alt="APEX Twin Suite Logo" width="110" height="110" />
 
-# APEX Twin Suite `v4.4`
+# APEX Twin Suite `v4.5`
 ### Strong models are smart. They are not always thorough. APEX adds the missing layer.
 *Two skills for Claude Code, Claude Desktop, Codex, Cursor and Google Antigravity: one turns an idea into a working result, the other makes an existing system better. Works in any field, country or context.*
 
-[![Version](https://img.shields.io/badge/version-4.4.0-6366F1?style=for-the-badge)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.5.0-6366F1?style=for-the-badge)](./CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10B981?style=for-the-badge)](./LICENSE)
 [![Evals](https://img.shields.io/badge/evals-blind_%26_pre--registered-F59E0B?style=for-the-badge)](./evals/EVAL-RESULTS.md)
 
@@ -34,10 +34,10 @@ None of these is a knowledge gap. They are gaps in **thoroughness that survives 
 
 ## The two skills
 
-| Skill | Use it when | Starts with |
+| Command | Use it when | Starts with |
 | :--- | :--- | :--- |
-| **`idea-to-product-apex`** | You have an idea, goal or vague problem and want a complete, working result: an app, tool, business process, content system, event, project or personal plan | 2–4 concrete findings for *your* field and situation, a recommended direction, then at most 3 questions you can answer in one line |
-| **`product-workspace-reviewer-apex`** | You already use something (an app, a folder of spreadsheets and scripts, a workflow) and want it assessed and made better, even if it "already works" | A read-only first pass with 3–6 evidence-backed findings ranked by money, data and safety risk, then at most 3 root-vision questions. Nothing is changed until you have said what is sacred |
+| **`/apex`** | You have an idea, goal or vague problem and want a complete, working result: an app, tool, business process, content system, event, project or personal plan | 2–4 concrete findings for *your* field and situation, a recommended direction, then at most 3 questions you can answer in one line |
+| **`/apex-review`** | You already use something (an app, a folder of spreadsheets and scripts, a workflow) and want it assessed and made better, even if it "already works" | A read-only first pass with 3–6 evidence-backed findings ranked by money, data and safety risk, then at most 3 root-vision questions. Nothing is changed until you have said what is sacred |
 
 Both skills reply in your language. When you say "you decide" or *"cứ chọn phương án bạn thấy hợp nhất và làm tiếp"*, they pick an option, state their assumptions and **build in the same reply**: no extra round of option tables.
 
@@ -190,16 +190,26 @@ Only if you use the **claude.ai chat**, which accepts skills as `.zip` uploads o
 
 ## Using it
 
-Just describe what you want: *"Build an order app for my shop that sells on Facebook and Shopee"* or *"Review this workspace: ./my-quotes-folder"*. The skills trigger on intent. The repo also ships slash commands in [`commands/`](./commands/) that only point at the skills: the local installer copies them to `~/.claude/commands`, and a plugin install exposes them under the plugin's namespace. The other phrases below work as part of your message.
+There are exactly two commands, named after the two skills:
 
-| Phrase | What happens |
+| Command | What it does |
 | :--- | :--- |
-| `/idea-to-product [idea]`, `/apex [idea]` | Start from an idea |
-| `/apex-lean [idea]` | Small scope: build as early as possible |
-| `/apex-redteam` | Critique an idea, plan or codebase |
-| `/review-product [path]`, `/apex-review` | Review and upgrade an existing system |
-| `/apex-improve` | It works; make it better (baseline → ROI-ranked improvements → improvement log) |
-| `/audit-workspace` | Organisation and risk clean-up with protected history |
+| **`/apex <idea or goal>`** | Develops an idea from A to Z into a complete, working result |
+| **`/apex-review <path or description>`** | Audits something you already use as a whole, proposes optimisations, and builds them when you agree |
+
+`/apex-review` is deliberately named so it is not confused with an ordinary review. For a code review, a pull request or a single file, use your usual review; `/apex-review` is the whole-system audit.
+
+Words in the request steer the mode, so there is nothing else to memorise:
+
+| Say | Effect |
+| :--- | :--- |
+| `/apex lean …` | Small scope: build as early as possible |
+| `/apex red-team …` | Only critique an idea, plan or codebase |
+| `/apex verify` | Run the gate audit on what was built and list what is still open |
+| `/apex-review improve …` | It already works; make it better (baseline → improvements ranked by return → improvement log) |
+| `/apex-review lean …` | Findings plus an upgrade in one compact report |
+
+Plain words also work: *"Build an order app for my shop that sells on Facebook and Shopee"* triggers `apex`. `apex-review` triggers on plain words only when you clearly ask for a whole existing system to be audited and optimised. In a plugin install the commands appear under the plugin's namespace (`/apex-twin-suite:apex`).
 
 **Rigor modes** are chosen automatically:
 - `LEAN` (default): `_apex/TRACE.md` and `_apex/STATE.json`, plus a compact spec if useful;
@@ -212,17 +222,16 @@ Just describe what you want: *"Build an order app for my shop that sells on Face
 
 ```text
 skills/
-  idea-to-product-apex/
+  apex/                 # /apex: idea to working result
     SKILL.md
     references/01..09   # elicitation, domain examples, red-team, 12-month architecture, templates,
                         # gates, completeness lenses (07), traceability & definition of done (08),
                         # domain discovery protocol (09)
     scripts/            # init_project.py (scaffold), fitness_audit.py (gates + stub scan)
-  product-workspace-reviewer-apex/
+  apex-review/          # /apex-review: audit and optimise what exists
     SKILL.md
     references/01..10   # same shared 07–09, plus continuous improvement (10)
     scripts/            # xray_scanner.py (--scan-only inventory / scaffold), review_gate_audit.py
-commands/               # slash commands that point at the two skills
 tests/test_gates.py     # end-to-end checks for scaffolders, gates, commands and installers
 evals/                  # eval pack, fixtures, pre-registrations, results, gap analysis, raw run evidence
 .github/workflows/      # CI: runs tests/test_gates.py on Linux and Windows

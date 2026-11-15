@@ -1,5 +1,7 @@
 # APEX Skill Eval Pack (with vs. without skill)
 
+> Since v4.5 the skills are named `apex` (was `idea-to-product-apex`) and `apex-review` (was `product-workspace-reviewer-apex`). The names below are the ones used when these runs were made.
+
 Goal: measure whether the skill turns a **short, ordinary request** into a result that makes the user say "wow". That means insights beyond the user's own knowledge, a better product, and low friction.
 
 Each case is 2 turns:

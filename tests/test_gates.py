@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""End-to-end checks for the APEX scaffolders, gate auditors, commands and installers.
+"""End-to-end checks for the APEX scaffolders, gate auditors, skill names and installers.
 
 Run from anywhere:  python tests/test_gates.py
 No dependencies beyond the standard library. Exits non-zero if any check fails.
@@ -15,8 +15,8 @@ import sys
 import tempfile
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-I2P = os.path.join(REPO, "skills", "idea-to-product-apex")
-REV = os.path.join(REPO, "skills", "product-workspace-reviewer-apex")
+I2P = os.path.join(REPO, "skills", "apex")
+REV = os.path.join(REPO, "skills", "apex-review")
 INIT = os.path.join(I2P, "scripts", "init_project.py")
 FIT = os.path.join(I2P, "scripts", "fitness_audit.py")
 XRAY = os.path.join(REV, "scripts", "xray_scanner.py")
@@ -306,14 +306,24 @@ try:
     check("a broken STATE.json is reported as an error to fix, not as an old version", rc == 1 and "could not be read" in out and "LEGACY" not in out, out)
 
     # ------------------------------------------------------------------ packaging consistency
-    cmds = sorted(os.listdir(os.path.join(REPO, "commands")))
-    cmd_text = "".join(read(os.path.join(REPO, "commands", c)) for c in cmds)
-    check("commands shipped: apex, idea-to-product, apex-lean, apex-review, review-product, apex-improve",
-          cmds == ["apex-improve.md", "apex-lean.md", "apex-review.md", "apex.md", "idea-to-product.md", "review-product.md"], cmds)
-    check("commands only point at the skills (no embedded rules, no home paths)",
-          "MANDATORY" not in cmd_text and "~/.claude" not in cmd_text and "$ARGUMENTS" in cmd_text)
+    check("exactly two skills are shipped: apex and apex-review", sorted(os.listdir(os.path.join(REPO, "skills"))) == ["apex", "apex-review"],
+          os.listdir(os.path.join(REPO, "skills")))
+    names = [re.search(r"(?m)^name: (.+)$", read(os.path.join(s, "SKILL.md"))).group(1).strip() for s in (I2P, REV)]
+    check("skill names match their folders, so they are invoked as /apex and /apex-review", names == ["apex", "apex-review"], names)
+    check("no separate command files: the two skill names are the only entry points", not os.path.isdir(os.path.join(REPO, "commands")))
+    review_desc = re.search(r"(?s)description: >-\n(.*?)\n---", read(os.path.join(REV, "SKILL.md"))).group(1)
+    check("apex-review says it is not for code, PR or diff reviews", "pull request" in review_desc and "code review" in review_desc, review_desc[:200])
+    check("skill descriptions fit the 1024-character limit",
+          all(len(" ".join(re.search(r"(?s)description: >-\n(.*?)\n---", read(os.path.join(s, "SKILL.md"))).group(1).split())) <= 1024 for s in (I2P, REV)))
     installers = read(os.path.join(REPO, "install-skills.ps1")) + read(os.path.join(REPO, "install-skills.sh"))
-    check("installers copy commands/ and embed no behaviour rules", "commands" in installers and "MANDATORY" not in installers and "2-SECTION" not in installers)
+    check("installers remove the pre-v4.5 skill names and embed no behaviour rules",
+          installers.count("idea-to-product-apex") >= 2 and "MANDATORY" not in installers and "2-SECTION" not in installers)
+    stale = []
+    for root, _dirs, files in os.walk(os.path.join(REPO, "skills")):
+        for f in files:
+            if f.endswith((".md", ".py")) and re.search(r"idea-to-product-apex|product-workspace-reviewer-apex", read(os.path.join(root, f))):
+                stale.append(f)
+    check("no old skill names left inside the skills", not stale, stale)
     check("install-skills.ps1 is ASCII-only apart from an optional BOM (safe for Windows PowerShell 5.1)",
           all(ord(ch) < 128 for ch in read(os.path.join(REPO, "install-skills.ps1")).lstrip("﻿")))
     shared = ["07-completeness-lenses.md", "08-definition-of-done-and-traceability.md", "09-domain-discovery-protocol.md"]

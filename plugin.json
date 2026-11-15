@@ -1,16 +1,16 @@
 {
-  "name": "idea-to-product-apex",
-  "displayName": "APEX Twin Suite (v4.4)",
-  "version": "4.4.0",
-  "description": "APEX Twin Suite v4.4: two skills that add what strong models lack - completeness, traceability and proof - to building from an idea (idea-to-product-apex) and to reviewing and upgrading an existing system (product-workspace-reviewer-apex), in any field, country or context. Tailored by a context profile; validated by blind, pre-registered evals.",
+  "name": "apex-twin-suite",
+  "displayName": "APEX Twin Suite (v4.5)",
+  "version": "4.5.0",
+  "description": "APEX Twin Suite v4.5: two skills that add what strong models lack - completeness, traceability and proof. /apex turns an idea into a complete, working result from A to Z; /apex-review audits something you already use and proposes and builds the optimisations. Any field, country or context; validated by blind, pre-registered evals.",
   "logo": "assets/logo.svg",
   "author": {
     "name": "APEX Systems Engineering Council"
   },
   "license": "MIT",
   "suggestedPrompts": [
-    "/idea-to-product I want to build an order app for my shop that sells on Facebook and Shopee",
-    "/review-product Review this workspace and make it better: ./my-quotes-folder",
-    "/apex-improve Our booking sheet already works - find what would make it better and measure it"
+    "/apex I want to build an order app for my shop that sells on Facebook and Shopee",
+    "/apex-review Audit this workspace and make it better: ./my-quotes-folder",
+    "/apex-review improve: our booking sheet already works - find what would make it better and measure it"
   ]
 }

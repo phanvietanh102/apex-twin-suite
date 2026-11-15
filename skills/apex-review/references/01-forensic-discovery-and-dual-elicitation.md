@@ -7,7 +7,7 @@ When a user brings an existing app, website, Excel/invoice workflow, SEO content
 2. **The "Arrogant Rewrite" Trap:** Naive AI deletes or overwrites working files, accidentally destroying historical customer records (`Red Zone`) or sacred muscle-memory habits.
 3. **The "Cosmetic Praise" Trap:** Naive AI skims 3 files, gives 5 generic textbook tips, and fails to run a true A-to-Z `idea-to-product` evolution.
 
-To defeat all three traps, `product-workspace-reviewer-apex` separates **Turn 1 (read-only: evidence-backed findings + root-vision questions)** from **Turn 2+ (gap matrix, then build)**.
+To defeat all three traps, `apex-review` separates **Turn 1 (read-only: evidence-backed findings + root-vision questions)** from **Turn 2+ (gap matrix, then build)**.
 
 ---
 

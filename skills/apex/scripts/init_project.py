@@ -25,7 +25,7 @@ DOMAIN_MAP = {
 
 def build_state_json(project_name: str, domain_key: str, today: str) -> dict:
     return {
-        "schema_version": "4.4.0-apex",
+        "schema_version": "4.5.0-apex",
         "project_name": project_name,
         "domain_primary": domain_key,
         "domain_label": DOMAIN_MAP.get(domain_key, domain_key),
@@ -229,7 +229,7 @@ def get_templates(project_name: str, domain_key: str, today: str) -> dict:
 
 ## 4. Re-review prompt (paste every 1–3 months)
 ```text
-/apex-audit Read the project ledger and STATE.json for {project_name}. Compare the last months of use with 00 and 02, and propose the changes with the best return on effort.
+/apex verify: read the project ledger and STATE.json for {project_name}. Compare the last months of use with 00 and 02, and propose the changes with the best return on effort.
 ```
 """,
     }
